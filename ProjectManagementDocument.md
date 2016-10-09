@@ -104,5 +104,4 @@ Meetings Summary
 | **Location** | Coates Hall @ LSU, Room 152, Baton Rouge, LA |
 | **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, William Raziano, Chris Schayer |
 | **Objective** | Sprint #3 Launch |
-| **Summary** | Checkup of progress for everyone present (plus Hardika, who reported in beforehand).
-On JIRA, Sprint #2 is concluded today, and Sprint #3 is launched. |
+| **Summary** | Checkup of progress for everyone present (plus Hardika, who reported in beforehand). On JIRA, Sprint #2 is concluded today, and Sprint #3 is launched. |
