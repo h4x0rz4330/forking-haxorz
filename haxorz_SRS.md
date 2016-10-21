@@ -1,6 +1,5 @@
 # **Software Requirements Specification**
 
-#
 ## for
 
 # **H@x0rz**
@@ -13,10 +12,11 @@
 
 **&lt;date created&gt;**
 
+***
 
+## **Table of Contents**
 | **Table of Contents**     |
-| --- |
-| **Table of Contents**     |
+| :--- |
 | **Revision History**      |
 | **1. Introduction**     |
 | 1.1        Purpose        |
@@ -51,13 +51,15 @@
 | **Appendix B: Analysis Models**      |
 | **Appendix C: To Be Determined List**     |
 
+***
 
+## **Revision History**
 | **Name** | **Date** | **Reason For Changes** | **Version** |
-| --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: |
 | Jonathan Nguyen | 10/16/16 | Creation of document; introduction written | 0.1 |
 | Will Raziano | 10/20/16 | Addition of ER, use cases, fleshing out S3,4,5 | 0.2 |
 
-
+***
 
 # **1. Introduction**
 
@@ -95,9 +97,7 @@ All current and previous versions of the application and its documentation can b
 
 # **2. Overall Description**
 
-H@x0rz is a new and self-contained product. It is composed of two major systems: a
-
-web-based client and a web server. The web application is an interface for users to play the game, interact with other players, and make purchases for in-game items. The web server handles connection between players and processes game commands and logic.See Appendix B for an entity-relationship diagram describing this system.
+H@x0rz is a new and self-contained product. It is composed of two major systems: a web-based client and a web server. The web application is an interface for users to play the game, interact with other players, and make purchases for in-game items. The web server handles connection between players and processes game commands and logic.See Appendix B for an entity-relationship diagram describing this system.
 
 _&lt;Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.&gt;_
 
@@ -105,7 +105,7 @@ _&lt;Identify the various user classes that you anticipate will use this product
 
 The client-side of the Application will operate as a web application that is compatible with any commonly used web browser including, but not limited to, Internet Explorer, Mozilla Firefox, Google Chrome, and Safari.
 
-The server-side fo the Application will operate from a privately-owned server.
+The server-side of the Application will operate from a privately-owned server.
 
 Design constraints will be minimal; the application is designed to function through a web browser. Therefore, any computer or laptop capable of displaying a webpage, and equipped with a browser will be capable of displaying the implemented application. It should be noted that internet connectivity will be a necessity for the end-users or admins to access the game.
 
@@ -150,99 +150,48 @@ _&lt;This template illustrates organizing the functional requirements for the pr
 
 **Use Cases of Client application interaction with Server:**
 
-**Use Case** : **Lobby/Game Startup**
+| | **Use Case** : **Lobby/Game Startup**|
+| --- | --- |
+|Precondition:|The server has finished start-up routine|
+|Main Success Scenario:| Server initializes Lobby to keep track of available games on different threads and continually processes requests from client to join or create games on Lobby.|
+|Alternate Scenarios:|Lobby fails to start. Server shuts down immediately and sends alerts to system manager and other relevant administrators.|
+| |Lobby fails to create games. After five failed game creations, Lobby is restarted. If there are no successes after 3 Lobby restarts, server shuts down immediately and sends alerts to system manager and other relevant administrators.|
 
-Precondition:
+| | **Use Case: Encryption &quot;Hand-Shake&quot; Check**|
+| --- | --- |
+|Preconditions: | Server has established connection with client. Server and client have private shared keys.|
+|Main Success Scenario: | Client sends user&#39;s login information (username and password) encrypted with server&#39;s public key. Server decrypts login information with the server&#39;s private key. If login information matches database, server sends approval of login and lobby information to client. |
+|Alternate Scenarios: | Username does not match any username in database. Server tells client that login has failed and to prompt user to check their login information or create a new account.|
+| |Password does not match the associated username's password in database. Server tells client that login has failed and to prompt user to check their login information or go through a password-recovery process.|
 
-The server has finished start-up routine
-
-Main Success Scenario:
-
-Server initializes Lobby to keep track of available games on different threads and continually processes requests from client to join or create games on Lobby.
-
-Alternate Scenarios:
-
-Lobby fails to start. Server shuts down immediately and sends alerts to system manager and other relevant administrators.
-
-Lobby fails to create games. After five failed game creations, Lobby is restarted. If there are no successes after 3 Lobby restarts, server shuts down immediately and sends alerts to system manager and other relevant administrators.
-
-**Use Case: Encryption &quot;Hand-Shake&quot; Check**
-
-Preconditions:
-
-Server has established connection with client. Server and client have private shared keys.
-
-Main Success Scenario:
-
-Client sends user&#39;s login information (username and password) encrypted with server&#39;s public key. Server decrypts login information with the server&#39;s private key. If login information matches database, server sends approval of login and lobby information to client.
-
-Alternate Scenarios:
-
-Username does not match any username in database. Server tells client that login has failed and to prompt user to check their login information or create a new account.
-
-Password does not match the associated username&#39;s password in database. Server tells client that login has failed and to prompt user to check their login information or go through a password-recovery process.
-
-**Use Case: User Interface/User Experience**
-
-Preconditions:
-
-Client information is up-to-date (i.e. matches server information).
-
-Main Success Scenario:
-
-Client displays loading screen for startup. When done loading, user is prompted for login information. User enters their information, and the login is verified. Client displays lobby screen and available games. User selects a desired game to join. Client loads the in-game screen. Client prompts user to choose one of two options each turn, then displays the effects of that choice. Client displays other players&#39; moves until the user&#39;s next turn. The user continues playing until a winner is determined. Client displays the lobby again.
-
-Alternate Scenarios:
-
-Startup files failed to load. User is prompted to check that the app is updated to the current version, then to restart or re-download the app.
-
-Lobby does not display any games. User is prompted to check their internet connection, then to refresh the lobby via the on-screen &#39;lobby refresh&#39; button.
-
-Game cannot process player&#39;s turn due to a problem connecting with the server. User is prompted to check their internet connection, then to resend the action via an on-screen &#39;retry&#39; button.
-
-Game does not proceed due to inactivity from a user. After three days of inactivity, the inactive user is removed from the game, their cards are revealed to the other players, and game resumes as normal.
-
-Application is improperly closed. The user will be required to login again upon relaunching the application. If the user is in a game when the application closed, they are removed from that game.
+| | **Use Case: User Interface/User Experience**|
+| --- | --- |
+|Preconditions:|Client information is up-to-date (i.e. matches server information).|
+|Main Success Scenario:|Client displays loading screen for startup. When done loading, user is prompted for login information. User enters their information, and the login is verified. Client displays lobby screen and available games. User selects a desired game to join. Client loads the in-game screen. Client prompts user to choose one of two options each turn, then displays the effects of that choice. Client displays other players&#39; moves until the user&#39;s next turn. The user continues playing until a winner is determined. Client displays the lobby again.|
+|Alternate Scenarios:|Startup files failed to load. User is prompted to check that the app is updated to the current version, then to restart or re-download the app.|
+| |Lobby does not display any games. User is prompted to check their internet connection, then to refresh the lobby via the on-screen 'lobby refresh' button.|
+| |Game cannot process player&#39;s turn due to a problem connecting with the server. User is prompted to check their internet connection, then to resend the action via an on-screen 'retry' button.|
+| |Game does not proceed due to inactivity from a user. After three days of inactivity, the inactive user is removed from the game, their cards are revealed to the other players, and game resumes as normal.|
+| |Application is improperly closed. The user will be required to login again upon relaunching the application. If the user is in a game when the application closed, they are removed from that game.|
 
 
 
-**Use Case: Communications Between Client and Server**
+| |**Use Case: Communications Between Client and Server**|
+| --- | --- |
+|Preconditions:|Client has connectivity to server.|
+|Main Success Scenario:|Client takes login information from user and sends it to server. Server verifies login and sends lobby information to client. Client sends user's choice of game to server; server associates that client with other clients in that game. Client performs logical functions for game in response to user inputs, then sends the resulting effects to server. Server sends the information to other connected clients in the game; clients update accordingly. Once winner is determined, associations between clients are ended.|
+|Alternate Scenarios:|Server must be taken down for maintenance or other emergency and cannot be reached by client. Client halts current actions and displays that server is currently down for maintenance. Connections to current game is saved, and does not count toward the three-day inactivity grace period for users to play.|
+| |Server returns a failed login. Client prompts user to re-enter login information, then client sends the new information to server for another check.|
+| |Client cannot load any available games in lobby. Client will automatically retry connecting to server every 60 seconds without input, or whenever the user presses the 'lobby refresh' button. If the server is responding, but there are no available games, client encourages user to create their own lobby.|
+| |Client cannot send results of a play to server. Client retries connection until connection is reestablished, or one minute has passed with no stable connectivity. If the latter, client prompts user to check their internet connectivity and will try to reconnect again for one minute after the user presses a 'retry' button.|
 
-Preconditions:
-
-Client has connectivity to server.
-
-Main Success Scenario:
-
-Client takes login information from user and sends it to server. Server verifies login and sends lobby information to client. Client sends user&#39;s choice of game to server; server associates that client with other clients in that game. Client performs logical functions for game in response to user inputs, then sends the resulting effects to server. Server sends the information to other connected clients in the game; clients update accordingly. Once winner is determined, associations between clients are ended.
-
-Alternate Scenarios:
-
-Server must be taken down for maintenance or other emergency and cannot be reached by client. Client halts current actions and displays that server is currently down for maintenance. Connections to current game is saved, and does not count toward the three-day inactivity grace period for users to play.
-
-Server returns a failed login. Client prompts user to re-enter login information, then client sends the new information to server for another check.
-
-Client cannot load any available games in lobby. Client will automatically retry connecting to server every 60 seconds without input, or whenever the user presses the &#39;lobby refresh&#39; button. If the server is responding, but there are no available games, client encourages user to create their own lobby.
-
-Client cannot send results of a play to server. Client retries connection until connection is reestablished, or one minute has passed with no stable connectivity. If the latter, client prompts user to check their internet connectivity and will try to reconnect again for one minute after the user presses a &#39;retry&#39; button.
-
-**Use Case: Login Page**
-
-Preconditions:
-
-Application has successfully initialized.
-
-Main Success Scenario:
-
-Client prompts user for login information. After user has entered the information, client sends it to the server for verification. Upon approval, the lobby screen is displayed.
-
-Alternate Scenarios:
-
-Login has failed due to invalid username. The client prompts user to check their login information or to create a new account.
-
-Login has failed due to invalid password. The client prompts user to check their login information or to go through a password-recovery process.
-
-Login has failed due to client being unable to connect with server. Client prompts user to check their internet connectivity, then try again by re-entering their login information.
+| |**Use Case: Login Page**|
+| --- | --- |
+|Preconditions:|Application has successfully initialized.|
+|Main Success Scenario:|Client prompts user for login information. After user has entered the information, client sends it to the server for verification. Upon approval, the lobby screen is displayed.|
+|Alternate Scenarios:|Login has failed due to invalid username. The client prompts user to check their login information or to create a new account.|
+| |Login has failed due to invalid password. The client prompts user to check their login information or to go through a password-recovery process.|
+| |Login has failed due to client being unable to connect with server. Client prompts user to check their internet connectivity, then try again by re-entering their login information.|
 
 
 
@@ -297,7 +246,7 @@ _&lt;List any operating principles about the product, such as which individuals 
 
 _&lt;Define any other requirements not covered elsewhere in the SRS. This might include database requirements, internationalization requirements, legal requirements, reuse objectives for the project, and so on. Add any new sections that are pertinent to the project.&gt;_
 
-**Appendix A: Glossary**
+#**Appendix A: Glossary**
 
 | **Term** | **Definition** |
 | --- | --- |
@@ -317,10 +266,10 @@ _&lt;Define any other requirements not covered elsewhere in the SRS. This might 
 
 _&lt;Define all the terms necessary to properly interpret the SRS, including acronyms and abbreviations. You may wish to build a separate glossary that spans multiple projects or the entire organization, and just include terms specific to a single project in each SRS.&gt;_
 
-**Appendix B: Analysis Models**
+#**Appendix B: Analysis Models**
 
 **Entity-Relationship Model of Functionality Overview:**
 
-**Appendix C: To Be Determined List**
+#**Appendix C: To Be Determined List**
 
 _&lt;Collect a numbered list of the TBD (to be determined) references that remain in the SRS so they can be tracked to closure.&gt;_
