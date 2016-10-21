@@ -1,0 +1,32 @@
+#board {
+ background-image: url("../images/PlayboardVanilla2.png");
+    height:967px;
+    width:1764px;
+    position:relative
+}
+
+
+/*
+
+*/
+.cardPile{
+    background-image: url("../images/cards.png");
+    background-size: contain;
+    height: 100px;
+    width: 75px;
+    background-color:transparent;
+}
+
+#discard{
+    position:absolute;
+  top:24%;
+  left:18%;
+    display:none;
+}
+
+#deck{
+    position: absolute;
+    top:50%;
+    left:40%;
+
+}
