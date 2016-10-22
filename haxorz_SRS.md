@@ -6,11 +6,11 @@
 
 **Version 1.0 approved**
 
-**Prepared by &lt;author&gt;**
+**Prepared by Jonathan Nguyen**
 
-**&lt;organization&gt;**
+**Team 42**
 
-**&lt;date created&gt;**
+**October 21, 2016**
 
 ***
 
@@ -25,13 +25,6 @@
 | 1.4        Product Scope        |
 | 1.5        References        |
 |**2. Overall Description**|
-| 2.1        Product Perspective        |
-| 2.2        Product Functions        |
-| 2.3        User Classes and Characteristics        |
-| 2.4        Operating Environment        |
-| 2.5        Design and Implementation Constraints        |
-| 2.6        User Documentation        |
-| 2.7        Assumptions and Dependencies        |
 |**3. External Interface Requirements**|
 | 3.1        User Interfaces        |
 | 3.2        Hardware Interfaces        |
@@ -42,10 +35,9 @@
 | 4.2        System Feature 2 (and so on)        |
 |**5. Other Nonfunctional Requirements**|
 | 5.1        Performance Requirements        |
-| 5.2        Safety Requirements        |
-| 5.3        Security Requirements        |
-| 5.4        Software Quality Attributes        |
-| 5.5        Business Rules        |
+| 5.2        Security Requirements        |
+| 5.3        Software Quality Attributes        |
+| 5.4        Business Rules        |
 |**6. Other Requirements**|
 | **Appendix A: Glossary**       |
 | **Appendix B: Analysis Models**      |
@@ -65,29 +57,25 @@
 
 ## **1.1 Purpose**
 
-The purpose of this document is to describe, in detail, the requirements for Version 0.5 of the &quot;H@x0rz&quot; web application software. This will cover requirements for the entire system, composed of the server-side and the client-side of the application.
+The purpose of this document is to describe, in detail, the requirements for Version 0.5 of the “H@x0rz” web application software. This will cover requirements for the entire system, composed of the server-side and the client-side of the application.
 
 ## **1.2 Document Conventions**
 
 Every requirement stated in this document shall have its own priority level and will not inherit priorities from any higher-level requirements.
 
- _&lt;Describe any standards or typographical conventions that were followed when writing this SRS, such as fonts or highlighting that have special significance.&gt;_
-
 ## **1.3 Intended Audience and Reading Suggestions**
 
-This document is intended for reading by the Application&#39;s development team (including, but not limited to, software developers, marketing teams, project managers, and testers) and any businesspersons who would be involved in the distribution or purchase of the Application.
+This document is intended for reading by the Application’s development team (including, but not limited to, software developers, marketing teams, project managers, and testers) and any businesspersons who would be involved in the distribution or purchase of the Application.
 
-This document contains detailed descriptions of the &quot;H@x0rz&quot; application, its implementation, requirements, and use cases.
+This document contains detailed descriptions of the “H@x0rz” application, its implementation, requirements, and use cases.
 
 It is recommended that all readers begin with Sections \* and \*. Those on the development team should then proceed to read Sections \*, \*, and \*. Others should proceed to read Sections \*, \*, and \*.
 
- _&lt;Describe what the rest of this SRS contains and how it is organized. Suggest a sequence for reading the document, beginning with the overview sections and proceeding through the sections that are most pertinent to each reader type.&gt;_
-
 ## **1.4 Product Scope**
 
-&quot;H@x0rz&quot; is a turn-based multiplayer card game played through a web application. Users must register and sign-in through a user account in order to use the Application. The Application will be offered to users free of charge. The Application will support secure in-app purchases, though such purchases are planned for future versions of the Application and not the initial release. Any purchases made will be linked to the purchasing user&#39;s account.
+“H@x0rz” is a turn-based multiplayer card game played through a web application. Users must register and sign-in through a user account in order to use the Application. The Application will be offered to users free of charge. The Application will support secure in-app purchases, though such purchases are planned for future versions of the Application and not the initial release. Any purchases made will be linked to the purchasing user’s account.
 
-Research into the current app-gaming market shows that the business model above – a free base application that offers more content through microtransactions – provides a significantly larger profit than other common forms of revenue in app games, such as advertising. It is also more appealing to potential customers than games which must be purchased to play. By using this strategy for earning revenue, &quot;H@x0rz&quot; can reach a larger portion of the market.
+Research into the current app-gaming market shows that the business model above – a free base application that offers more content through microtransactions – provides a significantly larger profit than other common forms of revenue in app games, such as advertising. It is also more appealing to potential customers than games which must be purchased to play. By using this strategy for earning revenue, “H@x0rz” can reach a larger portion of the market.
 
 The goal of this application is to provide an enjoyable experience to users and, once purchasable content is introduced, to return a profit margin to the development team. Such profits will be used to further develop and maintain the Application.
 
@@ -97,56 +85,55 @@ All current and previous versions of the application and its documentation can b
 
 # **2. Overall Description**
 
-H@x0rz is a new and self-contained product. It is composed of two major systems: a web-based client and a web server. The web application is an interface for users to play the game, interact with other players, and make purchases for in-game items. The web server handles connection between players and processes game commands and logic.See Appendix B for an entity-relationship diagram describing this system.
+H@x0rz is a new and self-contained product. It is composed of two major systems: a 
+web-based client and a web server. The web application is an interface for users to play the game, interact with other players, and make purchases for in-game items. The web server handles connection between players and processes game commands and logic. (See Appendix B for an entity-relationship diagram describing this system.)
 
-_&lt;Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.&gt;_
+There is only one class of user, which encompasses all users of the Application. The Application allows the user to perform the following actions:
+-	Register and login to a user account
+-	View tutorials on how to play the game
+-	Play the game with a random set of 1-3 other players (this number is chosen by the player)
 
-_&lt;Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.&gt;_
+Future versions are planned to have the following actions added:
+-	Purchase and use of in-game cosmetic items
+-	Viewing of the player’s overall win-loss statistics
+-	Viewing of a leaderboard which shows top scoring players
 
-The client-side of the Application will operate as a web application that is compatible with any commonly used web browser including, but not limited to, Internet Explorer, Mozilla Firefox, Google Chrome, and Safari.
+Documents that will be provided for users will include a manual describing the requirements for playing the game and all functions that are available to the user, a tutorial explaining how to play the game, and a quick-reference guide during gameplay. All of these will be provided inside the Application. The manual and tutorial will be available through a “Tutorial” tab from the main menu. The quick-reference guide will be available while a player is in a game.
 
-The server-side of the Application will operate from a privately-owned server.
+The client-side of the Application will operate as a web application that is compatible with any commonly used web browser including, but not limited to, Internet Explorer, Mozilla Firefox, Google Chrome, and Safari. The server-side of the Application will operate from a privately-owned server belonging to administrator(s).
 
-Design constraints will be minimal; the application is designed to function through a web browser. Therefore, any computer or laptop capable of displaying a webpage, and equipped with a browser will be capable of displaying the implemented application. It should be noted that internet connectivity will be a necessity for the end-users or admins to access the game.
+Appropriate communication and security protocols will be taken to protect user information and data transfers between clients and the server (See Sections 3.4 and 5.2 for further details on communication protocols and security measures, respectively.)
 
-_&lt;Describe any items or issues that will limit the options available to the developers. These might include: corporate or regulatory policies; hardware limitations (timing requirements, memory requirements); interfaces to other applications; specific technologies, tools, and databases to be used; parallel operations; language requirements; communications protocols; security considerations; design conventions or programming standards (for example, if the customer&#39;s organization will be responsible for maintaining the delivered software).&gt;_
-
-Documents that will be provided for users will include a manual describing the requirements for playing the game and all functions that are available to the user, a tutorial explaining how to play the game, and a quick-reference guide during gameplay. All of these will be provided inside the Application. The manual and tutorial will be available through a &quot;Tutorial&quot; tab from the main menu. The quick-reference guide will be available while a player is in a game.
-
-It is assumed that the device on which the user is running the Application is able to connect to the Internet with a stable connection and that the hardware is capable of displaying and processing the Application. It is also assumed that the operating systems and web browsers that support the Application will continue to support the application without conflicts.
-
-_&lt;List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).&gt;_
+The Application will support English as its primary language. It is assumed that the device on which the user is running the Application is able to connect to the Internet with a stable connection and that the device is capable of displaying and processing the Application. It is also assumed that the operating systems and web browsers that support the Application will continue to support the application without conflicts.
 
 # **3. External Interface Requirements**
 ## **3.1 User Interfaces**
 
-The main user interface will be introduced via a web page implementation, and the application will run inside of a browser window. The GUI will contain all of the needed documentation for gameplay, including a manual. The user will interface with his or her cards in hand, and choose the target of the card played. The more common screen sizes will support the play area, with 1920 x 1080 resolution delivering optimal results for game play..
+The user must have a functioning web browser, as the client and its user interface will run inside of a web browser window. All inputs from the user are expected to be through use of the cursor and will go through this interface. Inputs are then processed by the client (and server, if applicable) before an output is displayed back to the interface for further inputs.
 
-_&lt;Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. Define the software components for which a user interface is needed. Details of the user interface design should be documented in a separate user interface specification.&gt;_
+Each screen of the Application will have its own buttons, either for performing that page’s primary functions or for navigating to other screens.
+
+The Application and in-game displays will resize appropriately for standard screen resolutions, with 1920 x 1080 being the optimal resolution.
 
 ## **3.2 Hardware Interfaces**
 
-The application will be accessible for any user that has access to the internet and a browser on a computer. A future patch would need to be implemented to make the application playable on smaller devices, such as smartphones and tablets.
+The Application requires that a user has access to the Internet and a stable connection, as this will be used to transmit data between the client and server. The user will also need a cursoring-controlling device, such as a mouse or a trackpad, to navigate the menus and functionality of the Application.
 
-_&lt;Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.&gt;_
+The Application will initially be supported for desktop and laptop computers only. Support on smartphones and tablets are planned for future versions of the Application.
 
 ## **3.3 Software Interfaces**
 
-The application will employ a client-server system to prevent any corruptions of stored user data, and to lessen the processing load on the user&#39;s machine. A database will be used to store each user&#39;s registration, ID, and gameplay statistics. The backend server will handle processing of all gameplay once communication has been established with the user&#39;s machine via the application web server. The web application server will handle the user&#39;s login. The application web server and Database will be deployed on an Amazon EC2 instance.
-
-_&lt;Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.&gt;_
+The Application will employ a client-server system to help prevent corruption of stored user data and to lessen the processing load on the user’s machine. A database will be used to store each user’s registration information, account ID, and gameplay statistics. The client, upon startup, will request a connection with the server. The server will handle processing of all gameplay and accesses to the database once communication has been established. The Application’s web server and database will be deployed on an Amazon EC2 instance.
 
 ## **3.4 Communications Interfaces**
 
-The application client will communicate with the server via HTTP inside of a web browser. The client will need to have a registered user log into the GUI in order for the server socket to connect to the client socket.
-
-_&lt;Describe the requirements associated with any communications functions required by this product, including e-mail, web browser, network server communications protocols, electronic forms, and so on. Define any pertinent message formatting. Identify any communication standards that will be used, such as FTP or HTTP. Specify any communication security or encryption issues, data transfer rates, and synchronization mechanisms.&gt;_
+The application client will communicate with the server via HTTP inside of a web browser. The client will need to be logged in to a registered user account in order for the server socket to connect to the client socket. 
 
 # **4. System Features**
 
 _&lt;This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. You may prefer to organize this section by use case, mode of operation, user class, object class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your product.&gt;_
 
-## **4.1 System Feature 1**
+## **4.1 System Feature: Client / Server Interaction (High Priority)**
 
 **Use Cases of Client application interaction with Server:**
 
@@ -174,8 +161,6 @@ _&lt;This template illustrates organizing the functional requirements for the pr
 | |Game does not proceed due to inactivity from a user. After three days of inactivity, the inactive user is removed from the game, their cards are revealed to the other players, and game resumes as normal.|
 | |Application is improperly closed. The user will be required to login again upon relaunching the application. If the user is in a game when the application closed, they are removed from that game.|
 
-
-
 | |**Use Case: Communications Between Client and Server**|
 | --- | --- |
 |Preconditions:|Client has connectivity to server.|
@@ -194,9 +179,7 @@ _&lt;This template illustrates organizing the functional requirements for the pr
 | |Login has failed due to client being unable to connect with server. Client prompts user to check their internet connectivity, then try again by re-entering their login information.|
 
 
-
-
-
+## **4.2	System Feature: Gameplay (High Priority)**
 
 
 _&lt;Don&#39;t really say &quot;System Feature 1.&quot; State the feature name in just a few words.&gt;_
@@ -222,54 +205,42 @@ REQ-2:
 # **5. Other Nonfunctional Requirements**
 ## **5.1 Performance Requirements**
 
-_&lt;If there are performance requirements for the product under various circumstances, state them here and explain their rationale, to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features.&gt;_
+Latency time between inputting a command and receiving a response from the server should be kept to a minimum for seamless functionality. 
 
 ## **5.2 Security Requirements**
 
-Security will be maintained for users through the use of a hash table in which each user&#39;s statistics will be attached to his or her username. This username will be password protected. When microtransactions are implemented in a later patch of the original system, a more secure form of authentication will be utilized to protect user accounts and payment information from theft or unauthorized use.
-
-_&lt;Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements. Refer to any external policies or regulations containing security issues that affect the product. Define any security or privacy certifications that must be satisfied.&gt;_
+Security will be maintained for users through the use of a hash table in which each user’s statistics will be attached to his or her account, labelled with a unique user-selected username. This account is protected by a password also chosen by the user. When microtransactions are implemented future versions of the Application, a more secure form of authentication will be utilized to protect user accounts and payment information from theft or unauthorized use. A privacy policy will be instated and enforced to ensure that all user information is handled responsibly.
 
 ## **5.3 Software Quality Attributes**
 
-The quality of the software will ...
 
-_&lt;Specify any additional quality characteristics for the product that will be important to either the customers or the developers. Some to consider are: adaptability, availability, correctness, flexibility, interoperability, maintainability, portability, reliability, reusability, robustness, testability, and usability. Write these to be specific, quantitative, and verifiable when possible. At the least, clarify the relative preferences for various attributes, such as ease of use over ease of learning.&gt;_
 
 ## **5.4 Business Rules**
 
-The end users will have no access to the servers, and will only be able to interact with the application via the client GUI. Administrators will have access to the client and server code, in order to perform maintenance and patching of the system. A micro-transaction implementation will be introduced in a later patch of the application after it has been fully released. The application will be free-to-play with full functionality upon the initial release. The patch will introduce visual themes to the game, allowing players to customize their experiences, and to show their support for the application with visually differentiated cards. These additional visual themes will come at a price point, which will be predetermined based upon statistical analysis of similar applications using micro-transactions. The implementation of an in-game currency will be likely method of delivery for visual themes, and a billing system will need to be introduced in order to achieve that end. It should be noted that the visual themes will not alter the gameplay mechanics in any way, other than to show a different set of cards and/or card backs to all players. Licensing rights may need to be acquired in order to implement some themes; this will likely require a higher price point if monetary compensation is required in order to utilize those themes.
+Users shall have no direct access to the server and will only be able to interact with the Application via the client’s user interface. Administrators will have access to all source code for the Application in order to perform maintenance and patching of the system.
 
-_&lt;List any operating principles about the product, such as which individuals or roles can perform which functions under specific circumstances. These are not functional requirements in themselves, but they may imply certain functional requirements to enforce the rules.&gt;_
+The base Application will be free-to-play and offer full functionality. A microtransaction system will be supported in future versions, allowing users to purchase in-app items, such as visual themes for cards. The price of in-app items will be agreed upon and set by administrators. Purchasable items will not affect gameplay mechanics in any way and are purely cosmetic.
+
 
 # **6. Other Requirements**
 
-_&lt;Define any other requirements not covered elsewhere in the SRS. This might include database requirements, internationalization requirements, legal requirements, reuse objectives for the project, and so on. Add any new sections that are pertinent to the project.&gt;_
+
 
 #**Appendix A: Glossary**
 
 | **Term** | **Definition** |
 | --- | --- |
+| Admin / Administrator | A person who has been granted permission to access and edit secured portions of the Application, such as source code and database information. |
 | Application | The software in its entirety, including but not limited to the host server and any instances of the application. |
-| Client | An instance of the &quot;H@x0rz&quot; user-level software, run from a user&#39;s machine. Communicates with the server to send and receive data. |
+| Client | An instance of the “H@x0rz” user-level software, run from a user’s machine. Communicates with the server to send and receive data. |
 | Device | The machine on which the client is run. |
 | In-app | Available through the application. |
-| Server | The &quot;H@x0rz&quot; back-end software, run on a web server owned by the developers of this application. Communicates with clients to send and receive data. |
-| User | Any person who uses the &quot;H@x0rz&quot; application, particularly the client-end. |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-
-
-
-_&lt;Define all the terms necessary to properly interpret the SRS, including acronyms and abbreviations. You may wish to build a separate glossary that spans multiple projects or the entire organization, and just include terms specific to a single project in each SRS.&gt;_
+| Server | The “H@x0rz” back-end software, run on a web server owned by the developers of this application. Communicates with clients to send and receive data. |
+| User | Any person who uses the “H@x0rz” application, particularly the client-end. |
 
 #**Appendix B: Analysis Models**
 
-**Entity-Relationship Model of Functionality Overview:**
+
 
 #**Appendix C: To Be Determined List**
 
-_&lt;Collect a numbered list of the TBD (to be determined) references that remain in the SRS so they can be tracked to closure.&gt;_
