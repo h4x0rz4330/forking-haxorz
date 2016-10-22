@@ -31,17 +31,15 @@
 | 3.3        Software Interfaces        |
 | 3.4        Communications Interfaces        |
 |**4. System Features**|
-| 4.1        System Feature 1        |
-| 4.2        System Feature 2 (and so on)        |
+| 4.1        System Feature: Server-Client Interactions   |
+| 4.2      	 System Feature: Gameplay        |
 |**5. Other Nonfunctional Requirements**|
 | 5.1        Performance Requirements        |
 | 5.2        Security Requirements        |
 | 5.3        Software Quality Attributes        |
 | 5.4        Business Rules        |
-|**6. Other Requirements**|
-| **Appendix A: Glossary**       |
-| **Appendix B: Analysis Models**      |
-| **Appendix C: To Be Determined List**     |
+| **Appendix: Glossary**       |
+
 
 ***
 
@@ -50,6 +48,7 @@
 | :---: | :---: | :---: | :---: |
 | Jonathan Nguyen | 10/16/16 | Creation of document; introduction written | 0.1 |
 | Will Raziano | 10/20/16 | Addition of ER, use cases, fleshing out S3,4,5 | 0.2 |
+| Jonathan Nguyen / William Raziano | 10/21/16 | Completion of all remaining sections. | 1.0 |
 
 ***
 
@@ -69,7 +68,7 @@ This document is intended for reading by the Application’s development team (i
 
 This document contains detailed descriptions of the “H@x0rz” application, its implementation, requirements, and use cases.
 
-It is recommended that all readers begin with Sections \* and \*. Those on the development team should then proceed to read Sections \*, \*, and \*. Others should proceed to read Sections \*, \*, and \*.
+It is recommended that all readers begin with Sections 1, 2, and Appendix. Those on the development team should then proceed to read Sections 3, 4, and 5. Others should proceed to read Sections 5.2, 5.3, and 5.4.
 
 ## **1.4 Product Scope**
 
@@ -131,9 +130,13 @@ The application client will communicate with the server via HTTP inside of a web
 
 # **4. System Features**
 
-_&lt;This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. You may prefer to organize this section by use case, mode of operation, user class, object class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your product.&gt;_
-
 ## **4.1 System Feature: Client / Server Interactions**
+
+**4.1.1	Description and Priority**
+
+This feature encompasses all communication between clients and the server. As this forms the core of the Application’s operations, this is a High priority feature. 
+
+**4.1.2	Stimulus/Response Sequences**
 
 | | **Use Case : Login Check**|
 | --- | --- |
@@ -160,47 +163,45 @@ _&lt;This template illustrates organizing the functional requirements for the pr
 | |Game does not proceed due to inactivity from a user. After three days of inactivity, the inactive user is removed from the game, their cards are revealed to the other players, and game resumes as normal.|
 | |Application is improperly closed. The user will be required to login again upon relaunching the application. If the user is in a game when the application closed, they are removed from that game.|
 
-**4.1.1	Description and Priority**
-
-This feature encompasses all communication between clients and the server. As this forms the core of the Application’s operations, this is a High priority feature. 
-
-**4.1.2	Stimulus/Response Sequences**
-
 **4.1.3	Functional Requirements**
 
 |**Item**|**FR-1: Account Login**|
 |:---|:---|
-|**Summary**||
-|**Rationale**||
-|**Requirements**||
-|**References**||
-|**Rating**||
+|**Summary**|The system should provide a secure process for creating and accessing a user account.|
+|**Rationale**|Accounts will be used to identify users in games and to link game statistics to a user.|
+|**Requirements**|The system should be able to store user account data within the server’s database, using a hash table to maintain security. It must also be able to access this information to verify log-ins or change password information.|
+|**References**|NFR 5.1 & 5.2 (also see 3.1 & 3.2)|
+|**Rating**|1|
 
 |**Item**|**FR-2: Client-Side Communication**|
 |:---|:---|
-|**Summary**||
-|**Rationale**||
-|**Requirements**||
-|**References**||
-|**Rating**||
+|**Summary**|The client should be able to find and connect with the server. While connected, it must securely send and receive data to/from the server in a timely manner.|
+|**Rationale**|The client must be able to communicate with the server in order to access information from the database and to communicate with other users for games.|
+|**Requirements**|Each client must have information (domain, port number) to locate and connect with the server using Transmission Control Protocol (TCP). The client shall encrypt and send data securely to the server. When receiving data from the server, the client will use the same method to decrypt the data and apply it to the user interface.|
+|**References**|NFR 5.1 (also see 3.4)|
+|**Rating**|2|
 
 |**Item**|**FR-3: Server-Side Communication**|
 |:---|:---|
-|**Summary**||
-|**Rationale**||
-|**Requirements**||
-|**References**||
-|**Rating**||
+|**Summary**|The server should listen for connection requests, establish multiple connections, and send out data to each connection as needed.|
+|**Rationale**|The server must be able to communicate with clients in order to deliver data that is crucial for functionality on the client end.|
+|**Requirements**|The server must always be waiting for connection requests from clients, then establish the connection. Once connected, the server waits for messages from the client, decrypts and processes them accordingly, then encrypts and sends the resulting response messages to the appropriate clients. When the user logs off or otherwise closes their session of the Application, their respective connection should be ended.|
+|**References**|NFR 5.1 (also see 3.3 & 3.4)|
+|**Rating**|2|
 
-## **4.2	System Feature: Gameplay (High Priority)**
+## **4.2	System Feature: Gameplay**
+
+**4.2.1	Description and Priority**
+
+Gameplay is turn based, with each player (2 - 4 total) getting a single card. Once it is a player’s turn, he or she receives a second card. Players can only take actions during their turn. The actions are clearly explained in the text of the cards. The player must choose a card, which targets either another player or the person playing the card. Play continues for each player until he or she is out of cards, once a player is out of cards, he or she is out of the round. The last player with a remaining card is the winner of the round, unless a specific card effect grants a player the win of the round. The cards are shuffled and dealt out again, beginning a new round. Play continues until one player reaches the predetermined number of round wins for the game.
+
+**4.2.2	Stimulus/Response Sequences**
 
 **Entity-Relationship Model of Gameplay Functionality:**
 
 ![alt text][logo]
 
 [logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/ERDiagramV2.png "ER Diagram"
-
-Gameplay is turn based, with each player (2 - 4 total) getting a single card. Once it is a player’s turn, he or she receives a second card. Players can only take actions during their turn. The actions are clearly explained in the text of the cards. The player must choose a card, which targets either another player or the person playing the card. Play continues for each player until he or she is out of cards, once a player is out of cards, he or she is out of the round. The last player with a remaining card is the winner of the round, unless a specific card effect grants a player the win of the round. The cards are shuffled and dealt out again, beginning a new round. Play continues until one player reaches the predetermined number of round wins for the game.
 
 | **User Action** | **Client Action** | **Server Action** |
 | :---: | :---: | :---: |
@@ -216,28 +217,51 @@ Gameplay is turn based, with each player (2 - 4 total) getting a single card. On
 
 \* Parts 9-17 repeat until a winner for the round has been determined, then step 6 begins the new round. 
 
-**4.2.1	Description and Priority**
-
-**4.2.2	Stimulus/Response Sequences**
-
 **4.2.3	Functional Requirements**
 
-REQ-1:
+|**Item**|**FR-4: Game Screen**|
+|:---|:---|
+|**Summary**|The system should provide a user-friendly and functional screen on which users can play the game.|
+|**Rationale**|As the main function of the Application, it is important that the game has an appropriate and functional user interface screen.|
+|**Requirements**|The system must render the following when a user is in a game: 1-2 cards which may be viewed and selected on the player’s turn, cards and usernames representative of other players in the game, a central deck from which cards are distributed to players, a central pile which shows cards already used in the current game, and an expandable quick-reference guide to card information.|
+|**References**|NFR 5.1 (also see 3.1 & 3.3)|
+|**Rating**|2|
 
-REQ-2:
+|**Item**|**FR-5: Game Logic**|
+|:---|:---|
+|**Summary**|The system should provide a consistent set of rules from which it generates results from player inputs.|
+|**Rationale**|Rules are necessary to create a consistent game experience with every iteration and to define how the game is played.|
+|**Requirements**|Rules shall be implemented within the server’s code. When receiving messages from clients that are linked to an active game session, the server shall process them according to their contents, generate a resulting action, then send a message to all clients linked to that game session that contains a prompt to display the result. These rules should also be defined in tutorials that users can access via the main menu in order to learn the game.|
+|**References**|NFR 5.1 (also see 3.3)|
+|**Rating**|1|
 
 # **5. Other Nonfunctional Requirements**
 ## **5.1 Performance Requirements**
 
-Latency time between inputting a command and receiving a response from the server should be kept to a minimum for seamless functionality. 
+|**Item**|**NFR-1: Connection Latency**|
+|:---|:---|
+|**Summary**|Latency between inputting a command and receiving a response from the server should be kept as small as possible.|
+|**Rationale**|Functionality and flow of the Application is disturbed when there is significant latency between input and response.|
+|**Requirements**|When the client send a message to the server, a timer shall track the time until a response is received. If this exceed 1 minute, the user is prompted to check their connection and retry (i.e. resend the message).|
+|**References**|(see 3.4)|
+|**Rating**|2|
+
+|**Item**|**NFR-2: Database Security**|
+|:---|:---|
+|**Summary**|The contents of the server database must be protected.|
+|**Rationale**|The server database contains sensitive user information that must be protected as per the Privacy Policy.|
+|**Requirements**|A hash table system will be used to create a layer of protection for sensitive information stored in the server database.|
+|**References**|(see 3.4)|
+|**Rating**|3|
 
 ## **5.2 Security Requirements**
 
-Security will be maintained for users through the use of a hash table in which each user’s statistics will be attached to his or her account, labelled with a unique user-selected username. This account is protected by a password also chosen by the user. When microtransactions are implemented future versions of the Application, a more secure form of authentication will be utilized to protect user accounts and payment information from theft or unauthorized use. A Privacy Policy document will be instated and enforced to ensure that all user information is handled responsibly. A copy of the Privacy Policy can be found here: [Privacy Policy](https://docs.google.com/document/d/114Hyb4u6K6-x0VO9qGfpDYRWuHk8Xjjt0NNuivizjKA/edit?usp=sharing). A Terms and Conditions document will also be instated to ensure that users understand all legalities regarding use of the product, including security measures taken by the development team and security measures that are recommended for the user to take. A copy of the Terms and Conditions can be found here: [Terms and Conditions](https://docs.google.com/document/d/1hnIq2t2LyO3Ul3l_mJzWAKZX3nhvR_NkVIQ69cmcoxo/edit?usp=sharing)
+Security will be maintained for users through the use of a hash table in which each user’s statistics will be attached to his/her account and labelled with a unique user-selected username. This account is protected by a password also chosen by the user. When microtransactions are implemented in future versions of the Application, a more secure form of authentication will be utilized to protect user accounts and payment information from theft or unauthorized use. A Privacy Policy document will be instated and enforced to ensure that all user information is handled responsibly. A copy of the Privacy Policy can be found here: [Privacy Policy](https://docs.google.com/document/d/114Hyb4u6K6-x0VO9qGfpDYRWuHk8Xjjt0NNuivizjKA/edit?usp=sharing). 
+A Terms and Conditions document will also be instated to ensure that users understand all legalities regarding use of the product, including security measures taken by the development team and security measures that are recommended for the user to take. A copy of the Terms and Conditions can be found here: [Terms and Conditions](https://docs.google.com/document/d/1hnIq2t2LyO3Ul3l_mJzWAKZX3nhvR_NkVIQ69cmcoxo/edit?usp=sharing)
 
 ## **5.3 Software Quality Attributes**
 
-
+The quality of the software will be tested for performance quality. Latency and compatibility will be  tested to determine if the game adheres to the expected quality specifications of Team 42. A small-scale alpha testing will be employed, followed by beta testing utilizing a larger test group. The customer will be invited into all test phases to give advice and expectations for the next round of patching.
 
 ## **5.4 Business Rules**
 
@@ -245,26 +269,15 @@ Users shall have no direct access to the server and will only be able to interac
 
 The base Application will be free-to-play and offer full functionality. A microtransaction system will be supported in future versions, allowing users to purchase in-app items, such as visual themes for cards. The price of in-app items will be agreed upon and set by administrators. Purchasable items will not affect gameplay mechanics in any way and are purely cosmetic.
 
-
-# **6. Other Requirements**
-
-
-
-#**Appendix A: Glossary**
+#**Appendix: Glossary**
 
 | **Term** | **Definition** |
-| --- | --- |
+| :--- | :--- |
 | Admin / Administrator | A person who has been granted permission to access and edit secured portions of the Application, such as source code and database information. |
 | Application | The software in its entirety, including but not limited to the host server and any instances of the application. |
 | Client | An instance of the “H@x0rz” user-level software, run from a user’s machine. Communicates with the server to send and receive data. |
 | Device | The machine on which the client is run. |
 | In-app | Available through the application. |
+| Player | A user who is currently participating in an instance of a game. |
 | Server | The “H@x0rz” back-end software, run on a web server owned by the developers of this application. Communicates with clients to send and receive data. |
 | User | Any person who uses the “H@x0rz” application, particularly the client-end. |
-
-#**Appendix B: Analysis Models**
-
-
-
-#**Appendix C: To Be Determined List**
-
