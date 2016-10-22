@@ -85,7 +85,7 @@ All current and previous versions of the application and its documentation can b
 # **2. Overall Description**
 
 H@x0rz is a new and self-contained product. It is composed of two major systems: a 
-web-based client and a web server. The web application is an interface for users to play the game, interact with other players, and make purchases for in-game items. The web server handles connection between players and processes game commands and logic. (See Appendix B for an entity-relationship diagram describing this system.)
+web-based client and a web server. The web application is an interface for users to play the game, interact with other players via in-game actions, and make purchases for in-game items. The web server handles connection between players and processes game commands and logic. (See Appendix B for an entity-relationship diagram describing this system.)
 
 There is only one class of user, which encompasses all users of the Application. The Application allows the user to perform the following actions:
 -	Register and login to a user account
