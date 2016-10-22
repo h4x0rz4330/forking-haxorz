@@ -1,19 +1,13 @@
 import javafx.application.Application;
-//import javafx.event.ActionEvent;
 import javafx.event.*;
-import javafx.geometry.Insets;
+import javafx.geometry.*;
 import javafx.stage.Stage;
 import javafx.stage.Screen;
 import javafx.scene.*;
-//import javafx.scene.Group;
-import javafx.scene.image.Image;
-import javafx.geometry.Rectangle2D;
+import javafx.scene.image.*;
 import javafx.scene.control.*;
-//import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.effect.Reflection;
 import javafx.scene.layout.*;
-//import javafx.scene.layout.HBox;
-//import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class MainMenu extends Application 
@@ -48,19 +42,20 @@ public class MainMenu extends Application
         imgView.setFitWidth(primaryScreenBounds.getWidth());
         imgView.setFitHeight(primaryScreenBounds.getHeight());
         
-        
-//        // Verticle box
-//        VBox loginVBox = new VBox();
-//        loginVBox.setSpacing(20);
-//        loginVBox.setLayoutX(500);
-//        loginVBox.setLayoutY(200);
-//        loginVBox.setStyle("-fx-background-color: red;");
 
         BorderPane bp = new BorderPane();
-//        bp.setPadding(new Insets(10,50,50,50));
         
         HBox hb = new HBox();
         hb.setPadding(new Insets(20,20,20,30));
+        
+        // Adding logo to the screen
+        Image logoImage = new Image(getClass().getResourceAsStream("img/logo.png"));
+        ImageView logoImg = new ImageView(logoImage);
+        hb.getChildren().add(logoImg);
+        logoImg.setFitHeight(240);
+        logoImg.setFitWidth(390);
+        hb.setLayoutX(400);
+        hb.setLayoutY(100);
         
         //Adding GridPane
         GridPane gridPane = new GridPane();
@@ -72,6 +67,9 @@ public class MainMenu extends Application
         final TextField txtUserName = new TextField();
         Label lblPassword = new Label("Password:");
         final TextField txtPassword = new TextField();
+        //txtPassword.setStyle("-fx-background-color: transparent;");
+        txtUserName.getStyleClass().add("validation-error");
+        txtPassword.getStyleClass().add("validation-error");
         
         gridPane.add(lblUserName, 0, 0);
         gridPane.add(txtUserName, 1, 0);
@@ -80,32 +78,21 @@ public class MainMenu extends Application
         
         // Layout the border Pane
         bp.setCenter(gridPane);
-        bp.setLayoutX(500);
-        bp.setLayoutY(300);
+        bp.setLayoutX(450);
+        bp.setLayoutY(330);
         
-
-//        HBox hb1 = new HBox();
-//        hb1.setSpacing(40);
-//        hb1.getChildren().addAll(lblUserName, txtUserName);
-//        
-//        HBox hb2 = new HBox();
-//        hb2.setSpacing(40);
-//        hb2.getChildren().addAll(lblPassword, txtPassword);
-//        
-//        loginVBox.getChildren().addAll(hb1, hb2);
         
         // Horizontal box to store buttons init 
         HBox buttonHBox = new HBox();
 //        buttonBox.setPadding(new Insets(50, 12, 15, 12));
         buttonHBox.setSpacing(40);
-        buttonHBox.setLayoutX(430);
+        buttonHBox.setLayoutX(400);
         buttonHBox.setLayoutY(500);
         buttonHBox.setStyle("-fx-background-color: transparent;");
         
         // Login Button
         Image loginImage = new Image(getClass().getResourceAsStream("img/Login_Button.png"));
         Button loginBtn = new Button(" ");
-        loginBtn.setId("Lbtn");
         ImageView imgL = new ImageView(loginImage);
         loginBtn.setGraphic(imgL);
         imgL.setFitHeight(140);
@@ -147,7 +134,7 @@ public class MainMenu extends Application
         
         
         buttonHBox.getChildren().addAll(loginBtn, accountBtn);
-        root.getChildren().addAll(imgView, buttonHBox, bp);
+        root.getChildren().addAll(imgView, hb, buttonHBox, bp);
         
         
         //Add ID's to Nodes
