@@ -1,139 +1,47 @@
-/**
- * Created by chrisschayer on 9/25/16.
- */
-$(document).ready(function() {
-
-    dealListener(4);
-
-
-
-        drawListener(1, "hello");
-
+$(document).ready(function(){
+    dealCards(4);
+    drawCard(1);
 });
 
+var dealCards = function(players){
 
-
-var turn=["p1","p2","p3","p4"];
-
-
-var isWinner;
-
-
-
-var changeTurn= function(){
-
+    for(i=1;i<=players;i++) {
+        var selector = i-1;
+        $(getHand(i)).append(buildCard().clone());
+        $(".effect__click:eq("+selector+")").addClass("p"+i+"HandClick");
+        if(i==1) {
+            $(".card__back:eq(0)").addClass("card__back__flipped");
+            $(".card__front:eq(0)").addClass("card__front__flipped");
+            $(".card__front:eq(0)").on('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+                function(e) {
+                    setBackFlip($(".card__back:eq(0)"));
+                    setFrontFlip($(".card__front:eq(0)"));
+                    $(".card__back:eq(0)").removeClass("card__back__flipped");
+                    $(".card__front:eq(0)").removeClass("card__front__flipped");
+                });
+            $(".card__front:eq(0)").addClass("card__front__zoomed");
+        }
+        else {
+            $(".card__back:eq(" + selector + ")").addClass("p"+i+ "HandDraw");
+            $(".card__front:eq(" +selector+ ")").addClass("p"+i+ "HandDraw");
+        }
+    }
 }
 
-var getTurn = function(){
-    return turn[currentTurn];
-}
-
-var setTurn = function(tindex){
-
-}
-
-
-function cardDiscard(){
-
-}
-
-var card =$("<div class='card effect__click'></div>");
-var cardFront = $("<div class='card__front'></div>");
-var cardBack = $("<div class='card__back'></div>");
-$(card).append(cardFront);
-$(card).append(cardBack);
-
-function dealListener(playerCount){
-     $("#deck").on("click", function(){
-         var i;
-         var handString;
-         for(i=1;i<=playerCount;i++)
-         {
-             var selector = i-1;
-             handString = "p"+i+"Hand";
-             var hand=$("#"+handString);
-             hand.append(card.clone());
-             $(".effect__click:eq("+selector+")").addClass(handString+"Click");
-            //creating a special function for user draw as it will need to have a card flip animation
-             if(i==1)
-             {
-                 //adding custom classes for the front and backside of card
-                 $(".card__front:eq("+selector+")").addClass("card__front__flipped");
-                 $(".card__back:eq("+selector+")").addClass("card__back__flipped");
-
-                 $(".card__front:eq("+selector+")").on('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-                     function(e) {
-                         $(".card__back:eq(0)").css({
-                             "-ms-transform": "rotateY(-180deg)",
-                             "-moz-transform": "rotateY(-180deg)",
-                             "-webkit-transform": "rotateY(-180deg)",
-                             "-o-transform": "rotateY(-180deg)",
-                             "transform": "rotateY(-180deg)"
-                         });
-                         $(".card__front:eq(0)").css({
-                             "-ms-transform": "rotateY(0deg)",
-                             "-moz-transform": "rotateY(0deg)",
-                             "-webkit-transform": "rotateY(0deg)",
-                             "-o-transform": "rotateY(0deg)",
-                             "transform": "rotateY(0deg)"
-                         });
-
-                         $(".card__back:eq(0)").removeClass("card__back__flipped");
-                         $(".card__front:eq(0)").removeClass("card__front__flipped");
-                     });
-                 $(".card__front:eq("+selector+")").addClass("card__front__zoomed");
-             }
-             else
-             {
-                 $(".card__back:eq(" + selector + ")").addClass(handString + "Draw");
-                 $(".card__front:eq(" + selector + ")").addClass(handString + "Draw");
-             }
-
-         }
-     });
-}
-//function to do individual draws.
-function drawListener(player,cardinfo){
+function drawCard(player,cardinfo){
     $("#draw").on("click",function(){
-        console.log(cardinfo);
-        var handString = "p"+player+"Hand";
-        var hand="#"+handString;
-        $(hand).append($(card).clone());
-
-        $("g")
-        $(".effect__click:eq(1)").addClass("drawMove");
-        $(".card__back:eq(1)").addClass("drawBack");
-        $(".card__front:eq(1)").addClass("drawFront");
+        $(getHand(player)).append(buildCard().clone());
+        applyDrawAnimation(player);
         $(".card__front:eq(1)").on('webkitAnimationEnd oanimationend msAnimationEnd animationend',
             function(e) {
-                console.log("entered function");
-                var transVal;
                 var i = player-1;
                 switch(i)
                 {
                     case 0:
-                        console.log("got 0");
                         $(".card__front:eq(1)").addClass("card__front__zoomed");
-                        $(".card__back:eq(1)").css({
-                            "-ms-transform": "rotateY(-180deg)",
-                            "-moz-transform": "rotateY(-180deg)",
-                            "-webkit-transform": "rotateY(-180deg)",
-                            "-o-transform": "rotateY(-180deg)",
-                            "transform": "rotateY(-180deg)"
-                        });
-                        $(".card__front:eq(1)").css({
-                            "-ms-transform": "rotateY(0deg)",
-                            "-moz-transform": "rotateY(0deg)",
-                            "-webkit-transform": "rotateY(0deg)",
-                            "-o-transform": "rotateY(0deg)",
-                            "transform": "rotateY(0deg)"
-                        });
                     case 2:
-                        transVal ="\"-ms-transform\":\"rotateY(-180deg)\","+
-                        "\"-moz-transform\": \"rotateY(-180deg)\","+
-                        "\"-webkit-transform\": \"rotateY(-180deg)\","+
-                        "\"-o-transform\": \"rotateY(-180deg)\","+
-                        "\"transform\": \"rotateY(-180deg)\"";
+                        setBackFlip($(".card__back:eq(1)"));
+                        setFrontFlip($(".card__front:eq(1)"));
                         break;
 
                     case 1:
@@ -141,49 +49,41 @@ function drawListener(player,cardinfo){
 
                         break;
                 }
-
-
                 $(".card__back:eq(1)").removeClass("drawBack");
                 $(".card__front:eq(1)").removeClass("drawFront");
             });
     });
 }
 
-function discard(player)
-{
-
+//creates a card as a dom element.
+function buildCard(){
+    var card =$("<div class='card effect__click'></div>");
+    var cardFront = $("<div class='card__front'></div>");
+    var cardBack = $("<div class='card__back'></div>");
+    $(card).append(cardFront);
+    $(card).append(cardBack);
+    return card
+}
+//gets the id value of the player. When called must surround with $()
+function getHand(player){
+    var hand = "#p"+player+"Hand";
+    return hand;
 }
 
-/* Function for maintaining a timer.
-function clock()
-{
-    $("#DateCountdown").TimeCircles();
-    $("#CountDownTimer").TimeCircles({ time: { Days: { show: false }, Hours: { show: false }, Minutes: {show: false}}});
-    $("#PageOpenTimer").TimeCircles();
+//Sets backside rotateY value to avoid flipback on class deletion
+function setBackFlip(card) {
+    $(card).css({ WebkitTransform: 'rotateY(180deg)'});
+    $(card).css({ '-moz-transform': 'rotateY(180deg)'});
+}
 
-    var updateTime = function(){
-        var date = $("#date").val();
-        var time = $("#time").val();
-        var datetime = date + ' ' + time + ':00';
-        $("#DateCountdown").data('date', datetime).TimeCircles().start();
-    }
-    $("#date").change(updateTime).keyup(updateTime);
-    $("#time").change(updateTime).keyup(updateTime);
+//sets backside rotateY value to avoid flipback when deleting the animation class.
+function setFrontFlip(card) {
+   $(card).css({ WebkitTransform: 'rotateY(360deg)'});
+    $(card).css({ '-moz-transform': 'rotateY(360deg)'});
+}
 
-    // Start and stop are methods applied on the public TimeCircles instance
-    $(".startTimer").click(function() {
-        $("#CountDownTimer").TimeCircles().start();
-    });
-    $(".stopTimer").click(function() {
-        $("#CountDownTimer").TimeCircles().stop();
-    });
-
-    // Fade in and fade out are examples of how chaining can be done with TimeCircles
-    $(".fadeIn").click(function() {
-        $("#PageOpenTimer").fadeIn();
-    });
-    $(".fadeOut").click(function() {
-        $("#PageOpenTimer").fadeOut();
-    });
-
-}*/
+function applyDrawAnimation(player){
+    $(".effect__click:eq("+player+")").addClass("drawMove");
+    $(".card__back:eq("+player+")").addClass("drawBack");
+    $(".card__front:eq("+player+")").addClass("drawFront");
+}
