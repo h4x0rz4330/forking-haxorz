@@ -93,7 +93,7 @@ There is only one class of user, which encompasses all users of the Application.
 -	View tutorials on how to play the game
 -	Play the game with a random set of 1-3 other players (this number is chosen by the player)
 
-Future versions are planned to have the following actions added:
+Future patch versions are planned to have the following actions added:
 -	Purchase and use of in-game cosmetic items
 -	Viewing of the player’s overall win-loss statistics
 -	Viewing of a leaderboard which shows top scoring players
@@ -113,7 +113,7 @@ The user must have a functioning web browser, as the client and its user interfa
 
 Each screen of the Application will have its own buttons, either for performing that page’s primary functions or for navigating to other screens.
 
-The Application and in-game displays will resize appropriately for standard screen resolutions, with 1920 x 1080 being the optimal resolution.
+The Application and in-game displays will resize appropriately for standard screen resolutions, with 1920 x 1080 being the optimal resolution. The minimal operating resolution is 768 x 432. The game operates at a 16:9 aspect ratio.
 
 ## **3.2 Hardware Interfaces**
 
@@ -133,70 +133,94 @@ The application client will communicate with the server via HTTP inside of a web
 
 _&lt;This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. You may prefer to organize this section by use case, mode of operation, user class, object class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your product.&gt;_
 
-## **4.1 System Feature: Client / Server Interaction (High Priority)**
+## **4.1 System Feature: Client / Server Interactions**
 
-**Use Cases of Client application interaction with Server:**
-
-| | **Use Case** : **Lobby/Game Startup**|
+| | **Use Case : Login Check**|
 | --- | --- |
-|Precondition:|The server has finished start-up routine|
-|Main Success Scenario:| Server initializes Lobby to keep track of available games on different threads and continually processes requests from client to join or create games on Lobby.|
-|Alternate Scenarios:|Lobby fails to start. Server shuts down immediately and sends alerts to system manager and other relevant administrators.|
-| |Lobby fails to create games. After five failed game creations, Lobby is restarted. If there are no successes after 3 Lobby restarts, server shuts down immediately and sends alerts to system manager and other relevant administrators.|
+|Preconditions:|Server has established connection with client. Server and client have private shared keys.|
+|Main Success Scenario:|Client sends user’s login information (username and password) encrypted with server’s public key. Server decrypts login information with the server’s private key. If login information matches database, server sends approval of login to client.|
+|Alternate Scenarios:|Username does not match any username in database. Server tells client that login has failed and to prompt user to check their login information or create a new account.|
+| |Password does not match the associated username’s password in database. Server tells client that login has failed and to prompt user to check their login information or go through a password-recovery process.|
+| |Login has failed due to client being unable to connect with server. Client prompts user to check their internet connectivity, then try again by re-entering their login information.|
 
-| | **Use Case: Encryption &quot;Hand-Shake&quot; Check**|
+| | **Use Case: Gameplay**|
 | --- | --- |
-|Preconditions: | Server has established connection with client. Server and client have private shared keys.|
-|Main Success Scenario: | Client sends user&#39;s login information (username and password) encrypted with server&#39;s public key. Server decrypts login information with the server&#39;s private key. If login information matches database, server sends approval of login and lobby information to client. |
-|Alternate Scenarios: | Username does not match any username in database. Server tells client that login has failed and to prompt user to check their login information or create a new account.|
-| |Password does not match the associated username's password in database. Server tells client that login has failed and to prompt user to check their login information or go through a password-recovery process.|
+|Preconditions:|Client has connectivity to server and is logged in to a valid user account.|
+|Main Success Scenario:|User chooses to join a game. Client sends a request to the server to join a game with an open player slot. Once one is found, server associates that client with other clients in that game. When all player slots are filled, server initializes a game and sends information to each client. During the course of a game, clients send user inputs to the server, and the server returns results of those inputs to every client for displaying to the user. This occurs until the game reaches an end condition; the server then sends a message to the client to end the game and terminates associations between clients.|
+|Alternate Scenarios:|Server must be taken down for maintenance or other emergency and cannot be reached by client. Client halts current actions and displays that server is currently down for maintenance. Connections and status of current game are saved, allowing users to return to the game after server is restored.|
+| |Server returns a failed login. Client prompts user to re-enter login information, then client sends the new information to server for another check.|
+| |Client cannot send inputs to server. Client retries connection until connection is reestablished, or one minute has passed with no stable connectivity. If the latter, client prompts user to check their internet connectivity and will try to reconnect again for one minute after the user presses a ‘retry’ button.|
 
-| | **Use Case: User Interface/User Experience**|
+| | **Use Case: User Interface**|
 | --- | --- |
-|Preconditions:|Client information is up-to-date (i.e. matches server information).|
-|Main Success Scenario:|Client displays loading screen for startup. When done loading, user is prompted for login information. User enters their information, and the login is verified. Client displays lobby screen and available games. User selects a desired game to join. Client loads the in-game screen. Client prompts user to choose one of two options each turn, then displays the effects of that choice. Client displays other players&#39; moves until the user&#39;s next turn. The user continues playing until a winner is determined. Client displays the lobby again.|
-|Alternate Scenarios:|Startup files failed to load. User is prompted to check that the app is updated to the current version, then to restart or re-download the app.|
-| |Lobby does not display any games. User is prompted to check their internet connection, then to refresh the lobby via the on-screen 'lobby refresh' button.|
-| |Game cannot process player&#39;s turn due to a problem connecting with the server. User is prompted to check their internet connection, then to resend the action via an on-screen 'retry' button.|
+|Preconditions:|Client information is up-to-date (i.e. client version Application matches the server version).|
+|Main Success Scenario:|Client displays loading screen for startup. When done loading, user is prompted for login information. User enters their information, and the login is verified. Client displays main menu and. User selects a desired game to join. Client loads the in-game screen. Client prompts user to choose one of two options each turn, then displays the effects of that choice. Client displays other players’ moves until the user’s next turn. The user continues playing until a winner is determined. Client displays the lobby again.|
+|Alternate Scenarios:|Startup files failed to load. User is prompted to check for compatibility issues, such as type of web browser and hardware requirements.|
+| |Game cannot process player’s turn due to a problem connecting with the server. User is prompted to check their internet connection, then to resend the action via an on-screen ‘retry’ button.|
 | |Game does not proceed due to inactivity from a user. After three days of inactivity, the inactive user is removed from the game, their cards are revealed to the other players, and game resumes as normal.|
 | |Application is improperly closed. The user will be required to login again upon relaunching the application. If the user is in a game when the application closed, they are removed from that game.|
 
-| |**Use Case: Communications Between Client and Server**|
-| --- | --- |
-|Preconditions:|Client has connectivity to server.|
-|Main Success Scenario:|Client takes login information from user and sends it to server. Server verifies login and sends lobby information to client. Client sends user's choice of game to server; server associates that client with other clients in that game. Client performs logical functions for game in response to user inputs, then sends the resulting effects to server. Server sends the information to other connected clients in the game; clients update accordingly. Once winner is determined, associations between clients are ended.|
-|Alternate Scenarios:|Server must be taken down for maintenance or other emergency and cannot be reached by client. Client halts current actions and displays that server is currently down for maintenance. Connections to current game is saved, and does not count toward the three-day inactivity grace period for users to play.|
-| |Server returns a failed login. Client prompts user to re-enter login information, then client sends the new information to server for another check.|
-| |Client cannot load any available games in lobby. Client will automatically retry connecting to server every 60 seconds without input, or whenever the user presses the 'lobby refresh' button. If the server is responding, but there are no available games, client encourages user to create their own lobby.|
-| |Client cannot send results of a play to server. Client retries connection until connection is reestablished, or one minute has passed with no stable connectivity. If the latter, client prompts user to check their internet connectivity and will try to reconnect again for one minute after the user presses a 'retry' button.|
+**4.1.1	Description and Priority**
 
-| |**Use Case: Login Page**|
-| --- | --- |
-|Preconditions:|Application has successfully initialized.|
-|Main Success Scenario:|Client prompts user for login information. After user has entered the information, client sends it to the server for verification. Upon approval, the lobby screen is displayed.|
-|Alternate Scenarios:|Login has failed due to invalid username. The client prompts user to check their login information or to create a new account.|
-| |Login has failed due to invalid password. The client prompts user to check their login information or to go through a password-recovery process.|
-| |Login has failed due to client being unable to connect with server. Client prompts user to check their internet connectivity, then try again by re-entering their login information.|
+This feature encompasses all communication between clients and the server. As this forms the core of the Application’s operations, this is a High priority feature. 
 
+**4.1.2	Stimulus/Response Sequences**
+
+**4.1.3	Functional Requirements**
+
+|**Item**|**FR-1: Account Login**|
+|:---|:---|
+|**Summary**||
+|**Rationale**||
+|**Requirements**||
+|**References**||
+|**Rating**||
+
+|**Item**|**FR-2: Client-Side Communication**|
+|:---|:---|
+|**Summary**||
+|**Rationale**||
+|**Requirements**||
+|**References**||
+|**Rating**||
+
+|**Item**|**FR-3: Server-Side Communication**|
+|:---|:---|
+|**Summary**||
+|**Rationale**||
+|**Requirements**||
+|**References**||
+|**Rating**||
 
 ## **4.2	System Feature: Gameplay (High Priority)**
 
+**Entity-Relationship Model of Gameplay Functionality:**
 
-_&lt;Don&#39;t really say &quot;System Feature 1.&quot; State the feature name in just a few words.&gt;_
+![alt text][logo]
 
-4.1.1        Description and Priority
+[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/ERDiagramV2.png "ER Diagram"
 
-_&lt;Provide a short description of the feature and indicate whether it is of High, Medium, or Low priority. You could also include specific priority component ratings, such as benefit, penalty, cost, and risk (each rated on a relative scale from a low of 1 to a high of 9).&gt;_
+Gameplay is turn based, with each player (2 - 4 total) getting a single card. Once it is a player’s turn, he or she receives a second card. Players can only take actions during their turn. The actions are clearly explained in the text of the cards. The player must choose a card, which targets either another player or the person playing the card. Play continues for each player until he or she is out of cards, once a player is out of cards, he or she is out of the round. The last player with a remaining card is the winner of the round, unless a specific card effect grants a player the win of the round. The cards are shuffled and dealt out again, beginning a new round. Play continues until one player reaches the predetermined number of round wins for the game.
 
-4.1.2        Stimulus/Response Sequences
+| **User Action** | **Client Action** | **Server Action** |
+| :---: | :---: | :---: |
+|1. User logs in|2. Transfer information to server|3. Initialize game|
+|5. Await players|4.Setup Board||
+|||6. Randomize deck|
+||8. Update, show first card to user|7. Send one card to each client (initial deal)|
+|9. Await turn (unless user has lost round)|||
+|10. User is a spectator (user has lost the round)|||
+||11. Deal Card (unless user has lost round)||
+|12. Selects a card and target (if applicable)|13. Sends choice(s) to server|14. Calculates output|
+|17. User sees card effect|16. Sends output to GUI|15. Returns to client|
 
-_&lt;List the sequences of user actions and system responses that stimulate the behavior defined for this feature. These will correspond to the dialog elements associated with use cases.&gt;_
+\* Parts 9-17 repeat until a winner for the round has been determined, then step 6 begins the new round. 
 
-4.1.3        Functional Requirements
+**4.2.1	Description and Priority**
 
-_&lt;Itemize the detailed functional requirements associated with this feature. These are the software capabilities that must be present in order for the user to carry out the services provided by the feature, or to execute the use case. Include how the product should respond to anticipated error conditions or invalid inputs. Requirements should be concise, complete, unambiguous, verifiable, and necessary. Use &quot;TBD&quot; as a placeholder to indicate when necessary information is not yet available.&gt;_
+**4.2.2	Stimulus/Response Sequences**
 
-_&lt;Each requirement should be uniquely identified with a sequence number or a meaningful tag of some kind.&gt;_
+**4.2.3	Functional Requirements**
 
 REQ-1:
 
@@ -209,7 +233,7 @@ Latency time between inputting a command and receiving a response from the serve
 
 ## **5.2 Security Requirements**
 
-Security will be maintained for users through the use of a hash table in which each user’s statistics will be attached to his or her account, labelled with a unique user-selected username. This account is protected by a password also chosen by the user. When microtransactions are implemented future versions of the Application, a more secure form of authentication will be utilized to protect user accounts and payment information from theft or unauthorized use. A privacy policy will be instated and enforced to ensure that all user information is handled responsibly.
+Security will be maintained for users through the use of a hash table in which each user’s statistics will be attached to his or her account, labelled with a unique user-selected username. This account is protected by a password also chosen by the user. When microtransactions are implemented future versions of the Application, a more secure form of authentication will be utilized to protect user accounts and payment information from theft or unauthorized use. A Privacy Policy document will be instated and enforced to ensure that all user information is handled responsibly. A copy of the Privacy Policy can be found here: [Privacy Policy](https://docs.google.com/document/d/114Hyb4u6K6-x0VO9qGfpDYRWuHk8Xjjt0NNuivizjKA/edit?usp=sharing). A Terms and Conditions document will also be instated to ensure that users understand all legalities regarding use of the product, including security measures taken by the development team and security measures that are recommended for the user to take. A copy of the Terms and Conditions can be found here: [Terms and Conditions](https://docs.google.com/document/d/1hnIq2t2LyO3Ul3l_mJzWAKZX3nhvR_NkVIQ69cmcoxo/edit?usp=sharing)
 
 ## **5.3 Software Quality Attributes**
 
