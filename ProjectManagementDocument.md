@@ -105,3 +105,19 @@ Meetings Summary
 | **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, William Raziano, Chris Schayer |
 | **Objective** | Sprint #3 Launch |
 | **Summary** | Checkup of progress for everyone present (plus Hardika, who reported in beforehand). On JIRA, Sprint #2 is concluded today, and Sprint #3 is launched. |
+
+| **Date** | October 12, 2016 |
+:--------------- | :----------------------
+| **Time** | 4:30 PM - 5:35 PM |
+| **Location** | Coates Hall @ LSU, Room 152, Baton Rouge, LA |
+| **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Begin work on SRS |
+| **Summary** | Brief check-in on in-progress work. Discussion of requirements and their classifications is conducted, so that work can begin on the Software Requirements Specification document. |
+
+| **Date** | October 16, 2016 |
+:--------------- | :----------------------
+| **Time** | 2:15 PM - 4:00 PM |
+| **Location** | LSU Union, Room 319, Baton Rouge, LA |
+| **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Discuss and Review SRS Progress |
+| **Summary** | All of Section 1 is reviewed by team, clarifying specifics and setting a standard for future sections. Discussion of work on the application is also conducted. |
