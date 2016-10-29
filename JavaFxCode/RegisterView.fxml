@@ -16,12 +16,13 @@
            <image>
                <Image 
                    url="/img/lobby.png"
-                   backgroundLoading = "true" />
+                   backgroundLoading = "true" 
+               />
            </image>
        </ImageView>
-      <VBox spacing="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+      <VBox spacing="10.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Label fx:id="mylabel" alignment="center" style="-fx-font-size: 2em; -fx-text-fill: #555;" text="H@x0rz Register" />
+            <Label fx:id="mylabel" style="-fx-font-size: 2em; -fx-text-fill: #555;" text="H@x0rz Register" />
             <Separator prefWidth="1.0" />
             <GridPane hgap="5.0" vgap="2.0" VBox.vgrow="ALWAYS">
               <columnConstraints>
@@ -36,10 +37,25 @@
               </rowConstraints>
               
                <children>
-                  <Label text="H@x0rz's Email:" />
-                  <Label text="Password:" GridPane.rowIndex="1" />
-                  <Label text="Confirm Password:" GridPane.rowIndex="2" />
-                  <Button fx:id="Register" defaultButton="true" mnemonicParsing="false" text="Register New Account" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="H@x0rz's Email:" 
+                         style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;"
+                  />
+                  <Label text="Password:" 
+                         GridPane.rowIndex="1" 
+                         style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" 
+                  />
+                  <Label text="Confirm Password:" 
+                         GridPane.rowIndex="2" 
+                         style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" 
+                  />
+                  <Button fx:id="Register" defaultButton="true" 
+                          mnemonicParsing="false" 
+                          text="Register" 
+                          GridPane.columnIndex="1" 
+                          GridPane.rowIndex="3" 
+                          prefHeight="30"
+                          prefWidth="150"  
+                  />
                   <TextField fx:id="userEmailInput" GridPane.columnIndex="1" />
                   <PasswordField fx:id="passwordInput" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <PasswordField fx:id="confirmInput" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -47,7 +63,7 @@
             </GridPane>
          </children>
          <padding>
-            <Insets bottom="1.0" left="5.0" right="5.0" top="1.0" />
+            <Insets bottom="1.0" left="5.0" right="100.0" top="1.0" />
          </padding>
       </VBox>
    </children>
