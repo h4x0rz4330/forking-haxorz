@@ -1,17 +1,22 @@
+
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.*;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.*;
 import javafx.stage.Stage;
 import javafx.stage.Screen;
 import javafx.scene.*;
 import javafx.scene.image.*;
 import javafx.scene.control.*;
-import javafx.scene.effect.Reflection;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-public class MainMenu extends Application 
+public class MainController extends Application 
 {
+    String user = "JavaFX";
+    String password = "password";
+    String checkUser, checkPassword;
     public static void main(String[] args) 
     {
         launch(args);
@@ -21,16 +26,12 @@ public class MainMenu extends Application
     public void start(Stage stage) 
     {
         stage.setTitle( "Menu" );
-        
-        AnchorPane anchor1 = new AnchorPane();
-        final Scene scene1 = new Scene(anchor1, 250, 250);
-        
+                
         Group root = new Group();
         Scene theScene = new Scene( root, Color.BLACK );
-//        stage.setScene( theScene );
             
-        Image main = new Image( "/img/lobby.png" );
-        ImageView imgView = new ImageView(main);
+        Image lobbyImg = new Image( "/img/lobby.png" );
+        ImageView imgView = new ImageView(lobbyImg);
         
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 
@@ -74,10 +75,13 @@ public class MainMenu extends Application
         txtUserName.getStyleClass().add("validation-error");
         txtPassword.getStyleClass().add("validation-error");
         
+        Label lblMessage = new Label();
+        
         gridPane.add(lblUserName, 0, 0);
         gridPane.add(txtUserName, 1, 0);
         gridPane.add(lblPassword, 0, 1);
         gridPane.add(txtPassword, 1, 1);
+        gridPane.add(lblMessage, 2, 1);
         
         // Layout the border Pane
         bp.setCenter(gridPane);
@@ -120,9 +124,17 @@ public class MainMenu extends Application
             @Override
             public void handle(ActionEvent e) 
             {
-                stage.setScene(scene1);
-                stage.setHeight(1000);
-                stage.setWidth(1000);
+//                stage.setScene(scene1);
+//                stage.setHeight(1000);
+//                stage.setWidth(1000);
+                  
+                  checkUser = txtUserName.getText().toString();
+                  checkPassword = txtPassword.getText().toString();
+                  
+                  if(checkUser.equals(user) && checkPassword.equals(password))
+                  {
+                      lblMessage.setText("You have Loged In");
+                  }
             }
         });
         
@@ -133,7 +145,41 @@ public class MainMenu extends Application
             @Override
             public void handle(ActionEvent e) 
             {
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterView.fxml"));
+                  Group root1 = new Group();
+             
+                Scene newScene= new Scene(root1);
+                newScene.setFill(Color.BLACK);
+                try {
+                        newScene = new Scene(loader.load());
+                } catch (IOException ex) {
+                        // TODO: handle error
+                return;
+                }
+                   
+                Stage stage1 = new Stage();
                 
+                //set Stage boundaries to visible bounds of the main screen
+                stage1.setX(primaryScreenBounds.getMinX());
+                stage1.setY(primaryScreenBounds.getMinY());
+                stage1.setWidth(primaryScreenBounds.getWidth());
+                stage1.setHeight(primaryScreenBounds.getHeight());
+                
+//                Image accountImg = new Image( "/img/lobby.png" );
+//                ImageView accountImgView = new ImageView(accountImg);
+//
+//                Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+//                
+//                accountImgView.setX(primaryScreenBounds.getMinX());
+//                accountImgView.setY(primaryScreenBounds.getMinY());
+//                accountImgView.setFitWidth(primaryScreenBounds.getWidth());
+//                accountImgView.setFitHeight(primaryScreenBounds.getHeight());
+//                
+//                root.getChildren().add(accountImgView);
+                stage1.initOwner(stage);
+                stage1.setScene(newScene);
+                stage1.showAndWait();
+                stage.close();
             }
         });
         
