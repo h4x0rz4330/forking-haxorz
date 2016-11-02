@@ -1,3 +1,34 @@
+/*************************************************************************/
+/* Author: Hardika Patel 
+/* 
+/* File Name: MainController.java
+/* 
+/* Description: This file contains labels of User Email Address and Password, and 
+/*              TextField for User input of email address and password for login.
+/*              Also contain Login button and New Account Button. 
+/*              If Login information matches database, server send approval of 
+/*              login and lobby information which open main menu html page.
+/*              If login information doesn't matches the database, it will prompt 
+/*              user warnning message that User Email or Password is incorrect. 
+/*              New account button allow user to create new account. 
+/*
+/* Chnage Log: 
+/*            {Date}   {Description}                           {By who?}
+/*            10/23/16  Added Background image,                 Hardika
+/*                      Login button Image, and New Account 
+/*                      Image to Main Controller file. 
+/*
+/*            10/29/16  created Register View Page using FXML    Hardika
+/*  
+/*            10/30/16  added code to rediect Main Menu HTML     Ryan
+/*                      file from Login Button 
+/*
+/*            11/1/16   change formate of Regoster Page         Hardika
+/*            
+/*            11/2/16   Added popup window for incorrect        Hardika  
+/*                      user Email or Password
+*/
+/*************************************************************************/
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,13 +49,16 @@ import javafx.scene.image.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
+/*
+*   Main Application class    
+*/
 
 public class MainController extends Application 
 {
-    String user = "JavaFX";
-    String password = "password";
-    String checkUser, checkPassword;
+    
     public static void main(String[] args) 
     {
         launch(args);
@@ -33,34 +67,37 @@ public class MainController extends Application
     @Override
     public void start(Stage stage) 
     {
-        stage.setTitle( "Menu" );
-                
+        // Adding Title to the Stage
+        stage.setTitle( "H@x0rz" );
+
+        // group instance 
         Group root = new Group();
+        
+        // group instance adding in Scene object
         Scene theScene = new Scene( root, Color.BLACK );
             
+        // load the Image from img folder
         Image lobbyImg = new Image( "/img/lobby.png" );
+        
+        // displays ImageView the image as is
         ImageView imgView = new ImageView(lobbyImg);
         
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 
         //set Stage boundaries to visible bounds of the main screen
-//        stage.setX(primaryScreenBounds.getMinX());
-//        stage.setY(primaryScreenBounds.getMinY());
-//        stage.setWidth(primaryScreenBounds.getWidth());
-//        stage.setHeight(primaryScreenBounds.getHeight());
-        
         imgView.setX(primaryScreenBounds.getMinX());
         imgView.setY(primaryScreenBounds.getMinY());
         imgView.setFitWidth(primaryScreenBounds.getWidth());
         imgView.setFitHeight(primaryScreenBounds.getHeight());
-        
 
+        // Border Pane object
         BorderPane bp = new BorderPane();
         
+        // Adding Horizontal Box 
         HBox hb = new HBox();
         hb.setPadding(new Insets(20,20,20,30));
-        
-        // Adding logo to the screen
+       
+        // Adding logo image to the screen
         Image logoImage = new Image(getClass().getResourceAsStream("img/logo.png"));
         ImageView logoImg = new ImageView(logoImage);
         hb.getChildren().add(logoImg);
@@ -71,25 +108,23 @@ public class MainController extends Application
         
         //Adding GridPane
         GridPane gridPane = new GridPane();
-//        gridPane.setPadding(new Insets(20,20,20,20));
         gridPane.setHgap(5);
         gridPane.setVgap(5);
         
+        //Implementing Nodes for GridPane
         Label lblUserName = new Label("Email:");
         final TextField txtUserName = new TextField();
         Label lblPassword = new Label("Password:");
         final PasswordField txtPassword = new PasswordField();
-        //txtPassword.setStyle("-fx-background-color: transparent;");
         txtUserName.getStyleClass().add("validation-error");
         txtPassword.getStyleClass().add("validation-error");
         
-        Label lblMessage = new Label();
         
+        //Adding Nodes to GridPane layout
         gridPane.add(lblUserName, 0, 0);
         gridPane.add(txtUserName, 1, 0);
         gridPane.add(lblPassword, 0, 1);
         gridPane.add(txtPassword, 1, 1);
-        gridPane.add(lblMessage, 2, 1);
         
         // Layout the border Pane
         bp.setCenter(gridPane);
@@ -99,24 +134,21 @@ public class MainController extends Application
         
         // Horizontal box to store buttons init 
         HBox buttonHBox = new HBox();
-//        buttonBox.setPadding(new Insets(50, 12, 15, 12));
         buttonHBox.setSpacing(40);
         buttonHBox.setLayoutX(400);
         buttonHBox.setLayoutY(500);
         buttonHBox.setStyle("-fx-background-color: transparent;");
         
-        // Login Button
+        // creating Login Button and adding Login_Button image on Button
         Image loginImage = new Image(getClass().getResourceAsStream("img/Login_Button.png"));
         Button loginBtn = new Button(" ");
         ImageView imgL = new ImageView(loginImage);
         loginBtn.setGraphic(imgL);
         imgL.setFitHeight(140);
         imgL.setFitWidth(190);
-//        loginBtn.setLayoutX(570);
-//        loginBtn.setLayoutY(500);
         loginBtn.setStyle("-fx-background-color: transparent;");
              
-        // Create New Account Button
+        // Create New Account Button and Adding imgae to it 
         Image accountImage = new Image(getClass().getResourceAsStream("img/New_Account_Btn.png"));
         Button accountBtn = new Button("");
         accountBtn.setId("ABtn");
@@ -125,20 +157,22 @@ public class MainController extends Application
         imgA.setFitHeight(140);
         imgA.setFitWidth(190);
         accountBtn.setStyle("-fx-background-color: transparent;");
+ 
         
-        // Action Listener for Login Button
+       
+        /* 
+            Action Listener for Login Button
+            Redirecting to the HTML page MainMenu from Login button if User Email Id and Password is correct
+            Otherwise it promp user the warning message that User Email and password is incorrect. 
+        */
         loginBtn.setOnAction(new EventHandler<ActionEvent>() 
         {
             @Override
             public void handle(ActionEvent e)
             {
-//                stage.setScene(scene1);
-//                stage.setHeight(1000);
-//                stage.setWidth(1000);
-
                   String username = txtUserName.getText();
                   String password = txtPassword.getText();
-
+                  
                   try{
                     URL login = new URL("http://54.70.3.103/h4x0rzServlet/Login");
                     HttpURLConnection servletConnection = (HttpURLConnection) login.openConnection();
@@ -159,15 +193,24 @@ public class MainController extends Application
                               System.out.println("Logged In");
                               getHostServices().showDocument("http://54.70.3.103/h4x0rz/MainMenu.html");
                           }
+                          else
+                          {
+                            Alert alert = new Alert(AlertType.INFORMATION);
+                            alert.setTitle("Warning");
+                            alert.setContentText("Incorrect Username or Password." );
+                            alert.showAndWait();
+                          }
                       }
                   }catch(MalformedURLException f){
                   }catch(IOException f){
                   }
             }
         });
-        
-        
-        // Action Listener for Creae new Account Button
+            
+        /*
+            Action Listener for Creae new Account Button
+            
+        */
         accountBtn.setOnAction(new EventHandler<ActionEvent>() 
         {
             @Override
@@ -176,55 +219,45 @@ public class MainController extends Application
                 Group root1 = new Group();
              
                 Scene newScene= new Scene(root1, Color.BLACK); 
-                Stage stage1 = new Stage();
-                
-                //set Stage boundaries to visible bounds of the main screen
-                stage1.setX(primaryScreenBounds.getMinX());
-                stage1.setY(primaryScreenBounds.getMinY());
-                stage1.setWidth(primaryScreenBounds.getWidth());
-                stage1.setHeight(primaryScreenBounds.getHeight());
-                
-//                Image accountImg = new Image( "/img/lobby.png" );
-//                ImageView accountImgView = new ImageView(accountImg);
-                   
-                  
-//                root.getChildren().add(accountImgView);
+                Stage registerStage = new Stage();
+                registerStage.setTitle("H@x0rz");
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Reg\n" +
-"//                Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();\n" +
-"////                \n" +
-"//                accountImgView.setX(primaryScreenBounds.getMinX());\n" +
-"//                accountImgView.setY(primaryScreenBounds.getMinY());\n" +
-"//                accountImgView.setFitWidth(primaryScreenBounds.getWidth());\n" +
-"//                accountImgView.setFitHeight(primaryScreenBounds.getHeight());\n" +
-"//                isterView.fxml"));
+                // Loard FXML file
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterView.fxml"));
                   
-//                newScene.setFill(Color.BLACK);
                 try {
+                        // loaring new Scene
                         newScene = new Scene(loader.load());
                 } catch (IOException ex) {
                         // TODO: handle error
                 return;
                 }
                 
-//                root1.getChildren().add(accountImgView);
+                // set same properties as Main Stage
+                registerStage.initOwner(stage);
                 
-                stage1.initOwner(stage);
-                stage1.setScene(newScene);
-                stage1.showAndWait();
+                // add New Scene to the  Register Stage
+                registerStage.setScene(newScene);
+                
+                // Display the Register Stage and stay open 
+                registerStage.showAndWait();
+                
+                // Close the Previous Main Stage
                 stage.close();
             }
         });
         
-        
+        // Adding Login Button and New Account Button to the Button horizontal box 
         buttonHBox.getChildren().addAll(loginBtn, accountBtn);
+        
+        // Adding objects to the group
         root.getChildren().addAll(imgView, hb, buttonHBox, bp);
         
-        
-        //Add ID's to Nodes
+        //Adding ID's to Nodes
         bp.setId("bp");
         gridPane.setId("root");
         
+        // Loading CSS file
         theScene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
         stage.setScene(theScene);
         stage.show();
