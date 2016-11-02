@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+*   Author: Hardika Patel
+*
+*   Description: This File is load from MainController.java, when user clicked on New Account Button
+*           
+-->
+
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -10,7 +17,8 @@
 <AnchorPane  xmlns:fx="http://javafx.com/fxml/1" 
              prefHeight="145.0" 
              prefWidth="112.0"
-             xmlns="http://javafx.com/javafx/8.0.40" >
+             xmlns="http://javafx.com/javafx/8.0.40" 
+             style="-fx-background-color: black;" >
     
    <children>
        <ImageView
@@ -33,10 +41,7 @@
             AnchorPane.topAnchor="90.0" >
           
          <children>
-            <Label fx:id="mylabel" 
-                   style="-fx-font-size: 2em; -fx-text-fill: #555; -fx-text-fill: greenyellow;" 
-                   text="H@x0rz Register" />
-            
+         
             <GridPane hgap="5.0" 
                       vgap="2.0" 
                       VBox.vgrow="ALWAYS">
@@ -69,34 +74,42 @@
                                 prefHeight="10.0" 
                                 vgrow="SOMETIMES" />
                 
+                <RowConstraints minHeight="5.0" 
+                                prefHeight="10.0" 
+                                vgrow="SOMETIMES" />
+                
                   <RowConstraints minHeight="5.0" 
                                   prefHeight="10.0" 
                                   vgrow="SOMETIMES" />
               </rowConstraints>
               
                <children>
-                  <Label text="H@x0rz's Email:" 
+                  <Label text="User Email Address:" 
                          style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" />
                   
-                  <Label text="Password:" 
+                  <Label text="Screen Name:" 
                          GridPane.rowIndex="1" 
                          style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" />
                   
-                  <Label text="Confirm Password:" 
+                  <Label text="Password:" 
                          GridPane.rowIndex="2" 
+                         style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" />
+                  
+                  <Label text="Confirm Password:" 
+                         GridPane.rowIndex="3" 
                          style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" />
                   
                   <Button fx:id="Register" defaultButton="true" 
                           mnemonicParsing="false" 
-                          GridPane.columnIndex="1" 
-                          GridPane.rowIndex="3" 
+                          
+                          GridPane.rowIndex="4" 
                           prefHeight="160"
                           prefWidth="200"
                           style="-fx-background-color: transparent;" >
                       
                       <graphic>
-                          <ImageView fitHeight="140"
-                                     fitWidth="180" >
+                          <ImageView fitHeight="160"
+                                     fitWidth="220" >
                               <image>
                                   <Image url="/img/Register_Button.png"/>
                               </image>
@@ -108,13 +121,17 @@
                   <TextField fx:id="userEmailInput" 
                              GridPane.columnIndex="1" />
                   
+                  <TextField fx:id="userScreenNameInput" 
+                             GridPane.columnIndex="1" 
+                             GridPane.rowIndex="1" />
+                  
                   <PasswordField fx:id="passwordInput" 
                                  GridPane.columnIndex="1" 
-                                 GridPane.rowIndex="1" />
+                                 GridPane.rowIndex="2" />
                   
                   <PasswordField fx:id="confirmInput" 
                                  GridPane.columnIndex="1" 
-                                 GridPane.rowIndex="2" />
+                                 GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
