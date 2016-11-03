@@ -97,7 +97,7 @@ Therefore, the general architectural design of our project is of a Server-Client
 
 The physical backend server communicates with the cloud-based web server, which also houses the user database. Each user can access the application via a desktop or laptop computer that has Internet access. Each game can be played by two to four players, who will be connected through the web application server.
 
-**Main Game Loop Diagram:**
+###**2.3 Main Game Loop Diagram:**
 
 ![Main Game Loop](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainGameLoop1.png)
 
