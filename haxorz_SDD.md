@@ -161,23 +161,23 @@ Ryan is administering the database, which is primarily utilized as a means to se
 Will is handling the business aspects of the project, consulting with the client, organizing the team, and delegating tasks as they come up, according to the strengths and weaknesses of the team members. Will is also working with Jonathan and Madeline in creating and assisting in the creation of needed documents for delivery to the client and team. Jonathan is heading up the editing, technical writing, and amending of documentation as needed. Madeline is the lead QA Tester for the project once the testing phase is implemented, until then, she is working with Jonathan and Will on documenting the project.     
 
 ##**7. User Interface Design:**
-**LoginRegister (Main Menus):**
+###**7.1 LoginRegister (Main Menus):**
 
 ![LoginRegister1](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister1.png)
 
-This page has three main functionalities: First, the user can write email and password in text field for login and to create a new account. Second, when user clicks on the login button, if the login information matches the database, the server sends an approval of login and lobby information. If the user account doesn’t exist, then it will prompt user with a warning message stating that the email or password does not exist. Finally, if the user doesn’t not have an account, then the user will be able to create account by clicking the “New Account” button, which will direct the user to the Registration Page.
+This page has three main functionalities: First, the user can enter their login credentials (email and password) into the text fields to login. Second, when user clicks on the “Login” button, a message is sent to the database server. if the login credential match those in the database server, the server sends a message of approval in response and the Main Menu screen is loaded. If the user account doesn’t exist or is incorrect, then it will prompt user with a warning message stating that the email or password is incorrect. Finally, if the user doesn’t not have an account, then the user will be able to create account by clicking the “New Account” button, which will direct the user to the Registration Page.
 
 *(Please note that at this time, we do not have the “Login Accepted” screen for this application)*
 
 ![LoginRegister2](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister2.png)
 
-The popup message appears if a user account does not exist. It will prompt the user to check his or her login information, or create a new account. Upon clicking the “OK” button, he or she can then click the “New Account” button to register for a new account. If the user has entered the correct login information, he or she will be shown the Main Menu screen (not shown), which will allow the user to view a gameplay tutorial, select the number of players in his or her game, and/or join an open game not already underway. 
+This popup message appears if a user account does not exist. It will prompt the user to check his or her login information or to create a new account. If the user has entered the correct login information, he or she will be shown the Main Menu screen (not depicted here), which will allow the user to view a gameplay tutorial, select the number of players in his or her game, and/or join an open game session.
 
 ![LoginRegister3](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister3.png)
 
-The registration page appears to the user after the user clicks on the “New Account” button from the Login Page. This page will allow the user to enter their email address, create a screen name, create a password and then confirm the password. This information is stored in the database (hashed) for future logins.
+The registration page appears to the user after the user clicks on the “New Account” button from the Login Page. This page will allow the user to enter their email address, a username, a password, and a confirmation of the password. This information is sent to the database server and, if successful, stored in the database for future logins. A successful account creation will also automatically login the user on that account, bringing them to the Main Menu screen.
 
-**MainBoard (Game Board):**
+###**7.2 MainBoard (Game Board):**
 
 ![MainBoard1](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainBoard1.png)
 
