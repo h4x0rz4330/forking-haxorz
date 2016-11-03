@@ -76,9 +76,7 @@ The “H@x0rz” application offers a turn-based multiplayer card game to its us
 
 ###**2.1 Logical View Diagram:**
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/logicalArchCap.PNG "Logical View"
+![Logical View](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/logicalArchCap.PNG)
 
 The entirety of the “H@x0rz” application is divided into three main systems. The first system is a web application (client) which displays the user interface, takes user inputs to send to the client-server, and receives commands from the client server to update the user interface accordingly. The second system is a client server, which acts as a midway communicator between clients and the backend server, as well as a database for storing and accessing user account information. The third system is the backend server, which was provided to us by our partnering business stakeholder at the start of the project. It contains code for processing the logic of the game itself, based on inputs from the clients (through the client server). It then sends the resulting effects as commands to the clients (again, through the client server) so that each user may receive the resulting game update.
 
@@ -86,17 +84,13 @@ Therefore, the general architectural design of our project is of a Server-Client
 
 ###**2.2 Physical Architectural View:**
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/Physical%20Architecture.png "Physical Architecture"
+![Physical Architecture](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/Physical%20Architecture.png)
 
 The physical backend server communicates with the cloud-based web server, which also houses the user database. Each user can access the application via a desktop or laptop computer that has Internet access. Each game can be played by two to four players, who will be connected through the web application server.
 
 **Main Game Loop Diagram:**
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainGameLoop.png "Main Game Loop"
+![Main Game Loop](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainGameLoop.png)
 
 This is the loop of events that occurs during a game session in the application, until the game reaches a conclusion. Only one currently active player can select a card and target. This loop occurs during each player’s turn as long as the player has not been eliminated. In the case that a player is eliminated but the game is not concluded, they may observe the game i.e. continue in this loop but only receive outputs. The output is seen by all players, unless the action is a special action limited to selected players; in this case, the selected players will see the full details of the action while all others will only be notified that the special action has occurred.
 
@@ -129,18 +123,14 @@ Lastly, the client side will verify from the server if a winner has been determi
 ##**4. Development Architectural View:**
 **Development View Diagram:**
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/Development_View.PNG "Development View"
+![Development View](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/Development%20View.png)
 
 The development architecture layout is provided above. Our development will be broken into 3 different sectors: Client, Client Server, and Backend Server. Hardika and Chris will mainly develop the LoginRegister application that will launch a browser page to the actual game hosted by the Client Server. This includes the images and animations that fire off during the game. Jonathan and Ryan will be working on the Client Server that will manage the login and registration as well as communicating with the backend server that will actually run the game. The Client Server will act as a medium between the Client and the Backend server. The business client and Ryan will be working on the Backend Server that will  handle the actual game logic and communicate with the Client Server that will tell the client the necessary information.
 
 ##**5. Data Architectural View:**
 **Database Schema Diagram**
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/CSC4330_DB_Schema_Updated_1.PNG "DB Schema"
+![DB Schema](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/CSC4330%20DB%20Schema%20Updated%201.PNG)
 
 The database *H4x0rz* will house the user and login data. The primary key of the user table will be auto-generated upon registration of the user. We will store the email, username, and encrypted passwords. Every time a new user registers the application will insert the email, username, and encrypted password and generate a unique identifier integer. The login table will have a login identifier that is generated when the user logs in. We will store the UID of the user, the time at which they logged in, as well as the IP address of the user. The UID stored will be a foreign key that references the user table for its value. With this database schema, we will be able to register, log, and delete users at request.  
 
@@ -160,46 +150,34 @@ Will is handling the business aspects of the project, consulting with the client
 ##**7. User Interface Design:**
 **LoginRegister (Main Menus):**
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister1.PNG "LoginRegister1"
+![LoginRegister1](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister1.png)
 
 This page has three main functionalities: First, the user can write email and password in text field for login and to create a new account. Second, when user clicks on the login button, if the login information matches the database, the server sends an approval of login and lobby information. If the user account doesn’t exist, then it will prompt user with a warning message stating that the email or password does not exist. Finally, if the user doesn’t not have an account, then the user will be able to create account by clicking the “New Account” button, which will direct the user to the Registration Page.
 
 *(Please note that at this time, we do not have the “Login Accepted” screen for this application)*
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister2.PNG "LoginRegister2"
+![LoginRegister2](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister2.png)
 
 The popup message appears if a user account does not exist. It will prompt the user to check his or her login information, or create a new account. Upon clicking the “OK” button, he or she can then click the “New Account” button to register for a new account. If the user has entered the correct login information, he or she 
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister3.PNG "LoginRegister3"
+![LoginRegister3](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister3.png)
 
 The registration page appears to the user after the user clicks on the “New Account” button from the Login Page. This page will allow the user to enter their email address, create a password and then confirm the password.
 
 **MainBoard (Game Board):**
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainBoard1.PNG "MainBoard1"
+![MainBoard1](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainBoard1.png)
 
 This is the Game board after the initial deal has been completed to all users. This is how the layout will appear to each individual player in a four player game, when the user is not the active player. If the player hovers his or her mouse over the card in hand, it will pop forward, allowing the user to see the text in the card, to determine how to use the card when he or she becomes the active player. The rules of the game will be included in a pop up that has not yet been implemented, as well as the different cars and the effects of those cards.  
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainBoard2.PNG "MainBoard2"
+![MainBoard2](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainBoard2.png)
 
 This is the view of the active player’s hand. The active player in this screen capture has received his or her second card, and has hovered the mouse over one of the cards in hand. The card that is popped out can be selected by the user, and then a target can be selected based upon the card selected. Cards played will be shown in separate 
 
 ##**8. Element Catalog:**
 ###**8.1 Physical View Diagram:**
 
-![alt text][logo]
-
-[logo]: https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/ElementCatalogCap.PNG "Element Catalog"
+![Element Catalog](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/ElementCatalogCap.PNG)
 
 ###**8.2 Development View Diagram:**
 
