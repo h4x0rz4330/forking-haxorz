@@ -181,11 +181,11 @@ The registration page appears to the user after the user clicks on the “New Ac
 
 ![MainBoard1](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainBoard1.png)
 
-This is the Game board after the initial deal has been completed to all users. This is how the layout will appear to each individual player in a four player game, when the user is not the active player. If the player hovers his or her mouse over the card in hand, it will pop forward, allowing the user to see the text in the card, to determine how to use the card when he or she becomes the active player. The rules of the game will be included in a pop up that has not yet been implemented, as well as the different cards and the effects of those cards.  
+Depicted above is the Game screen after the game initialization has been completed to all users. This is how the layout will appear to each individual player in a four-player game, when the user is not the active player. The user’s “hand” is shown at the bottom of the screen. If the player hovers his or her cursor over the card in their hand, it will enlarge, allowing the user to see the description of the card’s effect, written on the card.  The rules of the game will be included in a popup that has not yet been implemented, as well as a quick-reference guide to the different cards and the effects of those cards. 
 
 ![MainBoard2](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/Main%20Board2.png)
 
-This is the view of the active player’s hand. The active player in this screen capture has received his or her second card, and has hovered the mouse over one of the cards in hand. The card that is popped out can be selected by the user, and then a target can be selected based upon the card selected. Cards out of play will be shown face up in front of each player, to allow players the ability to see what has already been played. 
+This is the view of the active player’s hand. On their turn, they may click on a card to use it, then select a target player if the card effect requires a target player to be selected. Cards that have been played will be shown face up in front of each player, to allow players to see what has already been played. 
 
 ##**8. Element Catalog:**
 ###**8.1 Physical View Diagram:**
