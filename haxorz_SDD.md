@@ -129,7 +129,8 @@ The Login screen will provide text boxes for the user to input their login crede
 
 The Main Menu screen will provide buttons for the following actions: entering a tutorial game, requesting to join a game with other players, and specifying the number of players in the game-to-be-requested. The “Tutorial” button will load to the Game screen of a preset demo of the game. The “Join Game” button will send a request to the client server, asking for the current account to be linked with an appropriate game session. Future versions may add buttons as necessary for additional features.
 
-The Game screen is loaded when the “Tutorial” is loaded or the “Join Game” request is answered with a successful response. On this screen, all displays are based on updates received from the client server, which are in turn based on user inputs. The screen will display the user’s own cards in detail (i.e. which type of card it is), while other players’ cards are only
+The Game screen is loaded when the “Tutorial” is loaded or the “Join Game” request is answered with a successful response. On this screen, all displays are based on updates received from the client server, which are in turn based on user inputs. The screen will display the user’s own cards in detail (i.e. which type of card it is), while other players’ cards are only shown to either exist or not. Cards that have been played will be displayed in full detail for all players to see. A central “deck” will also be shown to signify how many card have yet to be used or drawn by players. Players will only be able to select cards as an input, and only so when it is determined to be their turn. Otherwise, the user will only receive updates on other players’ actions as UI displays.
+
 
 
 ##**4. Development Architectural View:**
