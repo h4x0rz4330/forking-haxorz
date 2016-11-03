@@ -21,12 +21,13 @@
 /*            10/29/16  created Register View Page using FXML    Hardika
 /*  
 /*            10/30/16  added code to rediect Main Menu HTML     Ryan
-/*                      file from Login Button 
+/*                      web page from Login Button 
 /*
 /*            11/1/16   change formate of Regoster Page         Hardika
 /*            
 /*            11/2/16   Added popup window for incorrect        Hardika  
 /*                      user Email or Password
+/*                      added handleButtonAction Method         Hardika
 */
 /*************************************************************************/
 
@@ -52,6 +53,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+
 /*
 *   Main Application class    
 */
@@ -63,13 +65,29 @@ public class MainController extends Application
     {
         launch(args);
     }
-
+    
+    // Label Declaration
+    Label lblUserName, lblPassword;
+    
+    // TextField Declaration
+    TextField txtUserName;
+    
+    // PasswordField Declaration
+    PasswordField txtPassword;
+    
+    // Buttons Declaration
+    Button loginBtn, accountBtn;
+  
+    Stage registerStage;
+    
     @Override
     public void start(Stage stage) 
     {
         // Adding Title to the Stage
         stage.setTitle( "H@x0rz" );
-
+        
+        registerStage = stage;
+        
         // group instance 
         Group root = new Group();
         
@@ -112,10 +130,10 @@ public class MainController extends Application
         gridPane.setVgap(5);
         
         //Implementing Nodes for GridPane
-        Label lblUserName = new Label("Email:");
-        final TextField txtUserName = new TextField();
-        Label lblPassword = new Label("Password:");
-        final PasswordField txtPassword = new PasswordField();
+        lblUserName = new Label("Email:");
+        txtUserName = new TextField();
+        lblPassword = new Label("Password:");
+        txtPassword = new PasswordField();
         txtUserName.getStyleClass().add("validation-error");
         txtPassword.getStyleClass().add("validation-error");
         
@@ -141,7 +159,8 @@ public class MainController extends Application
         
         // creating Login Button and adding Login_Button image on Button
         Image loginImage = new Image(getClass().getResourceAsStream("img/Login_Button.png"));
-        Button loginBtn = new Button(" ");
+        loginBtn = new Button(" ");
+        loginBtn.setOnAction(e->handleButtonAction(e));
         ImageView imgL = new ImageView(loginImage);
         loginBtn.setGraphic(imgL);
         imgL.setFitHeight(140);
@@ -150,7 +169,8 @@ public class MainController extends Application
              
         // Create New Account Button and Adding imgae to it 
         Image accountImage = new Image(getClass().getResourceAsStream("img/New_Account_Btn.png"));
-        Button accountBtn = new Button("");
+        accountBtn = new Button("");
+        accountBtn.setOnAction(e->handleButtonAction(e));
         accountBtn.setId("ABtn");
         ImageView imgA = new ImageView(accountImage);
         accountBtn.setGraphic(imgA);
@@ -158,19 +178,40 @@ public class MainController extends Application
         imgA.setFitWidth(190);
         accountBtn.setStyle("-fx-background-color: transparent;");
  
+      
+        // Adding Login Button and New Account Button to the Button horizontal box 
+        buttonHBox.getChildren().addAll(loginBtn, accountBtn);
         
-       
-        /* 
-            Action Listener for Login Button
-            Redirecting to the HTML page MainMenu from Login button if User Email Id and Password is correct
-            Otherwise it promp user the warning message that User Email and password is incorrect. 
-        */
-        loginBtn.setOnAction(new EventHandler<ActionEvent>() 
+        // Adding objects to the group
+        root.getChildren().addAll(imgView, hb, buttonHBox, bp);
+        
+        //Adding ID's to Nodes
+        bp.setId("bp");
+        gridPane.setId("root");
+        
+        // Loading CSS file
+        theScene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
+        stage.setScene(theScene);
+        stage.show();
+        
+    }
+
+    /* 
+    *    -    Action Listener for handleButtonAction method
+    *    -    if user click on Login Button
+    *       -    Redirecting to the HTML page MainMenu from Login button if User Email Id and Password imformation is correct
+    *       -    Otherwise it promp user the warning message that User Email and password is incorrect.
+    *    -    if user click on New Account Button 
+    *       - it will load the FXML file, which is user to design the layout of the Registraion page. 
+    *       - once user click on New Account Button, it will load the Registration Page. 
+    *       - where user will able to create new account. 
+    */
+    private void handleButtonAction(ActionEvent e) {
+        
+        
+        if(e.getSource()== loginBtn)
         {
-            @Override
-            public void handle(ActionEvent e)
-            {
-                  String username = txtUserName.getText();
+            String username = txtUserName.getText();
                   String password = txtPassword.getText();
                   
                   try{
@@ -204,22 +245,14 @@ public class MainController extends Application
                   }catch(MalformedURLException f){
                   }catch(IOException f){
                   }
-            }
-        });
-            
-        /*
-            Action Listener for Creae new Account Button
-            
-        */
-        accountBtn.setOnAction(new EventHandler<ActionEvent>() 
+        }
+
+        else if(e.getSource()==accountBtn)
         {
-            @Override
-            public void handle(ActionEvent e) 
-            {
                 Group root1 = new Group();
              
-                Scene newScene= new Scene(root1, Color.BLACK); 
-                Stage registerStage = new Stage();
+                Scene newScene; 
+
                 registerStage.setTitle("H@x0rz");
 
                 // Loard FXML file
@@ -234,7 +267,7 @@ public class MainController extends Application
                 }
                 
                 // set same properties as Main Stage
-                registerStage.initOwner(stage);
+//                registerStage.initOwner(stage);
                 
                 // add New Scene to the  Register Stage
                 registerStage.setScene(newScene);
@@ -243,23 +276,7 @@ public class MainController extends Application
                 registerStage.showAndWait();
                 
                 // Close the Previous Main Stage
-                stage.close();
-            }
-        });
-        
-        // Adding Login Button and New Account Button to the Button horizontal box 
-        buttonHBox.getChildren().addAll(loginBtn, accountBtn);
-        
-        // Adding objects to the group
-        root.getChildren().addAll(imgView, hb, buttonHBox, bp);
-        
-        //Adding ID's to Nodes
-        bp.setId("bp");
-        gridPane.setId("root");
-        
-        // Loading CSS file
-        theScene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
-        stage.setScene(theScene);
-        stage.show();
+//                stage.close();
+        }
     }
 }
