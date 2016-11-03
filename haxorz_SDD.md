@@ -37,6 +37,7 @@ Chris Schayer
 | **2. Main System Architectural Overview** |
 | 2.1 Logical View Diagram |
 | 2.2 Physical Architectural View |
+| 2.3 Main Game Loop Diagram |
 | **3. Subsystems Architectural View** |
 | 3.1 Backend Server |
 | 3.2 Webclient Server |
@@ -45,6 +46,8 @@ Chris Schayer
 | **5. Data Architectural View** |
 | **6. Work-Assignment View** |
 | **7. User Interface Design** |
+| 7.1 LoginRegister (Main Menus) |
+| 7.2 MainBoard (Game Board) |
 | **8. Element Catalog** |
 | 8.1 Physical View Diagram |
 | 8.2 Development View Diagram |
@@ -66,11 +69,17 @@ The “H@x0rz” application offers a turn-based multiplayer card game to its us
 ###**1.3 Overview**
 
 “H@x0rz” is a game based in a web application. A Server-Client architecture will be employed to ensure the integrity of the game files and to make the client-end of the application lightweight. This document will outline the design of this project as follows:
-* **Main System Architecture:** This section outlines the high-level logical and physical overviews of the systems and how they connect to each other.
-* **Subsystems Architecture:** 
-* The programming code consists of a large amount of markup language, at least on the Client end of the application, which includes the Main Menu and Game Board user interfaces. The implementation of C++ on the business client’s backend server is a strict object-oriented architecture, employing patterns to create the game logic of the application. The web server is written in Java, using object-oriented code to communicate the game logic from the backend server to the end user’s browser UI. The web server also includes a database that will hold some basic user information.
+* **Main System Architecture:** This section outlines the high-level logical and physical overviews of the systems and how they connect to each other. The main game loop is also included for clarity.
+* **Subsystems Architecture:** This section outlines the three main parts of the application, including the backend Server, the WebClient Server, and the Client (user) interface. Behaviors of the three parts are outlined in these sections.
+* **Development Architecture:** This section outlines the actual code base for the application, broken down by section. The programming code consists of a large amount of markup language, at least on the Client end of the application, which includes the Main Menu and Game Board user interfaces. The implementation of C++ on the business client’s backend server is a strict object-oriented architecture, employing patterns to create the game logic of the application. The web server is written in Java, using object-oriented code to communicate the game logic from the backend server to the end user’s browser UI. 
+* **Data Architecture:** The web server also includes a database that will hold some basic user information. A schema diagram has been included to clarify the nature of the database in detail.
+* **Work Assignment:** This section outlines a breakdown of work responsibilities for team members.
+* **User Interface Design:** This section outlines the User Interface through some UI screen captures and explanation of functionality.
+* **Element Catalog:** This section explains the diagrams in the document with a “Glossary” for some of those diagrams.
 
 ###**1.4 References**
+
+Please refer to: [https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_SRS.md](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_SRS.md)
 
 ## 2. Main System Architectural Overview
 
@@ -90,20 +99,25 @@ The physical backend server communicates with the cloud-based web server, which 
 
 **Main Game Loop Diagram:**
 
-![Main Game Loop](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainGameLoop.png)
+![Main Game Loop](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainGameLoop1.png)
 
 This is the loop of events that occurs during a game session in the application, until the game reaches a conclusion. Only one currently active player can select a card and target. This loop occurs during each player’s turn as long as the player has not been eliminated. In the case that a player is eliminated but the game is not concluded, they may observe the game i.e. continue in this loop but only receive outputs. The output is seen by all players, unless the action is a special action limited to selected players; in this case, the selected players will see the full details of the action while all others will only be notified that the special action has occurred.
 
 ##**3. Subsystems Architectural View:** 
 ###**3.1 Backend Server:**
 
-Because the backend server was delivered with the business client’s desired functionality already implemented, we will not be making any notable changes to it. Any changes that we make will only be for bug fixes. hanges involving server interaction will instead occur in the client server and client layers of the application.
+Because the backend server was delivered with the business client’s desired functionality already implemented, we will not be making any notable changes to it. Any changes that we make in the backend server will only be for maintenance purposes. The more significant changes involving server interaction will instead occur in the client server layer of the application.
 
 ###**3.2 Webclient Server:**
 
-The Login servlet java will take a request from the browser. The request contains the email and password of the user. After grabbing these, using the email, the code will look up the user with that specified email and grab the hashed password. It will then hash and compare the two passwords. If it fails it will return 0, if it succeeds the code will create cookies and pass them to the user and return 1. If the user was not found given the email the code will return -1. 
+The webclient server (i.e. client server) will act as an intermediate point of contact between clients and the backend server. It will use Java servlets to handle all requests made through it.
 
-The Register servlet java will take a request from the browser. The request contains the email, username, and password. The code will search the database if a user with the same email exists. If they do, then it will return -1, else it will continue. It will hash the password and then store the email, username, and hashed password in the database. After which it will create cookies and pass the cookies to the user. Then the code will return 1;
+The “Register” servlet will handle requests from the client for creating a new user account. Each request will contain an email address, a username, and a password. Once received, the servlet will check if the username or email address is already linked to an account in the server database. If so, the servlet will send a response to the client notifying the user of this. If not, the servlet will process to store the new user account information into the database server, then send a response to the client that the account creation succeeded and to login on that account.
+
+The “Login” servlet will handle requests from the client for logging into a user account. Each request will contain a username and a password. Once received, the servlet will check these against the respective login data in the database server, using hash tables for securely handling passwords. The servlet will then send a response to the client, either confirming a successful login or notifying the user of incorrect credentials.
+
+The “ClientComm” servlet will handle all requests while a user is logged into an account, such as in-game actions. Each request will contain a label specifying the type of request, followed by corresponding parameters specific to each type. Once received, the servlet may perform one of many actions, including, but not limited to: editing or retrieving data from the database server, sending and receiving messages to the backend server regarding in-game actions, and sending update information to the client.
+
 
 ###**3.3 Client:**
 
@@ -132,7 +146,7 @@ The development architecture layout is provided above. Our development will be b
 
 ![DB Schema](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/CSC4330%20DB%20Schema%20Updated%201.PNG)
 
-The database *H4x0rz* will house the user and login data. The primary key of the user table will be auto-generated upon registration of the user. We will store the email, username, and encrypted passwords. Every time a new user registers the application will insert the email, username, and encrypted password and generate a unique identifier integer. The login table will have a login identifier that is generated when the user logs in. We will store the UID of the user, the time at which they logged in, as well as the IP address of the user. The UID stored will be a foreign key that references the user table for its value. With this database schema, we will be able to register, log, and delete users at request.  
+The database *H4x0rz* will house the user and login data. The primary key of the user table will be auto-generated upon registration of the user. We will store the email, username, and encrypted passwords. Every time a new user registers the application will insert the email, username, and encrypted password and generate a unique identifier integer. The login table will have a login identifier that is generated when the user logs in. We will store the UID of the user, the time at which they logged in, as well as the IP address of the user. The UID stored will be a foreign key that references the user table for its value. With this database schema, we will be able to register, log, and delete users at request.   
 
 ##**6. Work-Assignment View:**
 
@@ -158,21 +172,21 @@ This page has three main functionalities: First, the user can write email and pa
 
 ![LoginRegister2](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister2.png)
 
-The popup message appears if a user account does not exist. It will prompt the user to check his or her login information, or create a new account. Upon clicking the “OK” button, he or she can then click the “New Account” button to register for a new account. If the user has entered the correct login information, he or she 
+The popup message appears if a user account does not exist. It will prompt the user to check his or her login information, or create a new account. Upon clicking the “OK” button, he or she can then click the “New Account” button to register for a new account. If the user has entered the correct login information, he or she will be shown the Main Menu screen (not shown), which will allow the user to view a gameplay tutorial, select the number of players in his or her game, and/or join an open game not already underway. 
 
 ![LoginRegister3](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/LoginRegister3.png)
 
-The registration page appears to the user after the user clicks on the “New Account” button from the Login Page. This page will allow the user to enter their email address, create a password and then confirm the password.
+The registration page appears to the user after the user clicks on the “New Account” button from the Login Page. This page will allow the user to enter their email address, create a screen name, create a password and then confirm the password. This information is stored in the database (hashed) for future logins.
 
 **MainBoard (Game Board):**
 
 ![MainBoard1](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainBoard1.png)
 
-This is the Game board after the initial deal has been completed to all users. This is how the layout will appear to each individual player in a four player game, when the user is not the active player. If the player hovers his or her mouse over the card in hand, it will pop forward, allowing the user to see the text in the card, to determine how to use the card when he or she becomes the active player. The rules of the game will be included in a pop up that has not yet been implemented, as well as the different cars and the effects of those cards.  
+This is the Game board after the initial deal has been completed to all users. This is how the layout will appear to each individual player in a four player game, when the user is not the active player. If the player hovers his or her mouse over the card in hand, it will pop forward, allowing the user to see the text in the card, to determine how to use the card when he or she becomes the active player. The rules of the game will be included in a pop up that has not yet been implemented, as well as the different cards and the effects of those cards.  
 
-![MainBoard2](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/MainBoard2.png)
+![MainBoard2](https://github.com/h4x0rz4330/forking-haxorz/blob/master/SDD/Main%20Board2.png)
 
-This is the view of the active player’s hand. The active player in this screen capture has received his or her second card, and has hovered the mouse over one of the cards in hand. The card that is popped out can be selected by the user, and then a target can be selected based upon the card selected. Cards played will be shown in separate 
+This is the view of the active player’s hand. The active player in this screen capture has received his or her second card, and has hovered the mouse over one of the cards in hand. The card that is popped out can be selected by the user, and then a target can be selected based upon the card selected. Cards out of play will be shown face up in front of each player, to allow players the ability to see what has already been played. 
 
 ##**8. Element Catalog:**
 ###**8.1 Physical View Diagram:**
