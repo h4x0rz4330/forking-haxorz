@@ -121,3 +121,27 @@ Meetings Summary
 | **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
 | **Objective** | Discuss and Review SRS Progress |
 | **Summary** | All of Section 1 is reviewed by team, clarifying specifics and setting a standard for future sections. Discussion of work on the application is also conducted. |
+
+| **Date** | October 26, 2016 |
+:--------------- | :----------------------
+| **Time** | 6:00 PM - 7:00 PM |
+| **Location** | Patrick F. Taylor @ LSU, Room 2262, Baton Rouge, LA |
+| **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Discussion for next Sprint of work and for meeting with client on 10/29 |
+| **Summary** | Note: Sprint 4 launched 10/24. Discussion regarding code merging/integration, turn handling between the client and server, and how the client application will be distributed to users.Brief discussion of SDD, particularly regarding diagrams. Meeting for group coding and meeting client Todd Moulder planned for 10/29. Objectives for this meeting are discussed and determined. |
+
+| **Date** | October 29, 2016 |
+:--------------- | :----------------------
+| **Time** | 12:00 PM - 7:00 PM |
+| **Location** | 724 Tanya’s Trail, Baton Rouge, LA |
+| **Members Present** | Ryan Ngo, Todd Moulder, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Discuss progress with client and conduct group programming |
+| **Summary** | Met with client Todd Moulder to ensure that work so far and work to-be-done is in accordance with the desired product. Programming is done with all members present and their respective components of the application, and some integration testing is done. |
+
+| **Date** | November 2, 2016 |
+:--------------- | :----------------------
+| **Time** | :00 PM - 6:10 PM |
+| **Location** | Coates Hall @ LSU, Room 152, Baton Rouge, LA |
+| **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Final discussions on SDD |
+| **Summary** | Check-in on each member for their delegated portion of the Software Design Document. Final editing/polishing tasks for SDD are outlined. |
