@@ -44,18 +44,12 @@
 
 @-webkit-keyframes p3Move {
     from {
-        -ms-transform: translate(0%,0%);
-        -moz-transform: translate(0%,0%);
         -webkit-transform: translate(0%,0%);
-        -o-transform: translate(0%,0%);
         transform: translate(0%,0%);
     }
     to {
-        -ms-transform: translate(0%,-160%);
-        -moz-transform: translate(0%,-160%);
-        -webkit-transform: translate(0%,-160%);
-        -o-transform: translate(0%,-160%);
-        transform: translate(0%,-160%);
+        -webkit-transform: translate(0%,-15vh);
+        transform: translate(0%,-15vh);
     }
 }
 
@@ -64,16 +58,14 @@
     from {
         -ms-transform: translate(0%,0%);
         -moz-transform: translate(0%,0%);
-        -webkit-transform: translate(0%,0%);
         -o-transform: translate(0%,0%);
         transform: translate(0%,0%);
     }
     to {
-        -ms-transform: translate(0%,-160%);
-        -moz-transform: translate(0%,-160%);
-        -webkit-transform: translate(0%,-160%);
-        -o-transform: translate(0%,-160%);
-        transform: translate(0%,-160%);
+        -ms-transform: translate(0%,-25vh);
+        -moz-transform: translate(0%,-25vh);
+        -o-transform: translate(0%,-25vh);
+        transform: translate(0%,-25vh);
     }
 }
 

@@ -1,32 +1,32 @@
-#board {
- background-image: url("../images/PlayboardVanilla2.png");
-    height:967px;
-    width:1764px;
-    position:relative
-}
 
-
-/*
-
-*/
-.cardPile{
-    background-image: url("../images/cards.png");
+.board {
+    background: url("../images/PlayboardVanilla2.png") no-repeat center center fixed;
+    height:100vh;
+    width:auto;
+    position:relative;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
     background-size: contain;
-    height: 100px;
-    width: 75px;
-    background-color:transparent;
 }
 
-#discard{
-    position:absolute;
-  top:24%;
-  left:18%;
-    display:none;
+.boardCover {
+    background: url("../images/PlayboardVanilla2.png") no-repeat center center fixed;
+    height:100vh;
+    width:auto;
+    position:relative;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-#deck{
-    position: absolute;
-    top:50%;
-    left:40%;
 
+#game{
+    background-color:black;
 }
+
+
+
+
+

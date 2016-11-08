@@ -1,0 +1,45 @@
+
+
+
+#deck{
+    position: absolute;
+    top:50vh;
+    left:55%;
+
+}
+
+ul.cardPile{
+    width: 200px;
+    height: 310px;
+    margin: 0 auto 30px;
+    position: relative;
+    padding: 0;
+    list-style-type: none;
+}
+ul.cardPile li {
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+ul.cardPile li {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    background: #fff;
+    pointer-events: auto;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+

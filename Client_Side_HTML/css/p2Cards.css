@@ -44,36 +44,29 @@
 
 @-webkit-keyframes p2Move {
     from {
-        -ms-transform: translate(0%,0%);
-        -moz-transform: translate(0%,0%);
         -webkit-transform: translate(0%,0%);
-        -o-transform: translate(0%,0%);
         transform: translate(0%,0%);
     }
     to {
-        -ms-transform: translate(-180%,0%);
-        -moz-transform: translate(-180%,0%);
-        -webkit-transform: translate(-180%,0%);
-        -o-transform: translate(-180%,0%);
-        transform: translate(-180%,0%);
+
+        -webkit-transform: translate(-35vw,0%);
+        transform: translate(-35vw,0%);
     }
 }
 
 /* Standard syntax */
 @keyframes p2Move {
     from {
-        -ms-transform: translate(0%,0%);
-        -moz-transform: translate(0%,0%);
-        -webkit-transform: translate(0%,0%);
-        -o-transform: translate(0%,0%);
-        transform: translate(0%,0%);
+        -ms-transform: translate(0vw,0%);
+        -moz-transform: translate(0vw,0%);
+        -o-transform: translate(0vw,0%);
+        transform: translate(0vw,0%);
     }
     to {
-        -ms-transform: translate(-180%,0%);
-        -moz-transform: translate(-180%,0%);
-        -webkit-transform: translate(-180%,0%);
-        -o-transform: translate(-180%,0%);
-        transform: translate(-180%,0%);
+        -ms-transform: translate(-30vw,0%);
+        -moz-transform: translate(-30vw,0%);
+        -o-transform: translate(-30vw,0%);
+        transform: translate(-30vw,0%);
     }
 }
 
@@ -84,5 +77,27 @@
     -o-animation:p2Move 1.75s ease-out;
     animation:p2Move 1.75s ease-out;
     animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+@-moz-keyframes p2Draw{
+    from {transform: translate(0%,0%)}
+    to {transform: translate(7vw,25vh)}
+}
+
+@keyframes p2Draw {
+    from {
+        transform: translate(0%, 0%);
+    }
+    to {
+        transform: translate(7vw, 25vh);
+    }
+}
+
+.drawMove2{
+    -webkit-animation:p1Draw 1.55s ease-out;
+    -moz-animation:p1Draw 1.55s ease-out;
+    -o-animation:p1Draw 1.55s ease-out;
+    animation:p1Draw 1.55s ease-out;
     animation-fill-mode: forwards;
 }

@@ -44,36 +44,28 @@
 
 @-webkit-keyframes p4Move {
     from {
-        -ms-transform: translate(0vh,0%);
-        -moz-transform: translate(0vh,0%);
-        -webkit-transform: translate(0vh,0%);
-        -o-transform: translate(0vh,0%);
-        transform: translate(0vh,0%);
+        -webkit-transform: translate(0%,0%);
+        transform: translate(0%,0%);
     }
     to {
-        -ms-transform: translate(180vh,0%);
-        -moz-transform: translate(180vh,0%);
-        -webkit-transform: translate(180vh,0%);
-        -o-transform: translate(180vh,0%);
-        transform: translate(180vh,0%);
+        -webkit-transform: translate(30vw,0%);
+        transform: translate(30vw,0%);
     }
 }
 
 /* Standard syntax */
 @keyframes p4Move {
     from {
-        -ms-transform: translate(0vh,0%);
-        -moz-transform: translate(0vh,0%);
-        -webkit-transform: translate(0vh,0%);
-        -o-transform: translate(0vh,0%);
-        transform: translate(0vh,0%);
+        -ms-transform: translate(0%,0%);
+        -moz-transform: translate(0%,0%);
+        -o-transform: translate(0%,0%);
+        transform: translate(0%,0%);
     }
     to {
-        -ms-transform: translate(80vh,0%);
-        -moz-transform: translate(80vh,0%);
-        -webkit-transform: translate(80vh,0%);
-        -o-transform: translate(80vh,0%);
-        transform: translate(80vh,0%);
+        -ms-transform: translate(30vw,0%);
+        -moz-transform: translate(30vw,0%);
+        -o-transform: translate(30vw,0%);
+        transform: translate(30vw,0%);
     }
 }
 
