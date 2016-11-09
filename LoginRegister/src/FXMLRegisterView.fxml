@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" 
+            prefWidth="600.0" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="FXMLRegisterController" 
+            style="-fx-background-color: black;" >
+    
+    <children>
+       <ImageView
+           fx:id="imgaeView"
+           fitHeight="750.0"
+           fitWidth="1280.0"
+           >
+           <image>
+               <Image 
+                   url="/img/lobby.png"
+                   backgroundLoading = "true" 
+               />
+           </image>
+       </ImageView>
+       
+      <VBox spacing="10.0" 
+            AnchorPane.bottomAnchor="100.0" 
+            AnchorPane.leftAnchor="450.0" 
+            AnchorPane.rightAnchor="10.0" 
+            AnchorPane.topAnchor="90.0" >
+          
+         <children>
+         
+            <GridPane hgap="5.0" 
+                      vgap="2.0" 
+                      VBox.vgrow="ALWAYS">
+                
+              <columnConstraints>
+                  
+                <ColumnConstraints 
+                    hgrow="SOMETIMES" 
+                    maxWidth="185.0" 
+                    minWidth="10.0" 
+                    prefWidth="133.0" />
+                
+                <ColumnConstraints hgrow="SOMETIMES" 
+                                   maxWidth="145.0" 
+                                   minWidth="10.0" 
+                                   prefWidth="145.0" />
+                
+              </columnConstraints>
+              
+              <rowConstraints>
+                <RowConstraints minHeight="5.0" 
+                                prefHeight="10.0" 
+                                vgrow="SOMETIMES" />
+                
+                <RowConstraints minHeight="5.0" 
+                                prefHeight="10.0" 
+                                vgrow="SOMETIMES" />
+                
+                <RowConstraints minHeight="5.0" 
+                                prefHeight="10.0" 
+                                vgrow="SOMETIMES" />
+                
+                <RowConstraints minHeight="5.0" 
+                                prefHeight="10.0" 
+                                vgrow="SOMETIMES" />
+                
+                  <RowConstraints minHeight="5.0" 
+                                  prefHeight="10.0" 
+                                  vgrow="SOMETIMES" />
+              </rowConstraints>
+              
+               <children>
+                  <Label text="User Email Address:" 
+                         style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" />
+                  
+                  <Label text="Screen Name:" 
+                         GridPane.rowIndex="1" 
+                         style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" />
+                  
+                  <Label text="Password:" 
+                         GridPane.rowIndex="2" 
+                         style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" />
+                  
+                  <Label text="Confirm Password:" 
+                         GridPane.rowIndex="3" 
+                         style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" />
+                  
+                  <Button fx:id="Register" defaultButton="true" 
+                          mnemonicParsing="false"  
+                          GridPane.rowIndex="4" 
+                          prefHeight="160"
+                          prefWidth="200"
+                          style="-fx-background-color: transparent;"
+                          onAction="#handleButtonAction" >
+                      
+                      <graphic>
+                          <ImageView fitHeight="160"
+                                     fitWidth="220" >
+                              <image>
+                                  <Image url="/img/Register_Button.png"/>
+                              </image>
+                          </ImageView>
+                      </graphic>
+                  </Button>
+                  
+                  
+                  <TextField fx:id="userEmailInput" 
+                             GridPane.columnIndex="1" />
+                  
+                  <TextField fx:id="userScreenNameInput" 
+                             GridPane.columnIndex="1" 
+                             GridPane.rowIndex="1" />
+                  
+                  <PasswordField fx:id="passwordInput" 
+                                 GridPane.columnIndex="1" 
+                                 GridPane.rowIndex="2" />
+                  
+                  <PasswordField fx:id="confirmPasswordInput" 
+                                 GridPane.columnIndex="1" 
+                                 GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+         
+         <padding>
+            <Insets bottom="1.0" 
+                    left="5.0" 
+                    right="100.0" 
+                    top="1.0" />
+         </padding>
+      </VBox>
+   </children>
+    
+</AnchorPane>
