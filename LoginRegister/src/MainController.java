@@ -249,34 +249,24 @@ public class MainController extends Application
 
         else if(e.getSource()==accountBtn)
         {
-                Group root1 = new Group();
-             
-                Scene newScene; 
-
-                registerStage.setTitle("H@x0rz");
-
                 // Loard FXML file
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterView.fxml"));
+                
                   
                 try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegisterView.fxml"));
                         // loaring new Scene
-                        newScene = new Scene(loader.load());
+                       
+                        Parent root1 = (Parent) loader.load();
+                         registerStage.setTitle("H@x0rz");
+                        registerStage.setScene(new Scene(root1));
+                        registerStage.showAndWait();
+
                 } catch (IOException ex) {
                         // TODO: handle error
-                return;
+              
                 }
                 
-                // set same properties as Main Stage
-//                registerStage.initOwner(stage);
-                
-                // add New Scene to the  Register Stage
-                registerStage.setScene(newScene);
-                
-                // Display the Register Stage and stay open 
-                registerStage.showAndWait();
-                
-                // Close the Previous Main Stage
-//                stage.close();
         }
     }
+    
 }
