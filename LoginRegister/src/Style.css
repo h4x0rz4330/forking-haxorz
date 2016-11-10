@@ -28,3 +28,11 @@
    -fx-text-box-border: greenyellow;
     -fx-control-inner-background: transparent;
 }
+
+.button{
+    -fx-background-color:  linear-gradient(transparent, transparent);
+}
+
+.hbox{
+    -fx-background-color:  linear-gradient(transparent, transparent);
+}
