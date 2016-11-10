@@ -155,29 +155,26 @@ public class MainController extends Application
         buttonHBox.setSpacing(40);
         buttonHBox.setLayoutX(400);
         buttonHBox.setLayoutY(500);
-        buttonHBox.setStyle("-fx-background-color: transparent;");
+
         
         // creating Login Button and adding Login_Button image on Button
         Image loginImage = new Image(getClass().getResourceAsStream("img/Login_Button.png"));
         loginBtn = new Button(" ");
         loginBtn.setOnAction(e->handleButtonAction(e));
-        ImageView imgL = new ImageView(loginImage);
-        loginBtn.setGraphic(imgL);
-        imgL.setFitHeight(140);
-        imgL.setFitWidth(190);
-        loginBtn.setStyle("-fx-background-color: transparent;");
+        ImageView imgLogin = new ImageView(loginImage);
+        loginBtn.setGraphic(imgLogin);
+        imgLogin.setFitHeight(160);
+        imgLogin.setFitWidth(200);
              
         // Create New Account Button and Adding imgae to it 
         Image accountImage = new Image(getClass().getResourceAsStream("img/New_Account_Btn.png"));
         accountBtn = new Button("");
         accountBtn.setOnAction(e->handleButtonAction(e));
         accountBtn.setId("ABtn");
-        ImageView imgA = new ImageView(accountImage);
-        accountBtn.setGraphic(imgA);
-        imgA.setFitHeight(140);
-        imgA.setFitWidth(190);
-        accountBtn.setStyle("-fx-background-color: transparent;");
- 
+        ImageView imgAccount = new ImageView(accountImage);
+        accountBtn.setGraphic(imgAccount);
+        imgAccount.setFitHeight(160);
+        imgAccount.setFitWidth(200);
       
         // Adding Login Button and New Account Button to the Button horizontal box 
         buttonHBox.getChildren().addAll(loginBtn, accountBtn);
