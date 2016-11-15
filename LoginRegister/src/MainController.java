@@ -39,8 +39,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.*;
 import javafx.fxml.FXMLLoader;
@@ -63,11 +61,13 @@ import javafx.scene.control.Alert.AlertType;
 public class MainController extends Application 
 {
     
-   Stage mainstage;
+
     public static void main(String[] args) 
     {
         launch(args);
     }
+    
+       Stage loginstage;
     
     // Label Declaration
     Label lblUserName, lblPassword;
@@ -80,16 +80,15 @@ public class MainController extends Application
     
     // Buttons Declaration
     Button loginBtn, accountBtn;
-  
-//    Stage stage;
-//      Stage registerStage;
+
+      Stage registerStage;
     
     @Override
     public void start(Stage stage) 
     {
         
-    
-        this.mainstage = stage;
+//        registerStage = stage;
+        this.loginstage = stage;
         
          // Adding Title to the Stage
         stage.setTitle( "H@x0rz" );
@@ -177,7 +176,10 @@ public class MainController extends Application
         // Create New Account Button and Add imgae to it 
         Image accountImage = new Image(getClass().getResourceAsStream("img/New_Account_Btn.png"));
         accountBtn = new Button("");
-        accountBtn.setOnAction(e-> new NewStage());
+        accountBtn.setOnAction(e-> new RegisterStage());
+//        accountBtn.setOnAction(e->{
+//            handleButtonAction(e);
+//        });
 //            handleRButtonAction(e);
                 
  
@@ -199,8 +201,11 @@ public class MainController extends Application
         
         // Loading CSS file
         theScene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
-        mainstage.setScene(theScene);
-        mainstage.show();
+        loginstage.setScene(theScene);
+        loginstage.show();
+//        stage.setScene(theScene);
+//        stage.show();
+
  
     }
 
@@ -254,27 +259,43 @@ public class MainController extends Application
                   }catch(IOException f){
                   }
         }
-
+        
+//        if(e.getSource()==accountBtn)
+//        {
+//            try {
+//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegisterView.fxml"));
+//                        // loaring new Scene
+//                       
+//                        Parent root1 = (Parent) loader.load();
+//                        registerStage.setTitle("H@x0rz");
+//                        registerStage.setScene(new Scene(root1));
+//                        registerStage.showAndWait();
+//                        
+//
+//                } catch (IOException ex) {
+//                        // TODO: handle error
+//        }
+//        }
 
     }
 
 
-class NewStage 
+class RegisterStage 
 {
 
-    NewStage() {
+    RegisterStage() {
             
-        Stage subStage = new Stage();
+        Stage registerStage = new Stage();
             
          try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegisterView.fxml"));
                         // loaring new Scene
                        
                         Parent root1 = (Parent) loader.load();
-                        subStage.setTitle("H@x0rz");
-                        subStage.setScene(new Scene(root1));
-                         mainstage.close();
-                        subStage.showAndWait();
+                        registerStage.setTitle("H@x0rz");
+                        registerStage.setScene(new Scene(root1));
+                        loginstage.close();
+                        registerStage.showAndWait();
                         
 
                 } catch (IOException ex) {
