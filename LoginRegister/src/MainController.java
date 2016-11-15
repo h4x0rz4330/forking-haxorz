@@ -39,6 +39,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.*;
 import javafx.fxml.FXMLLoader;
@@ -61,6 +63,7 @@ import javafx.scene.control.Alert.AlertType;
 public class MainController extends Application 
 {
     
+   Stage mainstage;
     public static void main(String[] args) 
     {
         launch(args);
@@ -78,15 +81,18 @@ public class MainController extends Application
     // Buttons Declaration
     Button loginBtn, accountBtn;
   
-    Stage registerStage;
+//    Stage stage;
+//      Stage registerStage;
     
     @Override
     public void start(Stage stage) 
     {
-        // Adding Title to the Stage
-        stage.setTitle( "H@x0rz" );
         
-        registerStage = stage;
+    
+        this.mainstage = stage;
+        
+         // Adding Title to the Stage
+        stage.setTitle( "H@x0rz" );
         
         // group instance 
         Group root = new Group();
@@ -160,16 +166,21 @@ public class MainController extends Application
         // creating Login Button and adding Login_Button image on Button
         Image loginImage = new Image(getClass().getResourceAsStream("img/Login_Button.png"));
         loginBtn = new Button(" ");
-        loginBtn.setOnAction(e->handleButtonAction(e));
+        loginBtn.setOnAction(e->{
+            handleButtonAction(e);
+        });
         ImageView imgLogin = new ImageView(loginImage);
         loginBtn.setGraphic(imgLogin);
         imgLogin.setFitHeight(160);
         imgLogin.setFitWidth(200);
              
-        // Create New Account Button and Adding imgae to it 
+        // Create New Account Button and Add imgae to it 
         Image accountImage = new Image(getClass().getResourceAsStream("img/New_Account_Btn.png"));
         accountBtn = new Button("");
-        accountBtn.setOnAction(e->handleButtonAction(e));
+        accountBtn.setOnAction(e-> new NewStage());
+//            handleRButtonAction(e);
+                
+ 
         accountBtn.setId("ABtn");
         ImageView imgAccount = new ImageView(accountImage);
         accountBtn.setGraphic(imgAccount);
@@ -188,9 +199,9 @@ public class MainController extends Application
         
         // Loading CSS file
         theScene.getStylesheets().add(getClass().getClassLoader().getResource("Style.css").toExternalForm());
-        stage.setScene(theScene);
-        stage.show();
-        
+        mainstage.setScene(theScene);
+        mainstage.show();
+ 
     }
 
     /* 
@@ -203,7 +214,7 @@ public class MainController extends Application
     *       - once user click on New Account Button, it will load the Registration Page. 
     *       - where user will able to create new account. 
     */
-    private void handleButtonAction(ActionEvent e) {
+    private void handleButtonAction(ActionEvent e){
         
         
         if(e.getSource()== loginBtn)
@@ -244,26 +255,34 @@ public class MainController extends Application
                   }
         }
 
-        else if(e.getSource()==accountBtn)
-        {
-                // Loard FXML file
-                
-                  
-                try {
+
+    }
+
+
+class NewStage 
+{
+
+    NewStage() {
+            
+        Stage subStage = new Stage();
+            
+         try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegisterView.fxml"));
                         // loaring new Scene
                        
                         Parent root1 = (Parent) loader.load();
-                         registerStage.setTitle("H@x0rz");
-                        registerStage.setScene(new Scene(root1));
-                        registerStage.showAndWait();
+                        subStage.setTitle("H@x0rz");
+                        subStage.setScene(new Scene(root1));
+                         mainstage.close();
+                        subStage.showAndWait();
+                        
 
                 } catch (IOException ex) {
                         // TODO: handle error
-              
-                }
-                
         }
+        
     }
-    
+ 
+}
+
 }
