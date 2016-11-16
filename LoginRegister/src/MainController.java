@@ -135,7 +135,7 @@ public class MainController extends Application
         gridPane.setVgap(5);
         
         //Implementing Nodes for GridPane
-        lblUserName = new Label("Email:");
+        lblUserName = new Label("Username:");
         txtUserName = new TextField();
         lblPassword = new Label("Password:");
         txtPassword = new PasswordField();
@@ -224,8 +224,8 @@ public class MainController extends Application
         
         if(e.getSource()== loginBtn)
         {
-            String username = txtUserName.getText();
-                  String password = txtPassword.getText();
+                    String username = txtUserName.getText();
+                String password = txtPassword.getText();
                   
                   try{
                     URL login = new URL("http://54.70.3.103/h4x0rzServlet/Login");
