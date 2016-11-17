@@ -140,8 +140,24 @@ Meetings Summary
 
 | **Date** | November 2, 2016 |
 :--------------- | :----------------------
-| **Time** | :00 PM - 6:10 PM |
+| **Time** | 6:00 PM - 6:10 PM |
 | **Location** | Coates Hall @ LSU, Room 152, Baton Rouge, LA |
 | **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
 | **Objective** | Final discussions on SDD |
 | **Summary** | Check-in on each member for their delegated portion of the Software Design Document. Final editing/polishing tasks for SDD are outlined. |
+
+| **Date** | November 9, 2016 |
+:--------------- | :----------------------
+| **Time** | 6:00 PM - 6:15 PM |
+| **Location** | Coates Hall @ LSU, Room 152, Baton Rouge, LA |
+| **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Progress Check-In and Discussion for Software Testing Document |
+| **Summary** | Check-in on everyone’s progress. Plans for further code integration and testing are discussed. STD work begins. Decision made to close JIRA project management, because all other records/management of workflow (Github, Google Drive, GroupMe) are deemed sufficient from this point onward. Meeting is planned for next Wednesday, November 16, 2016. |
+
+| **Date** | November 16, 2016 |
+:--------------- | :----------------------
+| **Time** | 4:30 PM - 6:30 PM |
+| **Location** | Patrick F. Taylor Hall @ LSU, Room 2262, Baton Rouge, LA |
+| **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Work on Software Testing Document and Further Coding |
+| **Summary** | Discussion of specifics for test cases held. Construction of Software Testing Document begins. Other coding, integration, and testing are also conducted. |
