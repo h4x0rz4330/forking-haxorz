@@ -437,7 +437,7 @@ Chris Schayer
 
 **Execution Date:** November 20, 2016
 
-** Short Description:** Test the "Cybersecurity Officer" Card functionality 
+**Short Description:** Test the "Cybersecurity Officer" Card functionality 
 
 | **Pre-conditions:** The player chooses to play a "Cybersecurity Officer" card.   |
 | --- |
@@ -471,7 +471,7 @@ Chris Schayer
 
 **Execution Date:** November 20, 2016
 
-** Short Description:** Test the "Firewall" Card functionality 
+**Short Description:** Test the "Firewall" Card functionality 
 
 | Pre-conditions: The player chooses to play a "Firewall" card.   |
 | --- |
