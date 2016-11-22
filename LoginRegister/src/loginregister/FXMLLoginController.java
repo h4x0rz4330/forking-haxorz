@@ -97,7 +97,12 @@ public class FXMLLoginController extends Application  implements Initializable, 
     private void goToRegister(ActionEvent event){
        myController.setScreen(MainController.screen2ID);
     }
-
+    
+    @FXML 
+    private void gotoEmailForm(ActionEvent event){
+        myController.setScreen(MainController.screen3ID);
+    }
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
