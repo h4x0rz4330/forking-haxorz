@@ -38,10 +38,14 @@ Chris Schayer
 |1.0 Login|
 |1.1 Incorrect Username|
 |1.2 Incorrect Password|
+|1.3 Password Recovery|
 |**Registration**|
 |2.0 Register|
-|**Game**|
-|3.0 Begin Game|
+|**Begin Game**|
+|3.0 Begin 2-Player Game|
+|3.1 Begin 3-Player Game|
+|3.2 Begin 4-Player Game|
+|**Play Game**|
 |4.0 Game Play|
 |4.1 "Hack!" Card|
 |4.2 "R.A.T." Card|
@@ -79,7 +83,7 @@ Chris Schayer
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
 | 1 | In the username box, type 'h4x0rz4330@gmail.com' (remove quotes) | Entered text is shown in box. | Pass | Example username; different for other accounts. Performs as expected. |
-| 2 | In the password box, type <Howuknowdis?> | Entered text is shown in box as dots (for security). | Pass | Example password; different for other accounts. Performs as expected. |
+| 2 | In the password box, type 'Howuknowdis?' (remove quotes) | Entered text is shown in box as dots (for security). | Pass | Example password; different for other accounts. Performs as expected. |
 | 3 | Click the "Login" button | The system opens the main menu page in a new browser tab. Browser will be user's default web browser. | Pass | Success. |
 
 | Post-conditions: The player is brought to the main menu, where gameplay options will be available.   |
@@ -91,7 +95,9 @@ Chris Schayer
 
 ##**Test Case #: 1.1**                                  
 
-**Test Case Name:** Incorrect Username **System:** H@x0rZ! 
+**Test Case Name:** Incorrect Username 
+
+**System:** H@x0rZ! 
 
 **Subsystem:** Login 
 
@@ -101,9 +107,9 @@ Chris Schayer
 
 **Executed by:** Ryan Ngo 
 
-**Execution Date:**
+**Execution Date:** November 21, 2016 
 
-**Short Description:** Test the login with an incorrect username |
+**Short Description:** Test the login with an incorrect username 
 
 | Pre-conditions: The player opens the game.   |
 | --- |
@@ -112,7 +118,7 @@ Chris Schayer
 | --- | --- | --- | --- | --- |
 | 1 | In the username box, type 'csc4330' (remove quotes) | Entered text is shown in box. | Pass | Performs as expected. |
 | 2 | In the password box, type 'Howuknowdis?' (remove quotes) | Entered text is shown in box as dots (for security). | Pass | Performs as expected. |
-| 3 | Click the "Login" button | The system displays an "Incorrect Username or Password." message and displays a username/password recovery link. | Fail | No username/password recovery link yet |
+| 3 | Click the "Login" button | The system displays the message: “Incorrect Username or Password. If you forgot your password, go to the following link to reset it.” and displays a username/password recovery link. | Fail | No username/password recovery link yet |
 
 | Post-conditions: The player can then reenter a username and password or choose to go through the username/password recovery steps.   |
 | --- |
@@ -133,29 +139,56 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**                                        
+**Executed by:** Jonathan Nguyen                                       
 
-**Execution Date:**
+**Execution Date:** November 21, 2016
 
 **Short Description:**  Test the login with a wrong password and use password recovery 
 
-| Pre-conditions: The player opens the game.The player has already registered and has a valid username and password.  |
+| Pre-conditions: The player opens the game. The player has already registered and has a valid username and password.  |
 | --- |
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
 | 1 | In the username box, type 'h4x0rz4330@gmail.com' (remove quotes) | Entered text is shown in box. | Pass | Performs as expected. |
 | 2 | In the password box, type 'Password1' (remove quotes) | Entered text is shown in box as dots (for security). | Pass | Performs as expected. |
-| 3 | Click the 'Login' button | The system displays an "Incorrect Username or Password." message and displays a username/password recovery link | Fail | No username/password recovery link yet |
-| 4 | Click on "recover username/password" button | The system displays a recover username/password page | Fail | No username/password recovery link yet |
-| 5 | In the email box, type 'h4x0rz4330@gmail.com' | Entered text is shown in box. |   |   |
-| 6 | Click "Send email" button | The system displays an "email sent" message. |   |   |
-| 7 | Login to email 'h4x0rz4330@gmail.com' on Gmail website with password '\*\*\*\*\*\*\*' and follow directions in the email to reset password.
- | Follow-up email will be sent to 'h4x0rz4330@gmail.com', confirming password change. |   |   |
+| 3 | Click the 'Login' button | The system displays the message: “Incorrect Username or Password. If you forgot your password, go to the following link to reset it.” and displays a username/password recovery link. | Fail | No username/password recovery link yet |
+
+| Post-conditions: The player can then reenter a username and password or choose to go through the username/password recovery steps. |
+| --- |
+
+
+##**Test Case #: 1.3** 
+
+**Test Case Name:** Password Recovery
+
+**System:** H@x0rZ! 
+
+**Subsystem:** Login 
+
+**Designed by:** Team 42 
+
+**Design Date:** November 19, 2016 
+
+**Executed by:** Jonathan Nguyen                                       
+
+**Execution Date:** November 21, 2016
+
+**Short Description:**  Test the password recovery function
+
+| Pre-conditions: The player opens the game. The player has already registered and has a valid username and password, but wishes to change password.  |
+| --- |
+
+| **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
+| --- | --- | --- | --- | --- |
+| 1 | Press “Recover Password” button | Opens password recovery page. | Faile | Link to page not yet implemented |
+| 2 | In the email box, type ‘h4x0rz4330@gmail.com’ (remove quotes) | Entered text is shown in box | Pass | Performs as expected. |
+| 3 | Click on “recover username/password” button | The system displays a recover username/password page | Fail | No username/password recovery link yet |
+| 4 | Click “Send email” button | The system displays an “Email sent” message | Fail | Not yet implemented. |
+| 5 | Login to email ‘h4x0rz4330@gmail.com’ on Gmail website with password ‘\*\*\*\*\*\*\*’ and follow directions in the email to reset password.  | Follow-up email will be sent to ‘h4x0rz4330@gmail.com’, confirming password change | Fail  |  Not yet implemented. |
 
 | Post-conditions: The recovery email sent to the player will contain the player's username and an option to reset password. |
 | --- |
-
 
 
 ##**Test Case #: 2.0** 
@@ -170,9 +203,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Ryan Ngo
 
-**Execution Date:**
+**Execution Date:** November 21, 2016
 
 **Short Description:**  Test the registration process for an account 
 
@@ -181,9 +214,9 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click "New Account" button. | The system displays the registration page. | P | Successful. |
-| 2 | Fill out the form with an email address, username, and password. | Text is displayed in boxes properly. 'Password' and 'confirm password' fields should | Q | bruh |
-| 3 | Click "Register" button. | The system saves the account information and opens the main menu page in a new browser page | Q | bruh |
+| 1 | Click "New Account" button. | The system displays the registration page. | Pass | Successful. |
+| 2 | Fill out the form with an email address, username, and password. | Entered text is shown in boxes. ‘Password’ and ‘Confirm password’ fields should display dots corresponding to the entered text (for security). | Pass | Performs as expected. |
+| 3 | Click "Register" button. | TThe system displays a ‘Registration successful!’ message and opens the main menu page in a new browser page. | Pass | Performs as expected. |
 
 | Post-conditions: The player is brought to the main menu, where game play options will be available.   |
 | --- |
@@ -194,7 +227,7 @@ Chris Schayer
 
 ##**Test Case #: 3.0** 
 
-**Test Case Name:** Begin Game 
+**Test Case Name:** Begin 2-Player Game 
 
 **System:** H@x0rZ! 
 
@@ -204,18 +237,80 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**                                        
+**Executed by:** Jonathan Nguyen                                       
 
-**Execution Date:**
+**Execution Date:** November 21, 2016
 
-**Short Description:**  Test starting a new game 
+**Short Description:**  Test starting a new game with 2 players
 
 | Pre-conditions: The player successfully logs into the game.   |
 | --- |
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Choose number of players | The system displays the game table screen | Fail | Not yet implemented |
+| 1 | Click on the ‘2-Player Game’ button | The system displays the game table screen with 2 players: the current player and 1 opposing player | Fail | Link to board not yet implemented |
+
+| Post-conditions: The game begins once all of the players have joined.   |
+| --- |
+
+
+
+##**Test Case #: 3.1** 
+
+**Test Case Name:** Begin 3-Player Game 
+
+**System:** H@x0rZ! 
+
+**Subsystem:** Game 
+
+**Designed by:** Team 42 
+
+**Design Date:** November 19, 2016 
+
+**Executed by:** Jonathan Nguyen                                       
+
+**Execution Date:** November 21, 2016
+
+**Short Description:**  Test starting a new game with 3 players
+
+| Pre-conditions: The player successfully logs into the game.   |
+| --- |
+
+| **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
+| --- | --- | --- | --- | --- |
+| 1 | Click on the ‘3-Player Game’ button | The system displays the game table screen with 3 players: the current player and 2 opposing player | Fail | Link to board not yet implemented |
+
+| Post-conditions: The game begins once all of the players have joined.   |
+| --- |
+
+
+
+
+
+##**Test Case #: 3.2** 
+
+**Test Case Name:** Begin 4-Player Game 
+
+**System:** H@x0rZ! 
+
+**Subsystem:** Game 
+
+**Designed by:** Team 42 
+
+**Design Date:** November 19, 2016 
+
+**Executed by:** Jonathan Nguyen                                       
+
+**Execution Date:** November 21, 2016
+
+**Short Description:**  Test starting a new game with 4 players
+
+| Pre-conditions: The player successfully logs into the game.   |
+| --- |
+
+| **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
+| --- | --- | --- | --- | --- |
+| 1 | Click on the ‘4-Player Game’ button | The system displays the game table screen with 4 players: the current player and 3 opposing player | Fail | Link to board not yet implemented |
 
 | Post-conditions: The game begins once all of the players have joined.   |
 | --- |
@@ -236,9 +331,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 21, 2016
 
 **Short Description:** Test game play 
 
@@ -247,10 +342,10 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Deck will auto deal to player | The system displays the player's current card | Pass | Performed as expected |
-| 2 | Hover over a card | The card will enlarge so that the player can read its functionality | Pass | Performed as expected |
-| 3 | Click on a card to play it | The system will allow player to choose another player as a target. | Pass | Performed as expected |
-| 4 | Click on a player to apply card effect. | System will use player's choice to determine outcome of card played. | Fail | Not yet implemented |
+| 1 | Deck will automatically give a card to player | The system displays the player’s current card (hand) | Pass | Performs as expected |
+| 2 | Hover cursor over a card | The card will enlarge so that the player can read its functionality | Pass | Performed as expected |
+| 3 | Click on a card to play it | The system will allow player to choose another player as a target, if applicable | Pass | Performed as expected |
+| 4 | Click on a player to apply card effect. | System will use player's choice to determine outcome of card played | Fail | Not yet implemented |
 
 | Post-conditions: Depending on the card the player has chosen to play, different actions will occur. \*See following test cases for specifics on each card type.  |
 | --- |
@@ -271,9 +366,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 21, 2016
 
 **Short Description:** Test the "Hack!" Card functionality 
 
