@@ -1,7 +1,7 @@
 /**
  * Author: Hardika Patel
  * File: FXMLLoginController.java
- * Description: 
+ * Description: This file is control Login screen, 
  */
 package loginregister;
 
