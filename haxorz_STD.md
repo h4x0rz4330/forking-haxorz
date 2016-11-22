@@ -333,7 +333,7 @@ Chris Schayer
 
 **Executed by:** Chris Schayer
 
-**Execution Date:** November 21, 2016
+**Execution Date:** November 20, 2016
 
 **Short Description:** Test game play 
 
@@ -368,7 +368,7 @@ Chris Schayer
 
 **Executed by:** Chris Schayer
 
-**Execution Date:** November 21, 2016
+**Execution Date:** November 20, 2016
 
 **Short Description:** Test the "Hack!" Card functionality 
 
@@ -377,11 +377,12 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "Hack!" card to play it | The system displays a modal with the option of players to choose from to target with this card. | Pass | Performed as expected |
-| 2 | Click on the name of a player | The modal displays the options of cards to guess from. | Pass | Performed as expected |
-| 3 | Click on one of the cards, except another hack card. | If the selected player has the card chosen, the system flips the guessed card to reveal a correct guess and the owner of that card loses (no longer plays in the current game). Otherwise, the system displays a message saying "hack failed". | Fail | Not yet implemented |
+| 1 | Click on the "Hack!" card to play it | The system displays an interface with the option of players to choose as the target of the card effect. | Pass | Performs as expected |
+| 2 | Click on the name of a player | The modal displays the options of cards to guess from.  | Pass | Performs as expected |
+| 3 | Click on one of the cards, except another hack card | If the selected player has the card chosen, the system flips the guessed card to reveal a correct guess and the owner of that card loses (no longer plays in the current game).
+Otherwise, the system displays a message saying “Hack failed”. | Fail | Not yet implemented |
 
-| Post-conditions: "Hack" card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
+| Post-conditions: "Hack!" card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
 | --- |
 
 
@@ -400,9 +401,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 20, 2016
 
 ** Short Description:** Test the "R.A.T." Card functionality 
 
@@ -411,8 +412,8 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "R.A.T." card to play it | The system displays a modal with the option of players to choose from to play this card on | Pass | Performed as expected |
-| 2 | Click on the name of a player | The modal displays the card in the chosen player's hand to the person playing the "R.A.T." card. | Fail | Not yet implemented |
+| 1 | Click on the "R.A.T." card to play it | TThe system displays an interface with the option of players to choose as the target of the card effect. | Pass | Performs as expected |
+| 2 | Click on the name of a player | The modal displays the card in the chosen player’s hand to the person playing the “R.A.T.” card. | Fail | Not yet implemented |
 
 | Post-conditions: "R.A.T." card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
 | --- |
@@ -433,9 +434,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 20, 2016
 
 ** Short Description:** Test the "Cybersecurity Officer" Card functionality 
 
@@ -444,8 +445,8 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "Cybersecurity Officer" card to play it | The system displays a modal with the option of players to choose from to play this card on | Pass | Bruh |
-| 2 | Click on the name of a player | The modal displays the card in the current player's and the chosen player's hands. The owner of the card with the lower value loses. | Fail | Not yet implemented |
+| 1 | Click on the "Cybersecurity Officer" card to play it | The system displays an interface with the option of players to choose as the target of the card effect. | Pass | Performs as expected |
+| 2 | Click on the name of a player | The modal displays the card in the current player’s and the chosen player’s hands. The owner of the card with the lower value loses. | Fail | Not yet implemented |
 
 
 | Post-conditions: "Cybersecurity Officer" card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
@@ -467,9 +468,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 20, 2016
 
 ** Short Description:** Test the "Firewall" Card functionality 
 
@@ -478,7 +479,7 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "Firewall" card to play it |  A label will appear next to the user stating "Protected" to signify that the user is under the card's effect. This label will disappear at the start of the user's next turn. | Pass | Worked as expected |
+| 1 | Click on the "Firewall" card to play it |  A label will appear next to the user stating “Protected” to signify that the user is under the card’s effect. This label will disappear at the start of the user’s next turn. | Pass | Performs as expected |
 
 | Post-conditions: "Firewall" card is moved, face-up, to current player's discard pile. This player cannot be chosen as the target for card effects from other players until their next turn has begun. Game play continues with the next player.   |
 | --- |
@@ -499,9 +500,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 20, 2016
 
 **Short Description:** Test the "Hard Reset" Card functionality 
 
@@ -510,11 +511,10 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "Hard Reset" card to play it | The system displays an interface with the option of players to choose from to play this card on | Pass | Bruh |
-| 2 | Click on the name of a player | Player will discard the card in their hand and a new card will be dealt to the player. | Pass | Bruh |
-| 3 | Target player has "Bitcoin Billions" in hand | Target player discards "Bitcoin Billions", causing them to lose the round. | Q | Bruh |
+| 1 | Click on the "Hard Reset" card to play it | The system displays an interface with the option of players to choose from to play this card on. | Pass | Performs as expected |
+| 2 | Click on the name of a player | Target player will discard the card in their hand and a new card will be dealt to the player. | Pass | Performs as expected |
 
-| Post-conditions: The player chosen has to discard their card and draw a new one."Hard Reset" card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
+| Post-conditions: The player chosen has to discard their card and draw a new one. If opposing player discards “Bitcoin Billions” card, they lose the round. “Hard Reset” card is moved, face-up, to current player’s discard pile. Game play continues with the next player. |
 | --- |
 
 
@@ -533,9 +533,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 20, 2016
 
 **Short Description:** Test the "Hijack" Card functionality
 
@@ -544,9 +544,8 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "Hijack" card to play it | The system displays a modal with the option of players to choose from to play this card on | Pass | Cat meme |
-| 2 | Click on the name of a player | The system replaces the card in the current player's hand with the card in the chosen player's hand, and vice versa. | Pass | Cat meme |
-
+| 1 | Click on the "Hijack" card to play it | The system displays a modal with the option of players to choose from to play this card on. | Pass | Performs as expected |
+| 2 | Click on the name of a player | The system replaces the card in the current player’s hand with the card in the chosen player’s hand, and vice versa. | Pass | Performs as expected |
 
 | Post-conditions: "Hijack" card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
 | --- |
@@ -567,18 +566,18 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 20, 2016
 
 **Short Description:** Test the "Trojan Horse" Card functionality 
 
-| Pre-conditions: After drawing a card at the start of their turn, the current player has a "Trojan Horse" card and either a "Hard Reset" or "Hijack" card. Player will be unable to choose the "Hard Reset" / "Hijack" card, thus forcing them to play the "Trojan Horse" card.  |
+| Pre-conditions: After drawing a card at the start of their turn, the current player has a “Trojan Horse” card and either a “Hard Reset” or “Hijack” card. Player will be unable to choose the “Hard Reset” / “Hijack” card, thus forcing them to play the “Trojan Horse” card.  |
 | --- |
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "Trojan Horse" card to play it | "Hard Reset" / "Hijack" card are re-enabled for play selection for future turns. | Pass | Dood |
+| 1 | Click on the "Trojan Horse" card to play it | “Hard Reset” / “Hijack” card are re-enabled for play selection for future turns. | Pass | Performs as expected |
 
 
 | Post-conditions: "Trojan Horse" card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
@@ -600,22 +599,22 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 20, 2016
 
 **Short Description:** Test the "Trojan Horse" Card functionality |
 | --- |
 
-| Pre-conditions: After drawing a card at the start of their turn, the current player has a "Trojan Horse" card,  and neither a "Hard Reset", nor "Hijack" card. The player chooses to play the "Trojan Horse" card.  |
+| Pre-conditions: After drawing a card at the start of their turn, the current player has a “Trojan Horse” card,  and neither a “Hard Reset”, nor “Hijack” card. The player chooses to play the “Trojan Horse” card.  |
 | --- |
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "Trojan Horse" card to play it | No response should occur. | Pass | Dood |
+| 1 | Click on the "Trojan Horse" card to play it | No response should occur. | Pass | Performs as expected |
 
 
-| Post-conditions: "Trojan Horse" card is moved, face-up, to current player's discard pile.Game play continues with the next player.   |
+| Post-conditions: "Trojan Horse" card is moved, face-up, to current player's discard pile. Game play continues with the next player.  |
 | --- |
 
 | **Test Case #: 4.9** 
@@ -630,9 +629,9 @@ Chris Schayer
 
 **Design Date:** November 19, 2016 
 
-**Executed by:**
+**Executed by:** Chris Schayer
 
-**Execution Date:**
+**Execution Date:** November 20, 2016
 
 **Short Description:** Test the "Bitcoin Billions" Card functionality |
 
@@ -643,10 +642,9 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Click on the "Bitcoin Billions" card to play it | The system displays a message that the player has lost the round. | Q | Bruh |
+| 1 | Click on the "Bitcoin Billions" card to play it | The system displays a message that the player has lost the round. | Fail | Message not yet implemented |
 
-
-| Post-conditions: "Bitcoin Billions" card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
+| Post-conditions: "Bitcoin Billions" card is moved, face-up, to current player's discard pile. Game play continues with the next player. |
 | --- |
 
 
