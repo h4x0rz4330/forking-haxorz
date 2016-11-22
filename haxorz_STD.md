@@ -181,7 +181,7 @@ Chris Schayer
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
-| 1 | Press “Recover Password” button | Opens password recovery page. | Faile | Link to page not yet implemented |
+| 1 | Press “Recover Password” button | Opens password recovery page. | Fail | Link to page not yet implemented |
 | 2 | In the email box, type ‘h4x0rz4330@gmail.com’ (remove quotes) | Entered text is shown in box | Pass | Performs as expected. |
 | 3 | Click on “recover username/password” button | The system displays a recover username/password page | Fail | No username/password recovery link yet |
 | 4 | Click “Send email” button | The system displays an “Email sent” message | Fail | Not yet implemented. |
