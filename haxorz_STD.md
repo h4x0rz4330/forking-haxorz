@@ -602,8 +602,7 @@ Chris Schayer
 
 **Execution Date:** November 20, 2016
 
-**Short Description:** Test the "Trojan Horse" Card functionality |
-| --- |
+**Short Description:** Test the "Trojan Horse" Card functionality 
 
 | Pre-conditions: After drawing a card at the start of their turn, the current player has a “Trojan Horse” card,  and neither a “Hard Reset”, nor “Hijack” card. The player chooses to play the “Trojan Horse” card.  |
 | --- |
@@ -616,7 +615,7 @@ Chris Schayer
 | Post-conditions: "Trojan Horse" card is moved, face-up, to current player's discard pile. Game play continues with the next player.  |
 | --- |
 
-| **Test Case #: 4.9** 
+##**Test Case #: 4.9** 
 
 **Test Case Name:** "Bitcoin Billions" Card 
 
@@ -632,9 +631,7 @@ Chris Schayer
 
 **Execution Date:** November 20, 2016
 
-**Short Description:** Test the "Bitcoin Billions" Card functionality |
-
-| --- |
+**Short Description:** Test the "Bitcoin Billions" Card functionality 
 
 | Pre-conditions: The player chooses to play a "Bitcoin Billions" card.    |
 | --- |
