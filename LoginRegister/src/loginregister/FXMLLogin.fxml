@@ -80,7 +80,11 @@
            </graphic>
       </Button>
       
-      <Button fx:id="NewAccount" layoutX="610.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToRegister" style="-fx-background-color: transparent;">
+      <Button fx:id="NewAccount" 
+              layoutX="610.0" layoutY="460.0" 
+              mnemonicParsing="false" 
+              onAction="#goToRegister" 
+              style="-fx-background-color: transparent;">
           <graphic>
                 <ImageView fitHeight="160" fitWidth="220">
                     <image>
@@ -88,6 +92,13 @@
                     </image>
                 </ImageView>
            </graphic>
+      </Button>
+      
+      <Button fx:id="button" 
+              layoutX="810.0" layoutY="480.0" 
+              mnemonicParsing="false" 
+              onAction="#gotoEmailForm" 
+              text="Button">
       </Button>
    </children>
 </AnchorPane>
