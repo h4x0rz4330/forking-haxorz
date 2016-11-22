@@ -404,7 +404,7 @@ Chris Schayer
 
 **Execution Date:** November 20, 2016
 
-** Short Description:** Test the "R.A.T." Card functionality 
+**Short Description:** Test the "R.A.T." Card functionality 
 
 | Pre-conditions: The player chooses to play a &quot;R.A.T.&quot; card.   |
 | --- |
