@@ -44,14 +44,14 @@
 /*                   -   Added code in Register's "handleButtonAction" class 
 /*                       to redirect Main Menu HTML web page from Register Page
 /*                   
-*            11/16/16 to 
-*            11/19/16 
-*/  
+/*           11/16/16 to  
+/*           11/19/16 
+/*  
 /*           
 /*           11/19/16 to - Had to major changes in code just because of back button  Hardika
 /*           11/21/16      when back button press, it will redirect to the main Login 
-*                          screen. 
-*/ 
+/*                         screen. 
+/* 
 /*                         
 /*
 /*
@@ -76,6 +76,11 @@ public class MainController extends Application {
     public static String screen1File = "FXMLLogin.fxml";
     public static String screen2ID = "Screen2";
     public static String screen2File = "FXMLRegisterView.fxml";
+    public static String screen3ID = "Screen3";
+    public static String screen3File = "EmailForm.fxml";
+    public static String screen4ID = "Screen4";
+    public static String screen4File = "ForgotPassword.fxml";
+    
     
     @Override
     public void start(Stage primaryStage) {
@@ -85,6 +90,8 @@ public class MainController extends Application {
         // loading the screen 
         mainContainer.loadScreen(MainController.screen1ID, MainController.screen1File);
         mainContainer.loadScreen(MainController.screen2ID, MainController.screen2File);
+        mainContainer.loadScreen(MainController.screen3ID, MainController.screen3File);
+        mainContainer.loadScreen(MainController.screen4ID, MainController.screen4File);
         
         // set main screen to display into controller
         mainContainer.setScreen(MainController.screen1ID);
