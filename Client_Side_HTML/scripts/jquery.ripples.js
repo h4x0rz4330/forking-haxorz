@@ -21,6 +21,7 @@
 
 	'use strict';
 
+
 	var gl;
 	var $window = $(window); // There is only one window, so why not cache the jQuery-wrapped window?
 

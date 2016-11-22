@@ -1,11 +1,9 @@
 
 
 .card {
-    position: relative;
-    float: left;
+    position: absolute;
     width:8vw;
     height:15vh;
-
 }
 
 .hand{
@@ -14,31 +12,27 @@
     position:absolute;
 }
 
+
 /* card fronts and backs */
-.card__front,
-.card__back {
+.front,
+.back {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility:    hidden;
-    -ms-backface-visibility:     hidden;
-    backface-visibility: hidden;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
+
 }
 
-.card__front {
+.front {
     background: url("../images/Hack_Card.png");
     background-size:contain;
     background-repeat: no-repeat;
     background-position: center;
+
+
 }
 
 
-.card__back {
+.back {
     background: url("../images/cardBack.png");
     background-size:contain;
     background-repeat: no-repeat;
@@ -46,303 +40,3 @@
 }
 
 
-*@-webkit-keyframes zoomCard{
-     from{
-         -ms-transform:scale(0,0);
-         -moz-transform:scale(0,0);
-         -webkit-transform:scale(0,0);
-         -o-transform:scale(0,0);
-         transform:scale(0,0);
-     }
-
-     to {
-         -ms-transform:scale(1.9,1.9);
-         -moz-transform:scale(1.9,1.9);
-         -webkit-transform:scale(1.9,1.9);
-         -o-transform:scale(1.9,1.9);
-         transform:scale(1.9,1.9);
-     }
- }
-
-@keyframes zoomCard{
-    from{
-        -ms-transform:scale(1.0,1.0);
-        -moz-transform:scale(1.0,1.0);
-        -webkit-transform:scale(1.0,1.0);
-        -o-transform:scale(1.0,1.0);
-        transform:scale(1.0,1.0);
-    }
-
-    to {
-        -ms-transform:scale(2.1,2.1);
-        -moz-transform:scale(2.1,2.1);
-        -webkit-transform:scale(2.1,2.1);
-        -o-transform:scale(2.1,2.1);
-        transform:scale(2.1,2.1);
-    }
-}
-
-.card__front__zoomed:hover {
-    -webkit-animation: zoomCard .1s linear;
-    -moz-animation: zoomCard .1s linear;
-    -ms-animation: zoomCard .1s linear;
-    -o-animation: zoomCard .1s linear;
-    animation: zoomCard .1s linear;
-    animation-fill-mode:forwards;
-}
-
-
-/*----flip front side--------------------*/
-@-webkit-keyframes flipFront{
-     from{
-         -ms-transform:rotateZ(0deg) rotateY(180deg);
-         -moz-transform:rotateZ(0deg) rotateY(180deg);
-         -webkit-transform:rotateZ(0deg) rotateY(180deg);
-         -o-transform:rotateZ(0deg)rotateY(180deg);
-         transform:rotateZ(0deg) rotateY(180deg);
-     }
-
-     55% {
-         -ms-transform: rotateZ(720deg) rotateY(180deg);
-         -moz-transform: rotateZ(720deg) rotateY(180deg);
-         -webkit-transform: rotateZ(720deg) rotateY(180deg);
-         -o-transform: rotateZ(720deg) rotateY(180deg);
-        transform: rotateZ(720deg) rotateY(180deg);
-     }
-    70%{
-         -ms-transform:rotateZ(720deg) rotateY(180deg);
-         -moz-transform:rotateZ(720deg) rotateY(180deg);
-         -webkit-transform:rotateZ(720deg) rotateY(180deg);
-         -o-transform:rotateZ(720deg) rotateY(180deg);
-         transform:rotateZ(720deg) rotateY(180deg);
-     }
-     to {
-         -ms-transform:rotateZ(720deg) rotateY(360deg);
-         -moz-transform:rotateZ(720deg) rotateY(360deg);
-         -webkit-transform:rotateZ(720deg) rotateY(360deg);
-         -o-transform:rotateZ(720deg) rotateY(360deg);
-         transform:rotateZ(720deg) rotateY(360deg);
-     }
-}
-
-@keyframes flipFront{
-    from{
-        -ms-transform:rotateZ(0deg) rotateY(180deg);
-        -moz-transform:rotateZ(0deg) rotateY(180deg);
-        -webkit-transform:rotateZ(0deg) rotateY(180deg);
-        -o-transform:rotateZ(0deg) rotateY(180deg);
-        transform:rotateZ(0deg) rotateY(180deg);
-    }
-
-    55% {
-        -ms-transform: rotateZ(720deg) rotateY(180deg);
-        -moz-transform: rotateZ(720deg) rotateY(180deg);
-        -webkit-transform: rotateZ(720deg) rotateY(180deg);
-        -o-transform: rotateZ(720deg) rotateY(180deg);
-        transform: rotateZ(720deg) rotateY(180deg);
-    }
-    70%{
-        -ms-transform:rotateZ(720deg) rotateY(180deg);
-        -moz-transform:rotateZ(720deg) rotateY(180deg);
-        -webkit-transform:rotateZ(720deg) rotateY(180deg);
-        -o-transform:rotateZ(720deg) rotateY(180deg);
-        transform:rotateZ(720deg) rotateY(180deg);
-    }
-    to {
-        -ms-transform:rotateZ(720deg) rotateY(360deg);
-        -moz-transform:rotateZ(720deg) rotateY(360deg);
-        -webkit-transform:rotateZ(720deg) rotateY(360deg);
-        -o-transform:rotateZ(720deg) rotateY(360deg);
-        transform:rotateZ(720deg) rotateY(360deg);
-    }
-}
-
-.card__front__flipped {
-    -webkit-animation: flipFront 2s linear;
-    -webkit-animation-delay: 2.25s;
-    -moz-animation: flipFront 2s linear;
-    -ms-animation: flipFront 2s linear;
-    -o-animation: flipFront 2s linear;
-    animation: flipFront 2s linear;
-    animation-delay: 2.25s;
-    animation-fill-mode: forwards;
-
-}
-
-.drawFront{
-    -webkit-animation: flipFront 2s linear;
-    -moz-animation: flipFront 2s linear;
-    -ms-animation: flipFront 2s linear;
-    -o-animation: flipFront 2s linear;
-    animation: flipFront 2s linear;
-    animation-fill-mode: forwards;
-
-}
-
-/*-----------------------------------------*/
-
-/*------------Flip Back Side -------------*/
-*@-webkit-keyframes flipOther{
-     0%{
-         -ms-transform:rotateZ(0deg) rotateY(0deg);
-         -moz-transform:rotateZ(0deg) rotateY(0deg);
-         -webkit-transform:rotateZ(0deg) rotateY(0deg);
-         -o-transform:rotateZ(0deg) rotateY(0deg);
-         transform:rotateZ(0deg) rotateY(0deg);
-     }
-
-     55% {
-         -ms-transform: rotateZ(720deg) rotateY(0deg);
-         -moz-transform: rotateZ(720deg) rotateY(0deg);
-         -webkit-transform: rotateZ(720deg) rotateY(0deg);
-         -o-transform: rotateZ(720deg) rotateY(0deg);
-         transform: rotateZ(720deg) rotateY(0deg);
-     }
-     70%{
-
-         -ms-transform: rotateZ(720deg) rotateY(0deg);
-         -moz-transform:rotateZ(720deg) rotateY(0deg);
-         -webkit-transform:rotateZ(720deg) rotateY(0deg);
-         -o-transform:rotateZ(720deg) rotateY(0deg);
-         transform:rotateZ(720deg) rotateY(0deg);
-     }
-     100% {
-
-         -ms-transform:rotateZ(720deg) rotateY(180deg);
-         -moz-transform:rotateZ(720deg) rotateY(180deg);
-         -webkit-transform:rotateZ(720deg) rotateY(180deg);
-         -o-transform:rotateZ(720deg) rotateY(180deg);
-         transform:rotateZ(720deg) rotateY(180deg);
-
-     }
- }
-
-@keyframes flipOther{
-    from{
-        -ms-transform:rotateZ(0deg) rotateY(0deg);
-        -moz-transform:rotateZ(0deg) rotateY(0deg);
-        -webkit-transform:rotateZ(0deg) rotateY(0deg);
-        -o-transform:rotateZ(0deg) rotateY(0deg);
-        transform:rotateZ(0deg) rotateY(0deg);
-    }
-
-    55% {
-        -ms-transform: rotateZ(720deg) rotateY(0deg);
-        -moz-transform: rotateZ(720deg) rotateY(0deg);
-        -webkit-transform: rotateZ(720deg) rotateY(0deg);
-        -o-transform: rotateZ(720deg) rotateY(0deg);
-        transform: rotateZ(720deg) rotateY(0deg);
-    }
-    70%{
-
-        -ms-transform:rotateZ(720deg) rotateY(0deg);
-        -moz-transform:rotateZ(720deg) rotateY(0deg);
-        -webkit-transform:rotateZ(720deg) rotateY(0deg);
-        -o-transform:rotateZ(720deg) rotateY(0deg);
-        transform:rotateZ(720deg) rotateY(0deg);
-    }
-    to{
-        -ms-transform:rotateZ(720deg) rotateY(180deg);
-        -moz-transform:rotateZ(720deg) rotateY(180deg);
-        -webkit-transform:rotateZ(720deg) rotateY(180deg);
-        -o-transform:rotateZ(720deg) rotateY(180deg);
-        transform:rotateZ(720deg) rotateY(180deg);
-
-    }
-}
-
-.card__back__flipped {
-    -webkit-animation: flipOther 2s linear;
-    -webkit-animation-delay: 2.25s;
-    -moz-animation: flipOther 2s linear;
-    -ms-animation: flipOther 2s linear;
-    -o-animation: flipOther 2s linear;
-    animation: flipOther 2s linear;
-    animation-delay: 2.25s;
-    animation-fill-mode: forwards;
-}
-
-.drawBack {
-    -webkit-animation: flipOther 2s linear;
-    -moz-animation: flipOther 2s linear;
-    -ms-animation: flipOther 2s linear;
-    -o-animation: flipOther 2s linear;
-    animation: flipOther 2s linear;
-    animation-fill-mode: both;
-
-}
-/*--------------------------------------*/
-
-
-.cardFlip{}
-
-/*-----Draw animations-----------*/
-
-
-/*------------------P1 Card Draw--------------------------*/
-@-webkit-keyframes p1Move {
-    from {  transform: translate(0%,0%);  }
-    to {  transform: translate(0%,10vh);  }
-}
-
-@-moz-keyframes p1Move{
-    from {transform: translate(0%,0%)}
-    to {transform: translate(0%,25vh)}
-}
-
-@keyframes p1Move {
-    from {  transform: translate(0%,0%); }
-    to {  transform: translate(0%,25vh);  }
-}
-
-.p1HandClick{
-    -webkit-animation:p1Move 1.55s ease-out;
-    -webkit-animation-delay: 2.25s; /* Chrome, Safari, Opera */
-    -moz-animation:p1Move 1.55s ease-out;
-    -o-animation:p1Move 1.55s ease-out;
-    animation:p1Move 1.55s ease-out;
-    animation-delay: 2.25s;
-    animation-fill-mode: forwards;
-}
-
-
-@-webkit-keyframes p1Draw {
-    from {  transform: translate(0%,0%);  }
-    to {  transform: translate(5vw,10vh);  }
-}
-
-@-moz-keyframes p1Draw{
-    from {transform: translate(0%,0%)}
-    to {transform: translate(7vw,25vh)}
-}
-
-@keyframes p1Draw {
-    from {
-        transform: translate(0%, 0%);
-    }
-    to {
-        transform: translate(0, 25vh);
-    }
-}
-
-.drawMove1{
-    -webkit-animation:p1Draw 1.55s ease-out;
-    -moz-animation:p1Draw 1.55s ease-out;
-    -o-animation:p1Draw 1.55s ease-out;
-    animation:p1Draw 1.55s ease-out;
-    animation-fill-mode: forwards;
-}
-
-
-
-/*@keyframes discard{
-    from{
-
-    }
-    to {
-
-    }
-}
-.p1Discard{
-
-}*/
