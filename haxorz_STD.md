@@ -56,23 +56,31 @@ Chris Schayer
 
 
 ##**Test Case #: 1.0**                                  
+
 **Test Case Name:** Login
+
 **System:** H@x0rZ!                              
+
 **Subsystem:** Login 
+
 **Designed by:** Team 42                      
+
 **Design Date:** November 19, 2016 
+
 **Executed by:** Jonathan Nguyen   
+
 **Execution Date:** November 21, 2016 
+
 **Short Description:** Test the login with correct username and password 
 
-| Pre-conditions: The player opens the game.The player has already registered and has a valid username and password.   |
+| Pre-conditions: The player opens the game. The player has already registered and has a valid username and password.   |
 | --- |
 
 | **Step** | **Action** | **Expected System Response** | **Pass/Fail** | **Comment** |
 | --- | --- | --- | --- | --- |
 | 1 | In the username box, type 'h4x0rz4330@gmail.com' (remove quotes) | Entered text is shown in box. | Pass | Example username; different for other accounts. Performs as expected. |
 | 2 | In the password box, type <Howuknowdis?> | Entered text is shown in box as dots (for security). | Pass | Example password; different for other accounts. Performs as expected. |
-| 3 | Click the "Login" button | The system opens the main menu page in a new browser tab. Browser will be user&#39;s default web browser. | Pass | Success. |
+| 3 | Click the "Login" button | The system opens the main menu page in a new browser tab. Browser will be user's default web browser. | Pass | Success. |
 
 | Post-conditions: The player is brought to the main menu, where gameplay options will be available.   |
 | --- |
@@ -82,12 +90,19 @@ Chris Schayer
 
 
 ##**Test Case #: 1.1**                                  
+
 **Test Case Name:** Incorrect Username **System:** H@x0rZ! 
+
 **Subsystem:** Login 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:** Ryan Ngo 
+
 **Execution Date:**
+
 **Short Description:** Test the login with an incorrect username |
 
 | Pre-conditions: The player opens the game.   |
@@ -107,13 +122,21 @@ Chris Schayer
 
 
 ##**Test Case #: 1.2** 
+
 **Test Case Name:** Incorrect Password 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Login 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**                                        
+
 **Execution Date:**
+
 **Short Description:**  Test the login with a wrong password and use password recovery 
 
 | Pre-conditions: The player opens the game.The player has already registered and has a valid username and password.  |
@@ -136,13 +159,21 @@ Chris Schayer
 
 
 ##**Test Case #: 2.0** 
+
 **Test Case Name:** Register 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Register 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 **Short Description:**  Test the registration process for an account 
 
 | Pre-conditions: The player opens the game.   |
@@ -162,13 +193,21 @@ Chris Schayer
 
 
 ##**Test Case #: 3.0** 
+
 **Test Case Name:** Begin Game 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**                                        
+
 **Execution Date:**
+
 **Short Description:**  Test starting a new game 
 
 | Pre-conditions: The player successfully logs into the game.   |
@@ -186,13 +225,21 @@ Chris Schayer
 
 
 ##**Test Case #: 4.0** 
+
 **Test Case Name:** Game Play 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 **Short Description:** Test game play 
 
 | Pre-conditions: The player successfully logs into the game. The player chooses a number of players. The game begins. It is the player's turn.  |
@@ -213,13 +260,21 @@ Chris Schayer
 
 
 ##**Test Case #: 4.1** 
+
 **Test Case Name:** "Hack!" Card
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 **Short Description:** Test the "Hack!" Card functionality 
 
 | Pre-conditions: The player chooses to play a "Hack!" card.   |
@@ -239,13 +294,21 @@ Chris Schayer
 
 
 ##**Test Case #: 4.2** 
+
 **Test Case Name:** "R.A.T." Card 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 ** Short Description:** Test the "R.A.T." Card functionality 
 
 | Pre-conditions: The player chooses to play a &quot;R.A.T.&quot; card.   |
@@ -264,15 +327,22 @@ Chris Schayer
 
 
 ##**Test Case #: 4.3** 
+
 **Test Case Name:** "Cybersecurity Officer" Card 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
-** Short Description:** Test the "Cybersecurity Officer" Card functionality |
-| --- |
+
+** Short Description:** Test the "Cybersecurity Officer" Card functionality 
 
 | **Pre-conditions:** The player chooses to play a "Cybersecurity Officer" card.   |
 | --- |
@@ -291,13 +361,21 @@ Chris Schayer
 
 
 ##**Test Case #: 4.4** 
+
 **Test Case Name:** "Firewall" Card 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 ** Short Description:** Test the "Firewall" Card functionality 
 
 | Pre-conditions: The player chooses to play a "Firewall" card.   |
@@ -315,15 +393,22 @@ Chris Schayer
 
 
 ##**Test Case #: 4.5** 
+
 **Test Case Name:** "Hard Reset" Card 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
-**Short Description:** Test the "Hard Reset" Card functionality |
-| --- |
+
+**Short Description:** Test the "Hard Reset" Card functionality 
 
 | **Pre-conditions:** The player chooses to play a "Hard Reset" card.   |
 | --- |
@@ -342,13 +427,21 @@ Chris Schayer
 
 
 ##**Test Case #: 4.6** 
+
 **Test Case Name:** "Hijack" Card 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 **Short Description:** Test the "Hijack" Card functionality
 
 | Pre-conditions: The player chooses to play a "Hijack" card.    |
@@ -368,13 +461,21 @@ Chris Schayer
 
 
 ##**Test Case #: 4.7** 
+
 **Test Case Name:** "Trojan Horse" Card - Effect 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 **Short Description:** Test the "Trojan Horse" Card functionality 
 
 | Pre-conditions: After drawing a card at the start of their turn, the current player has a "Trojan Horse" card and either a "Hard Reset" or "Hijack" card. Player will be unable to choose the "Hard Reset" / "Hijack" card, thus forcing them to play the "Trojan Horse" card.  |
@@ -393,13 +494,21 @@ Chris Schayer
 
 
 ##**Test Case #: 4.8** 
+
 **Test Case Name:** "Trojan Horse" Card - No Effect 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 **Short Description:** Test the "Trojan Horse" Card functionality |
 | --- |
 
@@ -415,14 +524,23 @@ Chris Schayer
 | --- |
 
 | **Test Case #: 4.9** 
+
 **Test Case Name:** "Bitcoin Billions" Card 
+
 **System:** H@x0rZ! 
+
 **Subsystem:** Game 
+
 **Designed by:** Team 42 
+
 **Design Date:** November 19, 2016 
+
 **Executed by:**
+
 **Execution Date:**
+
 **Short Description:** Test the "Bitcoin Billions" Card functionality |
+
 | --- |
 
 | Pre-conditions: The player chooses to play a "Bitcoin Billions" card.    |
