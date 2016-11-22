@@ -379,8 +379,7 @@ Chris Schayer
 | --- | --- | --- | --- | --- |
 | 1 | Click on the "Hack!" card to play it | The system displays an interface with the option of players to choose as the target of the card effect. | Pass | Performs as expected |
 | 2 | Click on the name of a player | The modal displays the options of cards to guess from.  | Pass | Performs as expected |
-| 3 | Click on one of the cards, except another hack card | If the selected player has the card chosen, the system flips the guessed card to reveal a correct guess and the owner of that card loses (no longer plays in the current game).
-Otherwise, the system displays a message saying “Hack failed”. | Fail | Not yet implemented |
+| 3 | Click on one of the cards, except another hack card | If the selected player has the card chosen, the system flips the guessed card to reveal a correct guess and the owner of that card loses (no longer plays in the current game). Otherwise, the system displays a message saying “Hack failed”. | Fail | Not yet implemented |
 
 | Post-conditions: "Hack!" card is moved, face-up, to current player's discard pile. Game play continues with the next player.   |
 | --- |
