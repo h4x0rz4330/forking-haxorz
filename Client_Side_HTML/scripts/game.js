@@ -13,13 +13,16 @@
  *  added object handState: 11/23/16 Chris Schayer
  *  added Dynamic Dom Feature: 11/23/16 Chris Schayer
  *  removed repetitive logic for obtainiing board and window dimensions: 11/23/16 Chris Schayer
+ *  added generate Deck: 11/23/16 Chris Schayer
+ *  added card removal from deck to deal and draw: 11/23/16 Chris Schayer
  */
 
 $(document).ready(function(){
     //gets the users initial window dimensions.
     boardState.initializeGameDimensions();
+    playerStates.initPlayerState(2);
     //ripples();
-
+    populateDeck();
     //this will be where the outter most loop will occur that will trigger each round
         //deal Phase
         dealCards(4);
@@ -29,7 +32,7 @@ $(document).ready(function(){
         //updates the dimensions of board and performs correct corrections to maintain card position relative to gameboard.
         $(window).resize(function(){
             boardState.updateBoardDimensions();
-            handStates.correctCards();
+            playerStates.correctCards();
         });
 
         //This will be where main loop in each round that will trigger the start of a new turn
@@ -44,12 +47,7 @@ $(document).ready(function(){
 
             //Play Phase
 
-
             //End of turn phase
-
-
-
-
 });
 
 
@@ -100,6 +98,7 @@ function dealCards(players){
             var delay = 750 * (i%players);
             var item = $(".effect__click:eq(0)", hand);
             var handPosition = hand.position();
+            $(".card:last-child","#deck").remove();
 
        $(".card:eq(0)",hand).flip({trigger:'manual'});
 
@@ -139,7 +138,7 @@ function dealCards(players){
                             var card =  $(e.target).parent();
                             discardCard(card,board);
                         })
-                        handStates.setHandPositions(players);
+                        playerStates.setHandPositions(players);
                         },
 
                     delay: delay,
@@ -231,6 +230,19 @@ function drawCard(player){
 
 }
 
+
+function populateDeck()
+{
+
+    for(var i = 1;i<=15;i++)
+    {
+        var card = generateCard().clone();
+        $(card).flip({trigger:'manual'});
+       $("#deck").append(card);
+    }
+}
+
+
 function playCard(){
 
 }
@@ -245,7 +257,7 @@ function getDiscardOffsetPosition(discardPile){
     return position;
 }
 */
-function discardCard(card,board){
+function discardCard(card){
 
     console.log(card.index());
     console.log(card.parent());
@@ -301,65 +313,91 @@ function applyDiscardAnimation(player){
 
 //TODO ISWINNER()
 
-var handStates = {
-    p1Hand:{position:0},
-    p2Hand:{position:0},
-    p3Hand:{position:0},
-    p4Hand:{position:0},
-    setHandPositions:function(players){
-        for(i = 1;i<=players; i++)
-        {
-            switch(i){
+var playerStates = {
+    p1State: {
+        hand: {position: 0},
+        discard: {position:0},
+        isEliminated: true
+    },
+    p2State: {
+        hand: {position: 0},
+        discard: {position:0},
+        isEliminated: true
+
+    },
+    p3State: {
+        hand: {position: 0},
+        discard: {position:0},
+        isEliminated: true
+    },
+    p4State: {
+        hand: {position: 0},
+        discard: {position:0},
+        isEliminated: true
+    },
+    setHandPositions: function (players) {
+        for (i = 1; i <= players; i++) {
+            switch (i) {
                 case 1:
-                   this.p1Hand.position=$(".effect__click:eq(0)",getHand(i)).position();
+                    this.p1State.hand.position = $(".effect__click:eq(0)", getHand(i)).position();
                     break;
                 case 2:
-                    this.p2Hand.position=$(".effect__click:eq(0)",getHand(i)).position();
+                    this.p2State.hand.position = $(".effect__click:eq(0)", getHand(i)).position();
                     break;
                 case 3:
-                    this.p3Hand.position=$(".effect__click:eq(0)",getHand(i)).position();
+                    this.p3State.hand.position = $(".effect__click:eq(0)", getHand(i)).position();
                     break;
                 case 4:
-                    this.p4Hand.position=$(".effect__click:eq(0)",getHand(i)).position();
+                    this.p4State.hand.position = $(".effect__click:eq(0)", getHand(i)).position();
                     break;
             }
         }
     },
     correctCards: function () {
         //update hand position
-        this.p1Hand.position.top = boardState.iHeight*.23;
-        this.p2Hand.position.left = -boardState.iWidth*.35;
-        this.p3Hand.position.top = -boardState.iHeight*.23;
-        this.p4Hand.position.left = boardState.iWidth*.35;
+        this.p1State.hand.position.top = boardState.iHeight * .23;
+        this.p2State.hand.position.left = -boardState.iWidth * .35;
+        this.p3State.hand.position.top = -boardState.iHeight * .23;
+        this.p4State.hand.position.left = boardState.iWidth * .35;
 
         //apply position update to cards in hand
         //p1Hand reposition
-        $(".effect__click","#p1Hand").css("top",this.p1Hand.position.top+"px");
+        $(".effect__click", "#p1Hand").css("top", this.p1State.hand.position.top + "px");
 
-        if($("#p1Hand").children().length==2)
-        {   //repositioning for second card in hand to allow for dynamic width maintainence b/w cards.
-            $(".effect__click:eq(1)","#p1Hand").css("left",-boardState.iWidth *.08+"px");
+        if ($("#p1Hand").children().length == 2) {   //repositioning for second card in hand to allow for dynamic width maintainence b/w cards.
+            $(".effect__click:eq(1)", "#p1Hand").css("left", -boardState.iWidth * .08 + "px");
         }
 
         //p2Hand reposition
-        $(".effect__click","#p2Hand").css("left",this.p2Hand.position.left+"px");
-        if($("#p2Hand").children().length==2)
-        {
-            $(".effect__click:eq(1)","#p2Hand").css("top",boardState.iHeight *.12+"px");
+        $(".effect__click", "#p2Hand").css("left", this.p2State.hand.position.left + "px");
+        if ($("#p2Hand").children().length == 2) {
+            $(".effect__click:eq(1)", "#p2Hand").css("top", boardState.iHeight * .12 + "px");
         }
 
         //p3Hand reposition
-        $(".effect__click","#p3Hand").css("top",this.p3Hand.position.top+"px");
-        if($("#p3Hand").children().length==2)
-        {
-            $(".effect__click:eq(1)","#p3Hand").css("left",boardState.iWidth *.08+"px");
+        $(".effect__click", "#p3Hand").css("top", this.p3State.hand.position.top + "px");
+        if ($("#p3Hand").children().length == 2) {
+            $(".effect__click:eq(1)", "#p3Hand").css("left", boardState.iWidth * .08 + "px");
         }
 
         //p4Hand reposition
-        $(".effect__click","#p4Hand").css("left",this.p4Hand.position.left+"px");
-        if($("#p4Hand").children().length==2)
+        $(".effect__click", "#p4Hand").css("left", this.p4State.hand.position.left + "px");
+        if ($("#p4Hand").children().length == 2) {
+            $(".effect__click:eq(1)", "#p4Hand").css("top", -boardState.iHeight * .12 + "px");
+        }
+    },
+    initPlayerState: function(players){
+        switch(players)
         {
-            $(".effect__click:eq(1)","#p4Hand").css("top",-boardState.iHeight *.12+"px");
+            case 4:
+                this.p4State.isEliminated=false;
+            case 3:
+                this.p3State.isEliminated=false;
+            case 2:
+                this.p2State.isEliminated=false;
+                this.p1State.isEliminated=false;
+                break;
+
         }
     }
 }
@@ -368,9 +406,11 @@ var boardState = {
     //height and width of window
     height: 0,
     width: 0,
+
     //height and width of the actual board
     iHeight: 0,
     iWidth: 0,
+
     //aspect ratio of the board
     ratio: (16 / 9),
 
@@ -474,8 +514,10 @@ function ripples() {
         }
     });
 }
+
+
 /*--------In progress-------------
-TODO USED TO CORRECT THE POSITION OF THE CARD
+
 */
 
 /*

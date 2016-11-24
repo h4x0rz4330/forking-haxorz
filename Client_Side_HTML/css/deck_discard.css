@@ -3,12 +3,12 @@
 
 #deck{
     position: absolute;
-    top:50vh;
-    left:55%;
+    top:42vh;
+    left:46vw;
 
 }
 
-ul.cardPile{
+/*ul.cardPile{
     width: 200px;
     height: 310px;
     margin: 0 auto 30px;
@@ -41,5 +41,5 @@ ul.cardPile li {
     -ms-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
-}
+}*/
 
