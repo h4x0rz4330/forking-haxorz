@@ -40,3 +40,28 @@
 }
 
 
+.cybersecurity{
+    background: url("../images/Cybersecurity_Officer_Card.png");
+}
+
+.rat{
+    background: url("../images/RAT_Card.png");
+}
+
+.firewall{
+    background: url("../images/Firewall_Card.png");
+}
+
+.hardReset{
+ background: url("../images/Hard_Reset_Card.png");
+}
+
+.hack{
+    background: url("../images/Hack_Card.png");
+}
+
+.cybersecurity,.rat,.firewall,.hardReset,.hack{
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

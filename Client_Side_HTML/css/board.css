@@ -31,4 +31,21 @@ body{
 }
 
 
+.playerButton{
+    width:15vw;
+    height:15vh;
+    float:right;
+    margin-right:2%;
+    border:none;
+}
 
+.cardButton{
+    width:10vw;
+    height:20vh;
+    border:none;
+}
+
+.modal-content{
+  height:60vh;
+    width:50vw;
+}

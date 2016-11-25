@@ -6,26 +6,67 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="css/card.css">
-    <link rel="stylesheet" href="css/p2Cards.css">
-    <link rel="stylesheet" href="css/p3Cards.css">
-    <link rel="stylesheet" href="css/p4Cards.css">
+
     <link rel="stylesheet" href="css/deck_discard.css">
 
 
 </head>
 <body>
     <div id="game" class="board" class="pulse-single">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cardModal">
+            Launch demo modal2
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="playerModal" tabindex="-1" role="dialog" aria-labelledby="playerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="playerModalLabel">Modal title</h4>
+                    </div>
+                    <div id="choosePlayer" class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="cardModalLabel">Choose A Card To Hack</h4>
+                    </div>
+                    <div id="chooseCard" class="modal-body">
+                        <button type = 'button' class="rat cardButton"></button>
+                        <button type = 'button' class="cybersecurity cardButton"></button>
+                        <button type = 'button' class="firewall cardButton"></button>
+                        <button type = 'button' class="hardReset cardButton"></button>
+                        <button type = 'button' class="cardButton"></button>
+                        <button type = 'button' class="cardButton"></button>
+                        <button type = 'button' class="cardButton"></button>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
             <button id="draw">Draw card</button>
             <button id="discard">Discard card</button>
-            <div>
-                <div  id="deck"></div>
-            </div>
+            <div  id="deck"></div>
             <div id="p1Hand" class="hand"></div>
             <div id="p1Disc"></div>
-            <div id="p2Hand" class="hand"></div>
-            <div id="p2Disc"></div>
             <div id="p3Hand" class="hand"></div>
             <div id="p3Disc"></div>
+            <div id="p2Hand" class="hand"></div>
+            <div id="p2Disc"></div>
             <div id="p4Hand" class="hand"></div>
             <div id="p4Disc"></div>
     </div>
@@ -38,4 +79,5 @@
     <script src="scripts/jquery.ripples.js"></script>
     <script src="scripts/velocity.min.js"></script>
     <script src="scripts/flip.js"></script>
+    <script src="scripts/jquery.cycle2.min.js"></script>
 </html>
