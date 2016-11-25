@@ -40,7 +40,7 @@
 /*              
 /*                   -   solved by seprating "Stage" for "Register Page"
 /*
-/*           11/16/16    Refer to "FXMLRegisterController.java"                   Rayan
+/*           11/16/16    Refer to "FXMLRegisterController.java"                   Ryan
 /*                   -   Added code in Register's "handleButtonAction" class 
 /*                       to redirect Main Menu HTML web page from Register Page
 /*                   
@@ -52,7 +52,7 @@
 /*           11/21/16      when back button press, it will redirect to the main Login 
 /*                         screen. 
 /* 
-/*                         
+/*           11/25/16   added email functionality to the email form controller  Ryan
 /*
 /*
 */            

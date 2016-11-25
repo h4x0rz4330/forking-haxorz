@@ -47,39 +47,39 @@ public class FXMLLoginController extends Application  implements Initializable, 
         if(e.getSource()== Login)
         {
             String username = UserEmailInput.getText();
-                  String password = UserPasswordInput.getText();
-                  
-                  try{
-                    URL login = new URL("http://54.70.3.103/h4x0rzServlet/Login");
-                    HttpURLConnection servletConnection = (HttpURLConnection) login.openConnection();
-                    servletConnection.setRequestMethod("POST");
-                    servletConnection.setDoOutput(true);
+            String password = UserPasswordInput.getText();
 
-                      try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(servletConnection.getOutputStream()))) {
-                          out.write("username="+username);
-                          out.write("&");
-                          out.write("password="+password);
-                          out.flush();
-                      }
+            try{
+              URL login = new URL("http://54.70.3.103/h4x0rzServlet/Login");
+              HttpURLConnection servletConnection = (HttpURLConnection) login.openConnection();
+              servletConnection.setRequestMethod("POST");
+              servletConnection.setDoOutput(true);
 
-                      try (BufferedReader in = new BufferedReader(new InputStreamReader(servletConnection.getInputStream()))) {
-                          String response = in.readLine();
-                          System.out.println(response);
-                          if (response.equals("1")){
-                              System.out.println("Logged In");
-                              getHostServices().showDocument("http://54.70.3.103/h4x0rz/MainMenu.html");
-                          }
-                          else
-                          {
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Warning");
-                            alert.setContentText("Incorrect Username or Password." );
-                            alert.showAndWait();
-                          }
-                      }
-                  }catch(MalformedURLException f){
-                  }catch(IOException f){
-                  }
+                try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(servletConnection.getOutputStream()))) {
+                    out.write("username="+username);
+                    out.write("&");
+                    out.write("password="+password);
+                    out.flush();
+                }
+
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(servletConnection.getInputStream()))) {
+                    String response = in.readLine();
+                    System.out.println(response);
+                    if (response.equals("1")){
+                        System.out.println("Logged In");
+                        getHostServices().showDocument("http://54.70.3.103/h4x0rz/MainMenu.html");
+                    }
+                    else
+                    {
+                      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                      alert.setTitle("Warning");
+                      alert.setContentText("Incorrect Username or Password." );
+                      alert.showAndWait();
+                    }
+                }
+            }catch(MalformedURLException f){
+            }catch(IOException f){
+            }
         }
     }
     
