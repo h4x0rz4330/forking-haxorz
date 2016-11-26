@@ -201,20 +201,21 @@ function applyDrawAnimation(player){
     }
 
 }
+function applyModalAnimation(){
+    $("#playerModal").on("hidden.bs.modal",function(){
+        clearPlayerChoice();
+    });
+    $("#playerModal").on("show.bs.modal",function(){
+        populatePlayerChoice();
+        $(".playerButton").on("click",function(e){
+            gameState.playerChoice.playerChosen=$(e.target).html();
+            modalSwitch();
+        });
+    })
+}
 
 function playCard(card){
     gameState.playerChoice.cardPlayed=card;
-    populatePlayerChoice();
-    $(".playerButton").on("click",function(e){
-        gameState.playerChoice.playerChosen=$(e.target).html();
-       /* for (choice in $("#chooseCard")){
-            $(choice,$("#chooseCard")).on("click",function(e){
-
-                return false;
-            })
-        }*/
-        modalSwitch();
-    })
 }
 
 //deals a single card to a player during draw phase.
@@ -275,13 +276,12 @@ function updateHand(player){
 }
 
 
+
 function discardCard(card){
     var dPile = $(getDiscard(1));
     var hand = $(getHand(1));
     applyDiscardAnimation("user",card,dPile,hand);
     modalSwitch2();
-
-
 }
 
 function applyDiscardAnimation(player,card,dPile,hand){
@@ -317,11 +317,41 @@ function generateCard(){
     var card =$("<div class='card effect__click'></div>");
     var cardFront = $("<div class='front'></div>");
     var cardBack = $("<div class='back'></div>");
+    setCardValues(card,3)
     $(card).append(cardBack);
     $(card).append(cardFront);
     return card;
 }
 
+function setCardValues(card,number)
+{
+  switch(number){
+      case 1:
+          $(card).addClass("hack");
+          break;
+      case 2:
+          $(card).addClass("rat");
+          break;
+      case 3:
+          $(card).addClass("cybersecurity");
+          break;
+      case 4:
+          $(card).addClass("firewall");
+          break;
+      case 5:
+          $(card).addClass("hardReset");
+          break;
+      case 6:
+          $(card).addClass("rat");
+          break;
+      case 7:
+          $(card).addClass("rat");
+          break;
+      case 8:
+          $(card).addClass("rat");
+          break;
+  }
+}
 function buildCard(card){
     //TODO get card info from server
 }

@@ -5,6 +5,7 @@ $(document).ready(function(){
     //gets the users initial window dimensions.
     boardState.initializeGameDimensions();
     playerStates.initPlayerState(2);
+    applyModalAnimation();
     //ripples();
     populateDeck();
     $('#playerModal').on('hidden.bs.modal', function () {
