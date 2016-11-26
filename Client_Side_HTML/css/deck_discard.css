@@ -3,11 +3,45 @@
 
 #deck{
     position: absolute;
-    top:42vh;
-    left:46vw;
+    top:43vh;
+    left:47vw;
 
 }
 
+.hand{
+    top:43vh;
+    left:47vw;
+    position:absolute;
+}
+
+
+
+#p1Disc>.card{
+    top:1.3vh;
+}
+.disc{
+    position: absolute;
+    width:6vw;
+    height:13vh;
+    top:43vh;
+    left:47vw;
+
+}
+
+#p1Disc{
+    background-color:yellow;
+}
+#p2Disc{
+    background-color:green;
+}
+
+#p3Disc{
+    background-color:blue;
+}
+
+#p4Disc{
+    background-color:orange;
+}
 /*ul.cardPile{
     width: 200px;
     height: 310px;

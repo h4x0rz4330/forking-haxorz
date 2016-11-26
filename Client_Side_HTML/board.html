@@ -3,20 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/board.css">
-    <link rel="stylesheet" href="css/card.css">
 
-    <link rel="stylesheet" href="css/deck_discard.css">
 
 
 </head>
 <body>
     <div id="game" class="board" class="pulse-single">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cardModal">
-            Launch demo modal2
-        </button>
 
         <!-- Modal -->
         <div class="modal fade" id="playerModal" tabindex="-1" role="dialog" aria-labelledby="playerModalLabel" aria-hidden="true">
@@ -28,13 +20,14 @@
                         </button>
                         <h4 class="modal-title" id="playerModalLabel">Modal title</h4>
                     </div>
-                    <div id="choosePlayer" class="modal-body">
+                    <div id="choosePlayer">
                     </div>
                     <div class="modal-footer">
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -44,14 +37,14 @@
                         </button>
                         <h4 class="modal-title" id="cardModalLabel">Choose A Card To Hack</h4>
                     </div>
-                    <div id="chooseCard" class="modal-body">
-                        <button type = 'button' class="rat cardButton"></button>
-                        <button type = 'button' class="cybersecurity cardButton"></button>
-                        <button type = 'button' class="firewall cardButton"></button>
-                        <button type = 'button' class="hardReset cardButton"></button>
-                        <button type = 'button' class="cardButton"></button>
-                        <button type = 'button' class="cardButton"></button>
-                        <button type = 'button' class="cardButton"></button>
+                    <div id="chooseCard">
+                        <button type = 'button' class="rat cardButton" onclick="discardPhase(this)"></button>
+                        <button type = 'button' class="cybersecurity cardButton" onclick="discardPhase(this)"></button>
+                        <button type = 'button' class="firewall cardButton" onclick="discardPhase(this)"></button>
+                        <button type = 'button' class="hardReset cardButton" onclick="discardPhase(this)"></button>
+                        <button type = 'button' class="cardButton" onclick="discardPhase(this)"></button>
+                        <button type = 'button' class="cardButton" onclick="discardPhase(this)"></button>
+                        <button type = 'button' class="cardButton" onclick="discardPhase(this)"></button>
                     </div>
                     <div class="modal-footer">
                     </div>
@@ -59,20 +52,19 @@
             </div>
         </div>
             <button id="draw">Draw card</button>
-            <button id="discard">Discard card</button>
             <div  id="deck"></div>
             <div id="p1Hand" class="hand"></div>
-            <div id="p1Disc"></div>
+            <div id="p1Disc" class="disc"></div>
             <div id="p3Hand" class="hand"></div>
-            <div id="p3Disc"></div>
+            <div id="p3Disc" class="disc"></div>
             <div id="p2Hand" class="hand"></div>
-            <div id="p2Disc"></div>
+            <div id="p2Disc" class="disc"></div>
             <div id="p4Hand" class="hand"></div>
-            <div id="p4Disc"></div>
+            <div id="p4Disc" class="disc"></div>
     </div>
 </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.js"></script>
     <script src="scripts/jquery.transit.min.js"></script>
     <script src="scripts/game.js"></script>
     <script src="scripts/modernizr.js"></script>
@@ -80,4 +72,8 @@
     <script src="scripts/velocity.min.js"></script>
     <script src="scripts/flip.js"></script>
     <script src="scripts/jquery.cycle2.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/board.css">
+<link rel="stylesheet" href="css/card.css">
+<link rel="stylesheet" href="css/deck_discard.css">
 </html>

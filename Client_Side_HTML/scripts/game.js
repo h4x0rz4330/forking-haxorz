@@ -8,7 +8,8 @@
  * Calculations conducted in this script primarily utilized to determine window and board height/width.
  *  This is done to allow for a dynamic environment in which dom elements will maintain proper positioning despite changes to window height and width.
  *
- * Changes:
+ * Changes log:
+ * {decsription} {date} {performed by}
  *  added object boardState: 11/23/16 Chris Schayer
  *  added object handState: 11/23/16 Chris Schayer
  *  added Dynamic Dom Feature: 11/23/16 Chris Schayer
@@ -25,7 +26,12 @@ $(document).ready(function(){
     playerStates.initPlayerState(3);
     //ripples();
     populateDeck();
+    $('#playerModal').on('hidden.bs.modal', function () {
+
+    })
     //this will be where the outter most loop will occur that will trigger each round
+
+        setupBoard();
         //deal Phase
         dealCards(4);
 
@@ -40,9 +46,6 @@ $(document).ready(function(){
             //Draw Phase
             $("#draw").click(function(){
                 drawCard(1);
-                drawCard(2);
-                drawCard(3);
-                drawCard(4);
             });
 
             //Play Phase
@@ -66,6 +69,16 @@ function getDiscard(player)
 }
 
 
+function setupBoard(){
+    $("#p1Disc").velocity({top:'+='+(boardState.iHeight*.24),left:'-='+(boardState.iWidth *.15)},{duration:1000,queue:false});
+    $("#p2Disc").velocity({top:'-='+(boardState.iHeight*.24),left:'+='+(boardState.iWidth) *.15},{duration:1000, queue:false});
+    $("#p2Disc").velocity({rotateZ: "180"}, {duration: 1000, queue: false});
+    $("#p3Disc").velocity({top:'+='+(boardState.iHeight *.15),left:'-='+(boardState.iWidth*.36)},{duration:1000, queue:false});
+    $("#p3Disc").velocity({rotateZ:"90"}, {duration: 1000, queue: false});
+    $("#p4Disc").velocity({top:'-='+(boardState.iHeight *.15),left:'+='+(boardState.iWidth*.36)},{duration:1000, queue:false});
+    $("#p4Disc").velocity({rotateZ:"270"}, {duration: 1000, queue: false});
+}
+
 /*------------------------------GAME ACTIONS -------------------------------------*/
 //performs initial deal actions which gives 1 card to all players.
 function dealCards(players){
@@ -84,16 +97,16 @@ function dealCards(players){
         switch(i)
         {
             case 1:
-               $(".effect__click:eq(0)",hand).velocity({top:'+='+(boardState.iHeight*.23)},{duration:1000,delay:animationStates.delay[i-1], queue:false});
+               $(".effect__click:eq(0)",hand).velocity({top:'+='+(boardState.iHeight*.25)},{duration:1000,delay:animationStates.delay[i-1], queue:false});
                 break;
             case 3:
-               $(".effect__click:eq(0)",hand).velocity({left:'-='+(boardState.iWidth*.35)},{duration:1000,delay:animationStates.delay[i-1], queue:false});
+               $(".effect__click:eq(0)",hand).velocity({left:'-='+(boardState.iWidth*.36)},{duration:1000,delay:animationStates.delay[i-1], queue:false});
                 break;
             case 2:
-                $(".effect__click:eq(0)",hand).velocity({top:'-='+(boardState.iHeight*.23)},{duration:1000,delay:animationStates.delay[i-1], queue:false});
+                $(".effect__click:eq(0)",hand).velocity({top:'-='+(boardState.iHeight*.25)},{duration:1000,delay:animationStates.delay[i-1], queue:false});
                 break;
             case 4:
-                $(".effect__click:eq(0)",hand).velocity({left:'+='+(boardState.iWidth*.35)},{duration:1000,delay:animationStates.delay[i-1], queue:false});
+                $(".effect__click:eq(0)",hand).velocity({left:'+='+(boardState.iWidth*.36)},{duration:1000,delay:animationStates.delay[i-1], queue:false});
                 break;
         }
         //if player is user include flip and zoom-in animation with the normal deal animation.
@@ -104,7 +117,7 @@ function dealCards(players){
                 {duration: 1000,
                     complete: function () {
                         $(".card:eq(0)",tempHand).flip(true);
-                        $(".card:eq(0)",tempHand).mouseover(function(){$(".card:eq(0)",tempHand).velocity({scale:2.5},{duration:200}).css("z-index","2")}).mouseleave(function(){
+                        $(".card:eq(0)",tempHand).mouseover(function(){$(".card:eq(0)",tempHand).velocity({scale:2.8},{duration:200}).css("z-index","2")}).mouseleave(function(){
                                 $(".card:eq(0)",tempHand).velocity("reverse").css("z-index","1");
                             });
                         $(".card:eq(0)",tempHand).attr("data-toggle","modal").attr('data-target',"#playerModal");
@@ -147,16 +160,16 @@ function applyDrawAnimation(player){
     switch(player)
     {
         case 1:
-            $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight*.23),left:'+='+(boardState.iWidth *.08)},{duration:1000,queue:false});
+            $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight*.25),left:'-='+(boardState.iWidth *.07)},{duration:1000,queue:false});
             break;
         case 3:
-            $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight *.12),left:'-='+(boardState.iWidth*.35)},{duration:1000, queue:false});
+            $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight *.10),left:'+='+(boardState.iWidth*.36)},{duration:1000, queue:false});
             break;
         case 2:
-           $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight*.23),left:'-='+(boardState.iWidth) *.08},{duration:1000, queue:false});
+           $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight*.25),left:'+='+(boardState.iWidth) *.07},{duration:1000, queue:false});
             break;
         case 4:
-            $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight *.12),left:'+='+(boardState.iWidth*.35)},{duration:1000, queue:false});
+            $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight *.10),left:'-='+(boardState.iWidth*.36)},{duration:1000, queue:false});
             break;
     }
 
@@ -190,6 +203,29 @@ function applyDrawAnimation(player){
 }
 
 function playCard(card){
+    gameState.playerChoice.cardPlayed=card;
+    populatePlayerChoice();
+    $(".playerButton").on("click",function(e){
+        gameState.playerChoice.playerChosen=$(e.target).html();
+       /* for (choice in $("#chooseCard")){
+            $(choice,$("#chooseCard")).on("click",function(e){
+
+                return false;
+            })
+        }*/
+        modalSwitch();
+    })
+}
+
+//deals a single card to a player during draw phase.
+function drawCard(player){
+    updateHand(player);
+    applyDrawAnimation(player);
+    gameState.updateDeckLength();
+
+}
+
+function populatePlayerChoice(){
     switch(gameState.players){
         case 4:
             if(!playerStates.p4State.isEliminated)
@@ -207,18 +243,12 @@ function playCard(card){
                 $("#choosePlayer").append($(playerStates.p2State.modalButton))
             }
     }
-    $(".playerButton").on("click",function(e){
-        gameState.playerChoice.playerChosen=$(e.target).html();
-        modalSwitch();
-    })
 }
 
-//deals a single card to a player during draw phase.
-function drawCard(player){
-    updateHand(player);
-    applyDrawAnimation(player);
-    gameState.updateDeckLength();
-
+function clearPlayerChoice(){
+    for (choice in $("#choosePlayer")){
+        $(choice,"#choosePlayer").remove();
+    }
 }
 
 function populateDeck()
@@ -244,66 +274,38 @@ function updateHand(player){
     return hand;
 }
 
-/* Temporarily commenting out due to potential solution.
-function getDiscardOffsetPosition(discardPile){
-    var position = {vertical:0,horizontal:0};
-    if(discardPile.length!=0)
-    {
-        position.vertical=((discardPile.length-1)/4)
-        position.horizontal=(discardPile.length%4);
-    }
-    return position;
-}
-*/
 
-function discardCard(cardPlayed){
+function discardCard(card){
+    var dPile = $(getDiscard(1));
+    var hand = $(getHand(1));
+    applyDiscardAnimation("user",card,dPile,hand);
+    modalSwitch2();
 
-    console.log(cardPlayed.index());
-
-    var dPile = $(getDiscard(player));
-    var dcard= $(cardPlayed).clone();
-
-    var cardposition=getDiscardOffsetPosition(dPile);
-    var hand = $(getHand(player));
-    switch(player)
-    {
-        case 1:
-            $(".effect__click:eq(1)",hand).velocity({top:'-='+(board.height*.23),left:'-='+(gameState.cardChosenIndex*board.width *.08+cardposition.horizontal*board.width*.08)},{duration:1000,queue:false});
-            break;
-        case 3:
-            $(".effect__click:eq(1)",hand).velocity({top:'+='+(board.height*.23),left:'+='+(board.width *.08)},{duration:1000,queue:false});
-            break;
-        case 2:
-            $(".effect__click:eq(1)",hand).velocity({top:'+='+(board.height*.23),left:'+='+(board.width *.08)},{duration:1000,queue:false});
-            break;
-        case 4:
-            $(".effect__click:eq(1)",hand).velocity({top:'+='+(board.height*.23),left:'+='+(board.width *.08)},{duration:1000,queue:false});
-            break;
-    }
-    $(card).remove();
 
 }
 
+function applyDiscardAnimation(player,card,dPile,hand){
+   switch(player)
+   {
+       case "user":
+           animationStates.playerDiscard.p1Discard(card,dPile,hand);
+           break;
+       case "p2":
+           animationStates.playerDiscard.p2Discard(card,dPile,hand);
+           break;
+       case "p3":
+           animationStates.playerDiscard.p3Discard(card,dPile,hand);
+           break;
+       case "p4":
+           animationStates.playerDiscard.p4Discard(card,dPile,hand);
+           break;
+   }
+}
+//TODO alter to utilize ajax for player
 /*Determines x and y value of discard not actual px offset */
-function getDiscardOffsetPosition(discardPile,player){
-    var position = {vertical:0,horizontal:0};
-    if(player.index()==1||player.index()==3) {
-        if (discardPile.length != 0) {
-            position.vertical = ((discardPile.length - 1) / 4)
-            position.horizontal = (discardPile.length % 4);
-        }
-    }
-    else
-    {
-        position.horizontal=discardPile.length
-    }
 
-    return position;
-}
 
-function calculateDiscardOffset(player,card){
 
-}
 /*------------------------------------------------------------------------------------*/
 
 
@@ -326,11 +328,13 @@ function buildCard(card){
 
 //apply necessary move animation on the card to the players discard section.
 //No flip animation is necessary as player is allowed to look at opponents discard.
-function applyDiscardAnimation(player){
 
+
+function discardPhase(e){
+    clearPlayerChoice();
+    gameState.playerChoice.cardChosen=$(e.target).index()+2;
+    discardCard(gameState.playerChoice.cardPlayed);
 }
-
-
 //TODO ISWINNER()
 
 var playerStates = {
@@ -383,10 +387,10 @@ var playerStates = {
     },
     correctCards: function () {
         //update hand position
-        this.p1State.hand.position.top = boardState.iHeight * .23;
-        this.p3State.hand.position.left = -boardState.iWidth * .35;
-        this.p2State.hand.position.top = -boardState.iHeight * .23;
-        this.p4State.hand.position.left = boardState.iWidth * .35;
+        this.p1State.hand.position.top = boardState.iHeight * .25;
+        this.p3State.hand.position.left = -boardState.iWidth * .36;
+        this.p2State.hand.position.top = -boardState.iHeight * .25;
+        this.p4State.hand.position.left = boardState.iWidth * .36;
 
         //apply position update to cards in hand
         //p1Hand reposition
@@ -433,14 +437,12 @@ var playerStates = {
                 break;
 
         }
-
-
     }
 }
 
 var gameState ={
     players:0,
-    playerNames:[],
+    playerNames:["user","p2","p3","p4"],
     playerChoice:{
         cardPlayed:"",
         playerChosen:"",
@@ -552,13 +554,81 @@ var boardState = {
 
 var animationStates={
     rotation:[720,900,810,990],
-    delay:[2250,750,1500,0]
+    delay:[2250,750,1500,0],
+    playerDiscard:{
+        p1Discard:function(card,dPile,hand){
+            if(card.index()==1)
+            {
+                console.log("trigger at index 1");
+                $(card,hand).velocity({
+                    left:"-="+(boardState.iWidth *.22)
+                },{
+                    duration:1000,
+                    complete: function(){
+
+                        $(dPile).append($(generateCard().clone()));
+                        $(card).remove();
+                    },
+                    queue:false
+                });
+            }
+            else
+            {
+                console.log("trigger at index 0");
+                $(card).velocity({left:"-="+(boardState.iWidth *.15)},{
+                    duration:1000,
+                    complete: function(){
+                        $(dPile).append($(generateCard().clone()));
+                        $(card).remove();
+                    },
+                    queue:false
+                });
+            }
+        },
+        p2Discard:function(card){
+            if(card.index()==1)
+            {
+
+            }
+            else
+            {
+
+            }
+
+        },
+        p3Discard:function(card){
+            if(card.index()==1)
+            {
+
+            }
+            else
+            {
+
+            }
+
+        },
+        p4Discard:function(card){
+            if(card.index()==1)
+            {
+
+            }
+            else
+            {
+
+            }
+
+        }
+    }
 }
 
 
 function modalSwitch(){
     $('#playerModal').modal('hide');
     $('#cardModal').modal('show');
+}
+
+function modalSwitch2(){
+    $('#cardModal').modal('hide');
 }
 
 /*------------------------MISCELANIOUS/SIDE FEATURES-----------------------------*/

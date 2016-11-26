@@ -32,11 +32,12 @@ body{
 
 
 .playerButton{
+    top:100px;
     width:15vw;
     height:15vh;
     float:right;
     margin-right:2%;
-    border:none;
+    position:relative;
 }
 
 .cardButton{
@@ -44,8 +45,19 @@ body{
     height:20vh;
     border:none;
 }
-
 .modal-content{
-  height:60vh;
-    width:50vw;
+    background-color:transparent;
+    background:url("../images/modal_design_nf.png")no-repeat center center;
+    background-size: cover;
+    height:70vh;
+}
+#choosePlayer{
+    border:none;
+    height:47vh;
+    background-color:transparent;
+}
+.modal{
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
 }
