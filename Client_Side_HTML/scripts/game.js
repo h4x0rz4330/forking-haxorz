@@ -20,10 +20,10 @@
  *  removed p2-p4 card css files because velocity rendered such files unecessary: 11/24/16 Chris Schayer
  */
 
-$(document).ready(function(){
+/*$(document).ready(function(){
     //gets the users initial window dimensions.
     boardState.initializeGameDimensions();
-    playerStates.initPlayerState(3);
+    playerStates.initPlayerState(2);
     //ripples();
     populateDeck();
     $('#playerModal').on('hidden.bs.modal', function () {
@@ -33,7 +33,7 @@ $(document).ready(function(){
 
         setupBoard();
         //deal Phase
-        dealCards(4);
+        dealCards(2);
 
         //updates the dimensions of board and performs correct corrections to maintain card position relative to gameboard.
         $(window).resize(function(){
@@ -51,7 +51,7 @@ $(document).ready(function(){
             //Play Phase
 
             //End of turn phase
-});
+});*/
 
 
 /*------------------------------Value Obtaining Functions-----------------------*/
@@ -319,7 +319,7 @@ function generateCard(){
     var cardBack = $("<div class='back'></div>");
     $(card).append(cardBack);
     $(card).append(cardFront);
-    return card
+    return card;
 }
 
 function buildCard(card){
