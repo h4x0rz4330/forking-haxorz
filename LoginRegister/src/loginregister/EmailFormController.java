@@ -88,4 +88,9 @@ public class EmailFormController implements Initializable, ScreenInterface{
     private void gotoForgotPassword(ActionEvent event){
        myController.setScreen(MainController.screen4ID);
     }
+    
+    @FXML
+    private void goToLogin(ActionEvent event){
+       myController.setScreen(MainController.screen1ID);
+    }
 }

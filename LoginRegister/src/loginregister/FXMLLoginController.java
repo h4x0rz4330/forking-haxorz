@@ -99,9 +99,11 @@ public class FXMLLoginController extends Application  implements Initializable, 
     }
     
     @FXML 
-    private void gotoEmailForm(ActionEvent event){
+    private void gotoForgotPassword(ActionEvent event){
         myController.setScreen(MainController.screen3ID);
     }
+    
+    
     
     @Override
     public void start(Stage primaryStage) throws Exception {
