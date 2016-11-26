@@ -27,41 +27,46 @@ While our initial iteration of the game is based on hacking themes, we plan to o
 Configuration Management Plan
 -----------------------------
 
-
-
+   Our team plans to use GitHub and Google Drive to do all of our work. GitHub will make it easy to upload our code so that everyone can always have access to the most recent files. This will also help with integration, when it comes time to test. Google Drive will make it easy to collaborate on documentation throughout the project.
 
 
 Process Model
 -------------
 
-
-
+We will be using Agile methods due to time constraints specified by the client.
 
 
 Deliverables
 ------------
 
+[Software Requirements Specification Document](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_SRS.md)
 
+[Software System Design Document](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_SDD.md)
 
+[Software Testing Document](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_STD.md)
 
+**Download game** [**here**]()
+
+[Game Manual]()
 
 Potential Risks
 ---------------
 
-
+There is always human risk with a game. Human error can be introduced in the code by programmers. We could be facing resource risk because we will be using an EC2 instance. There is the possiblitly that we will be charged more than we are making off of the game due to high amount of users. 
 
 
 
 Team Members/Tasks
 ------------------
 
-* Will Raziano - 
-* Jonathan Nguyen - 
-* Ryan Ngo - 
-* Chris Schayer - 
-* Hardika Patel - 
-* Madeline May - 
+Our team is unique in the fact that it does not fit one specific team organization. It is a mix between a chief programmer team and an egoless team. We have a project manager to help keep the team organized and on task. All team members are responsible for a certain area of the project based on expertise, making it similar to an egoless organization as well. 
 
+* Will Raziano - Project Management, Documentation
+* Jonathan Nguyen - Server/Client Communication, Documentation/Technical Editing
+* Ryan Ngo - Server Design/Implementation, Database
+* Chris Schayer - Webpage Design/Implementation
+* Hardika Patel - UI Design, Webpage Integration
+* Madeline May - Testing, Documentation
 
 
 Project Schedule : Gantt Chart
@@ -161,3 +166,11 @@ Meetings Summary
 | **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
 | **Objective** | Work on Software Testing Document and Further Coding |
 | **Summary** | Discussion of specifics for test cases held. Construction of Software Testing Document begins. Other coding, integration, and testing are also conducted. |
+
+| **Date** | November 19, 2016 |
+:--------------- | :----------------------
+| **Time** | 2:00 PM - 5:00 PM |
+| **Location** | 724 Tanya’s Trail, Baton Rouge, LA |
+| **Members Present** | Madeline May, William Raziano, Chris Schayer |
+| **Objective** | Work on Software Testing Document and Further Coding |
+| **Summary** | Met to get all of the test cases finished and make sure they align correctly with what we have implemented as well as further webpage coding.  |
