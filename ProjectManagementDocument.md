@@ -2,11 +2,18 @@ Project Management Document
 ===========================
 
 
-Index
------
+|Table of Contents|
+| ----- |
+|1. Vision|
+|2. Configuration Management Plan|
+|3. Process Model|
+|4. Deliverables|
+|5. Potential Risks|
+|6. Team Members/Tasks|
+|7. Project Schedule|
+|8. Meetings Summary|
 
-
-Vision
+1. Vision
 -------
 
 ___Vision Statement:___
@@ -24,19 +31,19 @@ While our initial iteration of the game is based on hacking themes, we plan to o
 
 
 
-Configuration Management Plan
+2. Configuration Management Plan
 -----------------------------
 
    Our team plans to use GitHub and Google Drive to do all of our work. GitHub will make it easy to upload our code so that everyone can always have access to the most recent files. This will also help with integration, when it comes time to test. Google Drive will make it easy to collaborate on documentation throughout the project.
 
 
-Process Model
+3. Process Model
 -------------
 
 We will be using Agile methods due to time constraints specified by the client.
 
 
-Deliverables
+4. Deliverables
 ------------
 
 [Software Requirements Specification Document](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_SRS.md)
@@ -49,14 +56,14 @@ Deliverables
 
 [Game Manual]()
 
-Potential Risks
+5. Potential Risks
 ---------------
 
 There is always human risk with a game. Human error can be introduced in the code by programmers. We could be facing resource risk because we will be using an EC2 instance. There is the possiblitly that we will be charged more than we are making off of the game due to high amount of users. 
 
 
 
-Team Members/Tasks
+6. Team Members/Tasks
 ------------------
 
 Our team is unique in the fact that it does not fit one specific team organization. It is a mix between a chief programmer team and an egoless team. We have a project manager to help keep the team organized and on task. All team members are responsible for a certain area of the project based on expertise, making it similar to an egoless organization as well. 
@@ -69,14 +76,14 @@ Our team is unique in the fact that it does not fit one specific team organizati
 * Madeline May - Testing, Documentation
 
 
-Project Schedule : Gantt Chart
+7. Project Schedule : Gantt Chart
 ------------------------------
 
 
 
 
 
-Meetings Summary
+8. Meetings Summary
 ----------------
 
 | **Date** | September 21, 2016 |
