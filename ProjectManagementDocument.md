@@ -180,4 +180,4 @@ Our team is unique in the fact that it does not fit one specific team organizati
 | **Location** | 724 Tanya’s Trail, Baton Rouge, LA |
 | **Members Present** | Madeline May, William Raziano, Chris Schayer |
 | **Objective** | Work on Software Testing Document and Further Coding |
-| **Summary** | Met to get all of the test cases finished and make sure they align correctly with what we have implemented as well as further webpage coding.  |
+| **Summary** | Completion of test cases and checks to ensure that they correctly correspond with the current implementation. Further webpage coding is also done.  |
