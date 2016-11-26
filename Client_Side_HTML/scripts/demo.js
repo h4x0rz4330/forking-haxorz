@@ -1,5 +1,7 @@
 var deck = [3,5,2,6,1,5,7,1];
-
+var cphand = [];
+var playerTurn = true;
+var cpTurn = false;
 
 $(document).ready(function(){
     //gets the users initial window dimensions.
@@ -15,8 +17,7 @@ $(document).ready(function(){
 
         setupBoard();
         //deal Phase
-        dealCards(2);
-
+		  dealCards(2);
         //updates the dimensions of board and performs correct corrections to maintain card position relative to gameboard.
         $(window).resize(function(){
             boardState.updateBoardDimensions();
@@ -31,6 +32,15 @@ $(document).ready(function(){
             });
 
             //Play Phase
-
             //End of turn phase
 });
+
+function playCard(){
+	if (playerTurn){
+		
+	}
+}
+
+function playCp(){
+	
+}

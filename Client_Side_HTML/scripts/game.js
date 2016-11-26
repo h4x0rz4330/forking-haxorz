@@ -82,7 +82,7 @@ function setupBoard(){
 /*------------------------------GAME ACTIONS -------------------------------------*/
 //performs initial deal actions which gives 1 card to all players.
 function dealCards(players){
-    for(i=players;i>=1;i--)
+    for(i=1;i<=players;i++)
     {
             //adds a card to hand
             var hand = updateHand(i);
@@ -160,16 +160,16 @@ function applyDrawAnimation(player){
     switch(player)
     {
         case 1:
-            $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight*.25),left:'-='+(boardState.iWidth *.07)},{duration:1000,queue:false});
+            $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight*.25),left:'+='+(boardState.iWidth *.07)},{duration:1000,queue:false});
             break;
         case 3:
-            $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight *.10),left:'+='+(boardState.iWidth*.36)},{duration:1000, queue:false});
+            $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight *.10),left:'-='+(boardState.iWidth*.36)},{duration:1000, queue:false});
             break;
         case 2:
-           $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight*.25),left:'+='+(boardState.iWidth) *.07},{duration:1000, queue:false});
+           $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight*.25),left:'-='+(boardState.iWidth) *.07},{duration:1000, queue:false});
             break;
         case 4:
-            $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight *.10),left:'-='+(boardState.iWidth*.36)},{duration:1000, queue:false});
+            $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight *.10),left:'+='+(boardState.iWidth*.36)},{duration:1000, queue:false});
             break;
     }
 
@@ -262,7 +262,7 @@ function populateDeck()
 
     for(var i = 1;i<=size;i++)
     {
-        var card = generateCard().clone();
+        var card = generateCard(1).clone();
         $(card).flip({trigger:'manual'});
        $("#deck").append(card);
     }
@@ -271,7 +271,7 @@ function populateDeck()
 function updateHand(player){
     //todo use buildcardFunction when it is completed.
     var hand =  $(getHand(player));
-    hand.append(generateCard().clone());
+    hand.append(generateCard(deck.shift()).clone());
     return hand;
 }
 
@@ -313,11 +313,11 @@ function applyDiscardAnimation(player,card,dPile,hand){
 
 /*---------------------------- Component Builder---------------------------------------------*/
 //creates a card with basic parameters
-function generateCard(){
+function generateCard(val){
     var card =$("<div class='card effect__click'></div>");
     var cardFront = $("<div class='front'></div>");
     var cardBack = $("<div class='back'></div>");
-    setCardValues(card,3)
+    setCardValues(card,val)
     $(card).append(cardBack);
     $(card).append(cardFront);
     return card;
@@ -584,7 +584,7 @@ var boardState = {
 
 var animationStates={
     rotation:[720,900,810,990],
-    delay:[2250,750,1500,0],
+	 delay:[0,1500,750,2250],
     playerDiscard:{
         p1Discard:function(card,dPile,hand){
             if(card.index()==1)
@@ -596,7 +596,7 @@ var animationStates={
                     duration:1000,
                     complete: function(){
 
-                        $(dPile).append($(generateCard().clone()));
+                        $(dPile).append($(generateCard(1).clone()));
                         $(card).remove();
                     },
                     queue:false
@@ -608,7 +608,7 @@ var animationStates={
                 $(card).velocity({left:"-="+(boardState.iWidth *.15)},{
                     duration:1000,
                     complete: function(){
-                        $(dPile).append($(generateCard().clone()));
+                        $(dPile).append($(generateCard(1).clone()));
                         $(card).remove();
                     },
                     queue:false
