@@ -32,7 +32,7 @@ $(document).ready(function(){
 
             //Play Phase
 				drawCard('p1');
-				//drawCard('p2');
+				drawCard('p2');
             //End of turn phase
 });
 

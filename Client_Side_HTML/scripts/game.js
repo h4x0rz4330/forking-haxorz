@@ -412,37 +412,38 @@ function generateCard(val){
 
 function setCardValues(card,number)
 {
+    //console.log($(card).children(0)[0].children()[1]);
   switch(number){
       case 1:
-         // $('.front',card).addClass("hack");
-          $(card).addClass("hack");
+          $(card).children(0).addClass("hack");
+          //.addClass("hack");
           break;
       case 2:
          $(card).addClass("rat");
-         //$('.front',card).addClass("rat");
+         // $($(card).children(0)[0]).children()[1].addClass("rat");
           break;
       case 3:
-          //$('.front',card).addClass("cybersecurity");
+         // $($(card).children(0)[0]).children()[1].addClass("cybersecurity");
           $(card).addClass("cybersecurity");
           break;
       case 4:
-         // $('.front',card).addClass("firewall");
+          //$($(card).children(0)[0]).children()[1].addClass("firewall");
           $(card).addClass("firewall");
           break;
       case 5:
-         // $('.front',card).addClass("hardReset");
+          //$($(card).children(0)[0]).children()[1].addClass("hardReset");
           $(card).addClass("hardReset");
           break;
       case 6:
-          //$('.front',card).addClass("hijack");
+          //$($(card).children(0)[0]).children()[1].addClass("hijack");
           $(card).addClass("hijack");
           break;
       case 7:
-          //$('.front',card).addClass("trojanHorse");
+          //$($(card).children(0)[0]).children()[1].addClass("trojanHorse");
           $(card).addClass("trojanHorse");
           break;
       case 8:
-         //$('.front',card).addClass("bitcoinBillionair");
+         // $($(card).children(0)[0]).children()[1].addClass("bitcoinBillionair");
           $(card).addClass("bitcoinBillionair");
           break;
       default:
@@ -731,15 +732,16 @@ var animationStates={
             }
             else
             {
-                console.log(card);
+
                 $(card).velocity({left:"+="+(boardState.iWidth *.15)},{
                     duration:1000,
                     complete: function(){
                         //todo get card number
                         $(dPile).append($(generateCard(1).clone()));
-                        console.log($(card));
+
                         $(card)[0].remove();
-                        $(getHand('p2'))[1].velocity({left:"+="+(boardState.iWidth *.07)},{
+                        console.log($(getHand('p2')).children(0)[0]);
+                        $($(getHand('p2')).children(0)[0]).velocity({left:"+="+(boardState.iWidth *.07)},{
                             duration:1000,
                             queue:false
                         });
@@ -833,6 +835,7 @@ var cardEffect={
     }
 }
 
+
 function modalSwitch(){
     $('#playerModal').modal('hide');
     $('#cardModal').modal('show');
@@ -841,6 +844,7 @@ function modalSwitch(){
 /*function modalSwitch2(){
     $('#cardModal').modal('hide');
 }*/
+
 
 function delayedDraw(){
     setTimeout(function(){

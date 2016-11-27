@@ -33,7 +33,6 @@
 }
 
 
-
 .rat{
     background: url("../images/RAT_Card.png");
 }
@@ -42,7 +41,7 @@
 }
 
 .hardReset{
-    background: url("../images/Hard_Reset_Card.png");
+ background: url("../images/Hard_Reset_Card.png");
 }
 
 .hijack{
@@ -54,33 +53,6 @@
 }
 
 .trojanHorse{
-    background: url("../images/Trojan_Horse_Card.png");
-}
-
-.cybersecurity{
-    background: url("../images/Cybersecurity_Officer_Card.png");
-}
-
-.front.effect__click.rat{
-    background: url("../images/RAT_Card.png");
-}
-.front.effect__click.firewall{
-    background: url("../images/Firewall_Card.png");
-}
-
-.front.effect__click.hardReset{
- background: url("../images/Hard_Reset_Card.png");
-}
-
-.front.effect__click.hijack{
-    background: url("../images/Hijack_Card.png");
-}
-
-.front.effect__click.hack{
-    background: url("../images/Hack_Card.png");
-}
-
-.front.effect__click.trojanHorse{
     background: url("../images/Trojan_Horse_Card.png");
 }
 
