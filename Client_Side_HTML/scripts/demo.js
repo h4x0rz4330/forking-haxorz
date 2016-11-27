@@ -27,20 +27,20 @@ $(document).ready(function(){
         //This will be where main loop in each round that will trigger the start of a new turn
 
             //Draw Phase
-            $("#draw").click(function(){
-                drawCard(1);
-            });
+            
 
             //Play Phase
+				drawCard(1);
+				drawCard(2);
             //End of turn phase
 });
 
 function playCard(){
-	if (playerTurn){
-		
-	}
+	
 }
 
 function playCp(){
+	cphand.push(deck[0]);
+	drawCard(2);
 	
 }
