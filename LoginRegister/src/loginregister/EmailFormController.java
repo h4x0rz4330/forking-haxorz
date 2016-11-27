@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: Hardika Patel
+ * File: EmailFormController.java
+ * Description: Controller for EmailForm 
+ *              - Button Control display Forgot Acoount web page when user presses the "ForgotPassword?" Button
+ *              - also dispaly Login Page when user presses the "Back" Button. 
  */
 package loginregister;
 
