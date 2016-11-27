@@ -52,7 +52,7 @@ We are using agile methodology due to time constraints and, as per request of th
 
 [Software Testing Document](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_STD.md)
 
-[Game Manual]()
+[Game Manual](https://github.com/h4x0rz4330/forking-haxorz/blob/master/UserManual.docx)
 
 [Our Google Drive](https://drive.google.com/open?id=0B7AngVuyOYDRQ1NnNTd5OG5GSW8)
 
