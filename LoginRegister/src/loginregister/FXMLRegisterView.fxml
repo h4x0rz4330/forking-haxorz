@@ -1,3 +1,10 @@
+<!--
+* Name: Hardika Patel
+* File: FXMLRegisterView.fxml
+* Description: - this is user interface that is displayed when user clicked on "New Account" button from Login Screen.
+*              - include verticle box that contain gridpane which holds lables, textfield and buttons.
+-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
@@ -55,7 +62,7 @@
               </columnConstraints>
               
               <rowConstraints>
-                <RowConstraints minHeight="5.0" 
+                <RowConstraints minHeight="5.0"
                                 prefHeight=".0" 
                                 vgrow="SOMETIMES" />
                 
