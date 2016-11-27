@@ -1,3 +1,10 @@
+<!--
+* Name: Hardika Patel
+* File: EmailForm.fxml
+* Description: this file specifies the user interface when user presses the "ForgotPassword" button. 
+*              its includes GridPane which contain Label, TextFiled, and button.
+-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
@@ -20,13 +27,17 @@
        </ImageView>
  
          
-            <GridPane hgap="5.0" layoutX="480.0" layoutY="282.0" prefHeight="115.0" prefWidth="414.0" vgap="2.0" VBox.vgrow="ALWAYS">
+            <GridPane hgap="5.0" layoutX="480.0" layoutY="282.0" 
+                      prefHeight="115.0" prefWidth="414.0" 
+                      vgap="2.0" VBox.vgrow="ALWAYS">
                 
               <columnConstraints>
                   
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="133.0" />
+                <ColumnConstraints hgrow="SOMETIMES" 
+                                   maxWidth="185.0" minWidth="10.0" prefWidth="133.0" />
                 
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="145.0" />
+                <ColumnConstraints hgrow="SOMETIMES" 
+                                   maxWidth="145.0" minWidth="10.0" prefWidth="145.0" />
                 
               </columnConstraints>
               
@@ -34,25 +45,42 @@
                 <RowConstraints minHeight="5.0" prefHeight="0.0" vgrow="SOMETIMES" />
                 
                 <RowConstraints minHeight="5.0" prefHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints />
                 
               </rowConstraints>
               
                <children>
                   <Label style="-fx-text-fill: greenyellow; -fx-font-size: 14pt;" text="Email Address:" />
                  
-                  <Button fx:id="ForgotPassword" defaultButton="true" mnemonicParsing="false" onAction="#handleActionButton" prefHeight="32.0" prefWidth="182.0" style="-fx-background-color: transparent; -fx-text-fill: greenyellow; -fx-font-size: 12pt;" text="Forgot Password?" GridPane.rowIndex="1">
+                  <Button fx:id="ForgotPassword" 
+                          defaultButton="true" 
+                          mnemonicParsing="false" 
+                          onAction="#handleActionButton" 
+                          prefHeight="32.0" prefWidth="182.0" 
+                          style="-fx-background-color: transparent; 
+                                 -fx-text-fill: greenyellow; 
+                                 -fx-font-size: 12pt;" 
+                          text="Forgot Password?" 
+                          GridPane.rowIndex="1">
                       
                   </Button>
                   
-                  <Button fx:id="Back" defaultButton="true" mnemonicParsing="false" onAction="#goToLogin" prefHeight="32.0" prefWidth="161.0" style="-fx-background-color: transparent; -fx-text-fill: greenyellow; -fx-font-size: 12pt;" text=" Back" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="Back" 
+                          defaultButton="true" 
+                          mnemonicParsing="false" 
+                          onAction="#goToLogin" 
+                          prefHeight="32.0" prefWidth="161.0" 
+                          style="-fx-background-color: transparent; 
+                                 -fx-text-fill: greenyellow; 
+                                 -fx-font-size: 12pt;" 
+                          text=" Back" 
+                          GridPane.columnIndex="1" 
+                          GridPane.rowIndex="1">
               
                   </Button>
                   
                   <TextField fx:id="userEmailInput" GridPane.columnIndex="1" />
                   
                </children>
-          
          
          <padding>
             <Insets bottom="1.0" left="5.0" right="100.0" top="1.0" />
