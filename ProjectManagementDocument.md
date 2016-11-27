@@ -34,13 +34,13 @@ While our initial iteration of the game is based on hacking themes, we plan to o
 2. Configuration Management Plan
 -----------------------------
 
-   Our team plans to use GitHub and Google Drive to do all of our work. GitHub will make it easy to upload our code so that everyone can always have access to the most recent files. This will also help with integration, when it comes time to test. Google Drive will make it easy to collaborate on documentation throughout the project.
+   Our team plans to use GitHub and Google Drive for all official documentation and file management. GitHub shall host the most updated versions of important documentation and of the application files. Google Drive will primarily be used for its ease of file transfers and the ability for multiple developers to edit a single document simultaneously in real-time.
 
 
 3. Process Model
 -------------
 
-We will be using Agile methods due to time constraints specified by the client.
+We are using agile methodology due to time constraints and, as per request of the client, to keep them informed throughout the development process and ensure that our requirements and work continue to match their desired product.
 
 
 4. Deliverables
