@@ -1,4 +1,4 @@
-var deck = [3,5,2,6,1,5,7,1];
+var deck = [5,5,2,6,1,5,7,1];
 var cphand = [];
 var playerTurn = true;
 var cpTurn = false;
@@ -30,8 +30,8 @@ $(document).ready(function(){
             
 
             //Play Phase
-				drawCard(1);
-				drawCard(2);
+				drawCard('p1');
+				//drawCard('p2');
             //End of turn phase
 });
 

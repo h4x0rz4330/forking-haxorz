@@ -153,6 +153,7 @@ function dealCards(players){
 //If it is the users turn will also add a card flip animation on the card so user can see the card.
 function applyDrawAnimation(player){
     var hand = $(getHand(player));
+   // if()
     $(".card:eq(1)",hand).flip({trigger:'manual'});
 
     //apply draw animation based on the player which will include an offset to be placed by the other card.
@@ -413,27 +414,35 @@ function setCardValues(card,number)
 {
   switch(number){
       case 1:
+         // $('.front',card).addClass("hack");
           $(card).addClass("hack");
           break;
       case 2:
-          $(card).addClass("rat");
+         $(card).addClass("rat");
+         //$('.front',card).addClass("rat");
           break;
       case 3:
+          //$('.front',card).addClass("cybersecurity");
           $(card).addClass("cybersecurity");
           break;
       case 4:
+         // $('.front',card).addClass("firewall");
           $(card).addClass("firewall");
           break;
       case 5:
+         // $('.front',card).addClass("hardReset");
           $(card).addClass("hardReset");
           break;
       case 6:
+          //$('.front',card).addClass("hijack");
           $(card).addClass("hijack");
           break;
       case 7:
+          //$('.front',card).addClass("trojanHorse");
           $(card).addClass("trojanHorse");
           break;
       case 8:
+         //$('.front',card).addClass("bitcoinBillionair");
           $(card).addClass("bitcoinBillionair");
           break;
       default:
@@ -713,22 +722,24 @@ var animationStates={
                     left:"+="+(boardState.iWidth *.22)
                 },{
                     duration:1000,
-                    complete: function(){
-
+                    complete: function() {
                         $(dPile).append($(generateCard(1).clone()));
-                        $(card).remove();
+                        $(card).children(0)[1].remove();
                     },
                     queue:false
                 });
             }
             else
             {
+                console.log(card);
                 $(card).velocity({left:"+="+(boardState.iWidth *.15)},{
                     duration:1000,
                     complete: function(){
+                        //todo get card number
                         $(dPile).append($(generateCard(1).clone()));
-                        $(card).remove();
-                        $(getHand('p2')).children(0).velocity({left:"-="+(boardState.iWidth *.07)},{
+                        console.log($(card));
+                        $(card)[0].remove();
+                        $(getHand('p2'))[1].velocity({left:"+="+(boardState.iWidth *.07)},{
                             duration:1000,
                             queue:false
                         });
@@ -810,12 +821,14 @@ var cardEffect={
             $("#outcomeModalLabel").html("Performing Hard Reset On User's System");
         }
         else{
+            console.log(player);
             $("#outcomeModalLabel").html("Attempting Hard Reset On User's System");
             drawCard(player);
+            //console.log($(getHand(player)).children(0));
             discardCard(player,$(getHand(player)).children(0));
         }
-        $("#outcome").append("<div class='outComeMessage'><p>Hard Reset Successful</p></div>");
-        $("#outcomeModal").modal('show');
+        //$("#outcome").append("<div class='outComeMessage'><p>Hard Reset Successful</p></div>");
+       // $("#outcomeModal").modal('show');
     }
 }
 
