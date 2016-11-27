@@ -49,7 +49,11 @@ function cpPlayCard(){
 					break;
 				case 6:
 					if (cphand[0] == 7){
+
 						discardCard('p2',$('#p2Hand').find('.trojanHorse'));
+						setTimeout(function(){
+							$('#p2Hand').find('.trojanHorse').remove();
+						},2000);
 					}
 					break;
 			}
