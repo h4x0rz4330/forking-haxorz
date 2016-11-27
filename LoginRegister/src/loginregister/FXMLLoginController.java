@@ -1,7 +1,10 @@
 /**
  * Author: Hardika Patel
  * File: FXMLLoginController.java
- * Description: This file is control Login screen, 
+ * Description: This file is controller for Login Screen. 
+ *              - Button control display Mian Menu web page when user presses the "Login" button. 
+ *              - button control display Regiser screen when user presses the "New Account" button 
+ *              - button control display Forgot Password screen when user presses the "Forgot Password?"
  */
 package loginregister;
 
