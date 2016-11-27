@@ -52,9 +52,11 @@ We are using agile methodology due to time constraints and, as per request of th
 
 [Software Testing Document](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_STD.md)
 
-**Download game** [**here**]()
-
 [Game Manual]()
+
+[Our Google Drive](https://drive.google.com/open?id=0B7AngVuyOYDRQ1NnNTd5OG5GSW8)
+
+***Download game*** [***here***](https://github.com/h4x0rz4330/forking-haxorz/blob/master/LoginRegister/dist/LoginRegister.jar)
 
 5. Potential Risks
 ---------------
@@ -66,14 +68,14 @@ There is always human risk with a game. Human error can be introduced in the cod
 6. Team Members/Tasks
 ------------------
 
-Our team is unique in the fact that it does not fit one specific team organization. It is a mix between a chief programmer team and an egoless team. We have a project manager to help keep the team organized and on task. All team members are responsible for a certain area of the project based on expertise, making it similar to an egoless organization as well. 
+- Will Raziano - Project Management, Documentation
+- Jonathan Nguyen - Server/Client Communication, Documentation/Technical Editing
+- Ryan Ngo - Server Design/Implementation, Database
+- Chris Schayer - Webpage Design/Implementation
+- Hardika Patel - UI Design, Webpage Integration
+- Madeline May - Testing, Documentation
 
-* Will Raziano - Project Management, Documentation
-* Jonathan Nguyen - Server/Client Communication, Documentation/Technical Editing
-* Ryan Ngo - Server Design/Implementation, Database
-* Chris Schayer - Webpage Design/Implementation
-* Hardika Patel - UI Design, Webpage Integration
-* Madeline May - Testing, Documentation
+Our team is unique in the fact that it does not fit one specific team organization. It is a mix between a chief programmer team and an egoless team. We have a project manager to help keep the team organized and on task. All team members are responsible for a certain area of the project based on expertise, making it similar to an egoless organization as well. 
 
 
 7. Project Schedule : Gantt Chart
