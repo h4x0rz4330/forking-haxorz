@@ -57,14 +57,14 @@
 /*------------------------------Value Obtaining Functions-----------------------*/
 //gets the id value of the players hand. When called must surround with $()
 function getHand(player){
-    var hand = "#p"+player+"Hand";
+    var hand = "#"+player+"Hand";
     return hand;
 }
 
 //gets the id value of the players discard.
 function getDiscard(player)
 {
-    var hand = "#p"+player+"Disc";
+    var hand = "#"+player+"Disc";
     return hand;
 }
 
@@ -85,7 +85,7 @@ function dealCards(players){
     for(i=1;i<=players;i++)
     {
             //adds a card to hand
-            var hand = updateHand(i);
+            var hand = updateHand("p"+i);
 
             //applies the necessary rotation and delay to animation to apply to the card
 
@@ -120,11 +120,10 @@ function dealCards(players){
                         $(".card:eq(0)",tempHand).mouseover(function(){$(".card:eq(0)",tempHand).velocity({scale:2.8},{duration:200}).css("z-index","2")}).mouseleave(function(){
                                 $(".card:eq(0)",tempHand).velocity("reverse").css("z-index","1");
                             });
-                        $(".card:eq(0)",tempHand).attr("data-toggle","modal").attr('data-target',"#playerModal");
+
                         $(".card.effect__click:eq(0)",tempHand).on("click",function(e){
-                            gameState.cardChosenIndex = $(e.target).parent().index();
-                            playCard($(e.target).parent());
-                        })
+                            activateCard($(e.target).parent());
+                        });
                         playerStates.setHandPositions(players);
                         },
 
@@ -159,24 +158,24 @@ function applyDrawAnimation(player){
     //apply draw animation based on the player which will include an offset to be placed by the other card.
     switch(player)
     {
-        case 1:
+        case 'p1':
             $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight*.25),left:'+='+(boardState.iWidth *.07)},{duration:1000,queue:false});
             break;
-        case 3:
+        case 'p3':
             $(".effect__click:eq(1)",hand).velocity({top:'+='+(boardState.iHeight *.10),left:'-='+(boardState.iWidth*.36)},{duration:1000, queue:false});
             break;
-        case 2:
+        case 'p2':
            $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight*.25),left:'-='+(boardState.iWidth) *.07},{duration:1000, queue:false});
             break;
-        case 4:
+        case 'p4':
             $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight *.10),left:'+='+(boardState.iWidth*.36)},{duration:1000, queue:false});
             break;
     }
 
-    if(player==1)
+    if(player=='p1')
     {
         var tempHand = hand;
-        $(".effect__click:eq(1)", hand).velocity({rotateZ: animationStates.rotation[player-1]},
+        $(".effect__click:eq(1)", hand).velocity({rotateZ: animationStates.rotation[player[1]-1]},
             {duration: 1000,
                 complete: function () {$(".card:eq(1)",tempHand).flip(true);
 
@@ -185,19 +184,16 @@ function applyDrawAnimation(player){
                         $(".card:eq(1)",tempHand).velocity("reverse").css("z-index","1");
 
                     });
-                    $(".card:eq(1)",tempHand).attr("data-toggle","modal").attr('data-target',"#playerModal");
-                    $(".card:eq(1)",tempHand).on("click",function(e){
-                        gameState.cardChosenIndex = $(e.target).parent().index();
-                        playCard($(e.target).parent());
-                    })
-
+                    $(".card.effect__click:eq(1)",tempHand).on("click",function(e){
+                        activateCard($(e.target).parent());
+                    });
                 },
                 queue: false
             }
         );
     }
     else {
-        $(".effect__click:eq(1)", hand).velocity({rotateZ: animationStates.rotation[player-1]}, {duration: 1000, queue: false});
+        $(".effect__click:eq(1)", hand).velocity({rotateZ: animationStates.rotation[player[1]-1]}, {duration: 1000, queue: false});
     }
 
 }
@@ -209,13 +205,94 @@ function applyModalAnimation(){
         populatePlayerChoice();
         $(".playerButton").on("click",function(e){
             gameState.playerChoice.playerChosen=$(e.target).html();
-            modalSwitch();
+            switch(gameState.playerChoice.cardPlayed)
+            {
+                case "hack":
+                    modalSwitch();
+                    break;
+                case "rat":
+                    $("#playerModal").modal("hide");
+                    cardEffect.seeHand(gameState.playerChoice.playerChosen);
+                    break;
+                case "hijack":
+                    $("#playerModal").modal("hide");
+                    cardEffect.swapHands("p1",gameState.playerChoice.playerChosen);
+                    break;
+                case "hardReset":
+                    $("#playerModal").modal("hide");
+                    cardEffect.resetHand(gameState.playerChoice.playerChosen);
+
+            }
         });
     })
+    $("#cardModal").on("hidden.bs.modal",function(){
+        setTimeout(function(){
+            $('#outcomeModal').modal('show');
+        },0);
+    })
+    $("#outcomeModal").on("show.bs.modal",function(){
+        switch(gameState.playerChoice.cardPlayed)
+        {
+            case "hijack":
+            case "hack":
+            case "hardReset":
+                setTimeout(function(){
+                    $('#outcomeModal').modal('hide');
+                },2000);
+        }
+    });
+    $("#outcomeModal").on("hidden.bs.modal",function(){
+        clearOutcome();
+
+    });
 }
 
-function playCard(card){
-    gameState.playerChoice.cardPlayed=card;
+function activateCard(card){
+    gameState.cardChosenIndex = $(card).index();
+    gameState.playerChoice.cardPlayedDom=card;
+    gameState.playerChoice.cardPlayed = getCardName(card);
+    switch(gameState.playerChoice.cardPlayed)
+    {
+        case "hack":
+        case "rat":
+        case "hardReset":
+        case "hijack":
+        case "cybersecurity":
+            $("#playerModal").modal('toggle');
+            break;
+        case "firewall":
+            break;
+    }
+
+}
+
+
+function getCardName(card)
+{
+    if(card.hasClass("hack")){
+        return "hack";
+    }
+    else if(card.hasClass("rat")){
+        return "rat";
+    }
+    else if(card.hasClass("cybersecurity")){
+        return "cybersecurity";
+    }
+    else if(card.hasClass("firewall")){
+        return "firewall";
+    }
+    else if(card.hasClass("hardReset")){
+        return "hardReset";
+    }
+    else if(card.hasClass("hijack")){
+       return "hijack";
+    }
+    else if(card.hasClass("trojanHorse")){
+        return "trojanHorse";
+    }
+    else if(card.hasClass("bitcoinBillionair")){
+        return "bitcoinBillionair";
+    }
 }
 
 //deals a single card to a player during draw phase.
@@ -227,22 +304,29 @@ function drawCard(player){
 }
 
 function populatePlayerChoice(){
+
     switch(gameState.players){
         case 4:
             if(!playerStates.p4State.isEliminated)
             {
-                $("#choosePlayer").append($(playerStates.p4State.modalButton))
+                $("#choosePlayer").append($(playerStates.p4State.modalButton));
             }
         case 3:
             if(!playerStates.p3State.isEliminated)
             {
-                $("#choosePlayer").append($(playerStates.p3State.modalButton))
+                $("#choosePlayer").append($(playerStates.p3State.modalButton));
             }
         case 2:
             if(!playerStates.p2State.isEliminated)
             {
-                $("#choosePlayer").append($(playerStates.p2State.modalButton))
+                $("#choosePlayer").append($(playerStates.p2State.modalButton));
             }
+        case 1:
+            if(gameState.playerChoice.cardPlayed=='hardReset')
+            {
+                $("#choosePlayer").append($(playerStates.p1State.modalButton));
+            }
+            break;
     }
 }
 
@@ -252,6 +336,11 @@ function clearPlayerChoice(){
     }
 }
 
+function clearOutcome(){
+    for (i=0;i<$("#outcome").children().length;i++){
+        $("#outcome").children(i).remove();
+    }
+}
 function populateDeck()
 {
     var size;
@@ -269,37 +358,34 @@ function populateDeck()
 }
 
 function updateHand(player){
-    //todo use buildcardFunction when it is completed.
     var hand =  $(getHand(player));
     hand.append(generateCard(deck.shift()).clone());
     return hand;
 }
 
 
+function discardCard(player,card){
+    switch(player)
+    {
+        case "p1":
+            animationStates.playerDiscard.p1Discard(card,getDiscard(player),getHand(player));
+            break;
+        case "p2":
+            animationStates.playerDiscard.p2Discard(card,getDiscard(player),getHand(player));
+            break;
+        case "p3":
+            animationStates.playerDiscard.p3Discard(card,getDiscard(player),getHand(player));
+            break;
+        case "p4":
+            animationStates.playerDiscard.p4Discard(card,getDiscard(player),getHand(player));
+            break;
+    }
 
-function discardCard(card){
-    var dPile = $(getDiscard(1));
-    var hand = $(getHand(1));
-    applyDiscardAnimation("user",card,dPile,hand);
-    modalSwitch2();
+
 }
 
-function applyDiscardAnimation(player,card,dPile,hand){
-   switch(player)
-   {
-       case "user":
-           animationStates.playerDiscard.p1Discard(card,dPile,hand);
-           break;
-       case "p2":
-           animationStates.playerDiscard.p2Discard(card,dPile,hand);
-           break;
-       case "p3":
-           animationStates.playerDiscard.p3Discard(card,dPile,hand);
-           break;
-       case "p4":
-           animationStates.playerDiscard.p4Discard(card,dPile,hand);
-           break;
-   }
+function applyDiscardAnimation(player,card){
+
 }
 //TODO alter to utilize ajax for player
 /*Determines x and y value of discard not actual px offset */
@@ -342,13 +428,15 @@ function setCardValues(card,number)
           $(card).addClass("hardReset");
           break;
       case 6:
-          $(card).addClass("rat");
+          $(card).addClass("hijack");
           break;
       case 7:
-          $(card).addClass("rat");
+          $(card).addClass("trojanHorse");
           break;
       case 8:
-          $(card).addClass("rat");
+          $(card).addClass("bitcoinBillionair");
+          break;
+      default:
           break;
   }
 }
@@ -360,16 +448,11 @@ function buildCard(card){
 //No flip animation is necessary as player is allowed to look at opponents discard.
 
 
-function discardPhase(e){
-    clearPlayerChoice();
-    gameState.playerChoice.cardChosen=$(e.target).index()+2;
-    discardCard(gameState.playerChoice.cardPlayed);
-}
-//TODO ISWINNER()
 
+//TODO ISWINNER()
 var playerStates = {
     p1State: {
-        userName:"user",
+        userName:"p1",
         hand: {position: 0},
         discard: {position:0},
         isEliminated: true,
@@ -401,16 +484,16 @@ var playerStates = {
         for (i = 1; i <= players; i++) {
             switch (i) {
                 case 1:
-                    this.p1State.hand.position = $(".effect__click:eq(0)", getHand(i)).position();
+                    this.p1State.hand.position = $(".effect__click:eq(0)", getHand("p1")).position();
                     break;
                 case 2:
-                    this.p2State.hand.position = $(".effect__click:eq(0)", getHand(i)).position();
+                    this.p2State.hand.position = $(".effect__click:eq(0)", getHand("p2")).position();
                     break;
                 case 3:
-                    this.p3State.hand.position = $(".effect__click:eq(0)", getHand(i)).position();
+                    this.p3State.hand.position = $(".effect__click:eq(0)", getHand("p3")).position();
                     break;
                 case 4:
-                    this.p4State.hand.position = $(".effect__click:eq(0)", getHand(i)).position();
+                    this.p4State.hand.position = $(".effect__click:eq(0)", getHand("p4")).position();
                     break;
             }
         }
@@ -472,9 +555,10 @@ var playerStates = {
 
 var gameState ={
     players:0,
-    playerNames:["user","p2","p3","p4"],
+    playerNames:["p1","p2","p3","p4"],
     playerChoice:{
         cardPlayed:"",
+        cardPlayedDom:"",
         playerChosen:"",
         cardChosen:""
     },
@@ -589,7 +673,6 @@ var animationStates={
         p1Discard:function(card,dPile,hand){
             if(card.index()==1)
             {
-                console.log("trigger at index 1");
                 $(card,hand).velocity({
                     left:"-="+(boardState.iWidth *.22)
                 },{
@@ -604,25 +687,54 @@ var animationStates={
             }
             else
             {
-                console.log("trigger at index 0");
                 $(card).velocity({left:"-="+(boardState.iWidth *.15)},{
                     duration:1000,
                     complete: function(){
+                        $(dPile).append($(generateCard(1).clone()));
+                        $(card).remove();
+                        $(getHand('p1')).children(0).velocity({left:"-="+(boardState.iWidth *.07)},{
+                            duration:1000,
+                            complete: function(){
+                                $(getHand('p1')).children(0).mouseover(function(){$(getHand('p1')).children(0).velocity({scale:2.5},{duration:200}).css("z-index","2")}).mouseleave(function(){
+                                    $(getHand('p1')).children(0).velocity("reverse").css("z-index","1");
+                                });
+                            },
+                            queue:false
+                        });
+                    },
+                    queue:false
+                });
+            }
+        },
+        p2Discard:function(card,dPile,hand){
+            if(card.index()==1)
+            {
+                $(card,hand).velocity({
+                    left:"+="+(boardState.iWidth *.22)
+                },{
+                    duration:1000,
+                    complete: function(){
+
                         $(dPile).append($(generateCard(1).clone()));
                         $(card).remove();
                     },
                     queue:false
                 });
             }
-        },
-        p2Discard:function(card){
-            if(card.index()==1)
-            {
-
-            }
             else
             {
-
+                $(card).velocity({left:"+="+(boardState.iWidth *.15)},{
+                    duration:1000,
+                    complete: function(){
+                        $(dPile).append($(generateCard(1).clone()));
+                        $(card).remove();
+                        $(getHand('p2')).children(0).velocity({left:"-="+(boardState.iWidth *.07)},{
+                            duration:1000,
+                            queue:false
+                        });
+                    },
+                    queue:false
+                });
             }
 
         },
@@ -651,14 +763,75 @@ var animationStates={
     }
 }
 
+var cardEffect={
+    seeHand:function(player){
+        var img = $('<img class="opponentHand">');
+        img.addClass(getCardName($(getHand(player)).children(0))+'Img');
+        $("#outcome").append(img);
+
+        $("#outcomeModalLabel").html("Opponent's Current Hand");
+        $("#outcomeModal").modal('show');
+        //Todo put current player in for argument
+        discardCard("p1",$(gameState.playerChoice.cardPlayedDom));
+    },
+    checkGuess:function(card){
+
+        var opponentHand = getHand(gameState.playerChoice.playerChosen);
+        if($(".card",opponentHand).hasClass(getCardName($(card))))
+        {
+            $("#outcome").append("<div class='outcomeMessage'><p>Hack attempt succeeded</p></div>");
+            discardCard(gameState.playerChoice.playerChosen,$(opponentHand).children(0));
+        }
+        else
+            $("#outcome").append("<div class='outcomeMessage'><p>Hack attempt failed</p></div>");
+        //Todo put current player in for argument
+        discardCard("p1",gameState.playerChoice.cardPlayedDom);
+        $('#cardModal').modal('hide');
+    },
+    swapHands:function(player1,player2){
+        var card1 = $(getHand(player1)).children(1-gameState.cardChosenIndex);
+        var card2 = $(getHand(player2)).children(0);
+        var card1Class = getCardName(card1);
+        var card2Class = getCardName(card2);
+        card1.removeClass(card1Class).addClass(card2Class);
+        card2.removeClass(card2Class).addClass(card1Class);
+        $("#outcomeModalLabel").html("Attempting to Steal Opponents Data");
+        $("#outcome").append("<div class='outComeMessage'><p>Data Aquisition Successful</p></div>");
+        $("#outcomeModal").modal('show');
+    },
+    resetHand:function(player)
+    {
+        //fix this for current turn
+        if(player=="p1")
+        {
+            delayedDraw();
+            discardCard(player,$(getHand(player)).children(0));
+            discardCard(player,$(getHand(player)).children(1));
+            $("#outcomeModalLabel").html("Performing Hard Reset On User's System");
+        }
+        else{
+            $("#outcomeModalLabel").html("Attempting Hard Reset On User's System");
+            drawCard(player);
+            discardCard(player,$(getHand(player)).children(0));
+        }
+        $("#outcome").append("<div class='outComeMessage'><p>Hard Reset Successful</p></div>");
+        $("#outcomeModal").modal('show');
+    }
+}
 
 function modalSwitch(){
     $('#playerModal').modal('hide');
     $('#cardModal').modal('show');
 }
 
-function modalSwitch2(){
+/*function modalSwitch2(){
     $('#cardModal').modal('hide');
+}*/
+
+function delayedDraw(){
+    setTimeout(function(){
+        dealCards(1);
+    },1500);
 }
 
 /*------------------------MISCELANIOUS/SIDE FEATURES-----------------------------*/

@@ -52,7 +52,34 @@
     background: url("../images/Hack_Card.png");
 }
 
-.cybersecurity,.rat,.firewall,.hardReset,.hack{
+.cybersecurityImg{
+    content: url("../images/Cybersecurity_Officer_Card.png");
+}
+
+.ratImg{
+    content: url("../images/RAT_Card.png");
+}
+.firewallImg{
+    content: url("../images/Firewall_Card.png");
+}
+
+.hardResetImg{
+    content: url("../images/Hard_Reset_Card.png");
+}
+
+.hackImg{
+    content: url("../images/Hack_Card.png");
+}
+
+.hijack{
+    background: url("../images/Hijack_Card.png");
+}
+
+.hijackImg{
+    content:url("../images/Hijack_Card.png");
+}
+
+.cybersecurity,.rat,.firewall,.hardReset,.hack,.hijack{
     background-size:contain;
     background-repeat: no-repeat;
     background-position: center;

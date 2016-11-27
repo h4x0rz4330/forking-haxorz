@@ -61,3 +61,29 @@ body{
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
+
+.modal-title{
+    color: #67b168;
+    text-align:center;
+    font-size:3vh;
+    position:relative;
+    top:1vh;
+}
+.opponentHand{
+    height: 40vh;
+    width:auto;
+    position:relative;
+    border:0;
+    left:30%;
+    top:10%;
+}
+.outcomeMessage{
+    color: #67b168;
+    text-align:center;
+    font-size:5vh
+}
+#outcome{
+    border:none;
+    height:47vh;
+    background-color:transparent;
+}
