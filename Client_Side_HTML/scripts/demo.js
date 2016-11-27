@@ -1,7 +1,8 @@
-var deck = [5,5,2,6,1,5,7,1];
-var cphand = [];
+var deck = [3,5,2,6,1,5,7,1];
+var cphand = [5];
 var playerTurn = true;
 var cpTurn = false;
+var userWin = false;
 
 $(document).ready(function(){
     //gets the users initial window dimensions.
@@ -35,12 +36,28 @@ $(document).ready(function(){
             //End of turn phase
 });
 
-function playCard(){
-	
-}
-
-function playCp(){
-	cphand.push(deck[0]);
-	drawCard(2);
-	
+function cpPlayCard(){
+	if (!userWin){
+		cphand.push(deck[0]);
+		drawCard("p2");
+		var cardnum = cphand.shift();
+		setTimeout(function(){
+			switch(cardnum){
+				case 5:
+					cardEffect.resetHand('p1');
+					discardCard('p2',$('#p2Hand').find('.hardReset'));
+					break;
+				case 6:
+					if (cphand[0] == 7){
+						discardCard('p2',$('#p2Hand').find('.trojanHorse'));
+					}
+					break;
+			}
+			setTimeout(function(){
+				drawCard("p1");
+			},1500);
+		}, 2000);
+	}else{
+		alert('You Won');
+	}
 }

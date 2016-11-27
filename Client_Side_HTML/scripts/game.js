@@ -792,6 +792,7 @@ var cardEffect={
         {
             $("#outcome").append("<div class='outcomeMessage'><p>Hack attempt succeeded</p></div>");
             discardCard(gameState.playerChoice.playerChosen,$(opponentHand).children(0));
+				userWin = true;
         }
         else
             $("#outcome").append("<div class='outcomeMessage'><p>Hack attempt failed</p></div>");
