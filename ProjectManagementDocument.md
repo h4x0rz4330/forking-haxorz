@@ -81,7 +81,7 @@ Our team is unique in the fact that it does not fit one specific team organizati
 7. Project Schedule : Gantt Chart
 ------------------------------
 
-
+![Physical Architecture](https://github.com/h4x0rz4330/forking-haxorz/blob/master/GanttChart.png)
 
 
 
