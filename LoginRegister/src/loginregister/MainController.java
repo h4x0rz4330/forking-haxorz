@@ -13,46 +13,50 @@
 /*              New account button allow user to create new account. 
 /*
 /* Change Log: 
-/*            {Date}   {Description}                                            {By who?}
-/*            10/23/16  Added Background image for login page,                   Hardika
+/*            {Date}   {Description}                                                 {By who?}
+/*            10/23/16  Added Background image for login page,                        Hardika
 /*                      Login button Image, and New Account button 
 /*                      Image to Main Controller file. 
 /*
 /*            10/29/16  Refer to "FXMLRegisterView.fxml" 
-/*                  -    created Register View Page using FXML                    Hardika
+/*                  -    created Register View Page using FXML                         Hardika
 /*  
 /*            10/30/16  Refer to "MainController.java"
 /*                   -   added code in "handleButtonAction" method 
-/*                      to redirect Main Menu HTML web page from Login Button     Ryan
+/*                      to redirect Main Menu HTML web page from Login Button          Ryan
 /*                      
 /*            11/1/16   Refer to "FXMLRegisterView.fxml"
-/*                   -   change formate of Register Page                          Hardika
+/*                   -   change formate of Register Page                               Hardika
 /*            
 /*            11/2/16   Refer to "MainController.java"
-/*                   -   added handleButtonAction Method                          Hardika
+/*                   -   added handleButtonAction Method                               Hardika
 /*                   -   Added popup window if incorrect user Email or Password
-/*                       entered for login                                        Hardika  
+/*                       entered for login                                             Hardika  
 /*                      
 /*            11/15/16  Refer to "MainController.java"
-/*                   -   solved "Exception in thread "JavaFX Application Thread"  Hardika
+/*                   -   solved "Exception in thread "JavaFX Application Thread"       Hardika
 /*                      java.lang.IllegalStateException: Cannot call this method 
 /*                      on primary stage" error 
 /*              
 /*                   -   solved by seprating "Stage" for "Register Page"
 /*
-/*           11/16/16    Refer to "FXMLRegisterController.java"                   Ryan
+/*           11/16/16    Refer to "FXMLRegisterController.java"                        Ryan
 /*                   -   Added code in Register's "handleButtonAction" class 
 /*                       to redirect Main Menu HTML web page from Register Page
 /*                   
-/*           11/16/16 to  
-/*           11/19/16 
-/*  
-/*           
-/*           11/19/16 to - Had to major changes in code just because of back button  Hardika
+/*           11/19/16 to - Had to major changes in code just because of back button    Hardika
 /*           11/21/16      when back button press, it will redirect to the main Login 
-/*                         screen. 
+/*                         screen. seperated out code of Login window layout, with 
+/*                         its controller file,  
+/*                         seperated RegisterView code with its controller file. 
+/*                       - added interface method which allow injection to main screen. 
+/*                       - added ScreenController.java file which controll all screens 
+/*                         and load, diaplay, and remove screen. 
 /* 
-/*           11/25/16   added email functionality to the email form controller  Ryan
+/*           11/25/16   added email functionality to the email form controller          Ryan
+/*
+/*           11/26/16   - updated layout of login screen, 
+/*                      - added back button to the Forgot Password screen               Hardika
 /*
 /*
 */            
