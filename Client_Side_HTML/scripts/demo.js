@@ -1,7 +1,12 @@
-var deck = [3,5,2,6,1,5,7,1];
+//var deck = [3,5,2,6,1,5,7,1];
+
+//just to test cards out
+var deck = [1,5,2,4,5,6,7,8,2];
 var cphand = [];
 var playerTurn = true;
 var cpTurn = false;
+
+
 
 $(document).ready(function(){
     //gets the users initial window dimensions.
@@ -10,9 +15,7 @@ $(document).ready(function(){
     applyModalAnimation();
     //ripples();
     populateDeck();
-    $('#playerModal').on('hidden.bs.modal', function () {
 
-    })
     //this will be where the outter most loop will occur that will trigger each round
 
         setupBoard();
@@ -27,10 +30,9 @@ $(document).ready(function(){
         //This will be where main loop in each round that will trigger the start of a new turn
 
             //Draw Phase
-            $("#draw").click(function(){
-                drawCard(1);
-            });
-
+            //TODO drawCard will just accept a userName and append the next card from the deck
+        //setTimeout
+        drawCard("p1");
             //Play Phase
             //End of turn phase
 });

@@ -10,7 +10,7 @@
 <body>
     <div id="game" class="board" class="pulse-single">
 
-        <!-- Modal -->
+        <!--Choose player Modal -->
         <div class="modal fade" id="playerModal" tabindex="-1" role="dialog" aria-labelledby="playerModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -18,7 +18,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="playerModalLabel">Modal title</h4>
+                        <h4 class="modal-title" id="playerModalLabel">Choose an Opponent</h4>
                     </div>
                     <div id="choosePlayer">
                     </div>
@@ -28,6 +28,7 @@
             </div>
         </div>
 
+        <!--Choose card Modal -->
         <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -38,13 +39,31 @@
                         <h4 class="modal-title" id="cardModalLabel">Choose A Card To Hack</h4>
                     </div>
                     <div id="chooseCard">
-                        <button type = 'button'  class="rat cardButton" onclick="discardPhase(this)"></button>
-                        <button type = 'button'  class="cybersecurity cardButton" onclick="discardPhase(this)"></button>
-                        <button type = 'button' class="firewall cardButton" onclick="discardPhase(this)"></button>
-                        <button type = 'button'  class="hardReset cardButton" onclick="discardPhase(this)"></button>
-                        <button type = 'button' class="cardButton" onclick="discardPhase(this)"></button>
-                        <button type = 'button' class="cardButton" onclick="discardPhase(this)"></button>
-                        <button type = 'button' class="cardButton" onclick="discardPhase(this)"></button>
+                        <button type = 'button'  class="rat cardButton" onclick="cardEffect.checkGuess(this)"></button>
+                        <button type = 'button'  class="cybersecurity cardButton" onclick="cardEffect.checkGuess(this)"></button>
+                        <button type = 'button' class="firewall cardButton" onclick="cardEffect.checkGuess(this)"></button>
+                        <button type = 'button'  class="hardReset cardButton" onclick="cardEffect.checkGuess(this)"></button>
+                        <button type = 'button' class="hijack cardButton" onclick="cardEffect.checkGuess(this)"></button>
+                        <button type = 'button' class="trojanHorse cardButton" onclick="cardEffect.checkGuess(this)"></button>
+                        <button type = 'button' class="bitcoinBillionair cardButton" onclick="cardEffect.checkGuess(this)"></button>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--outcome modal--->
+        <div class="modal fade" id="outcomeModal" tabindex="-1" role="dialog" aria-labelledby="playerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="outcomeModalLabel"></h4>
+                    </div>
+                    <div id="outcome">
                     </div>
                     <div class="modal-footer">
                     </div>
