@@ -238,7 +238,7 @@ function applyModalAnimation(){
             case "hardReset":
                 setTimeout(function(){
                     $('#outcomeModal').modal('hide');
-                },1500);
+                },2000);
         }
     });
     $("#outcomeModal").on("hidden.bs.modal",function(){
@@ -362,13 +362,6 @@ function updateHand(player){
     hand.append(generateCard(deck.shift()).clone());
     return hand;
 }
-
-/*function discardPhase(e){
-    gameState.playerChoice.cardChosen=$(e.target);
-    modalSwitch2();
-    //discardCard(gameState.playerChoice.cardPlayed,"p1");
-
-}*/
 
 
 function discardCard(player,card){
@@ -701,6 +694,11 @@ var animationStates={
                         $(card).remove();
                         $(getHand('p1')).children(0).velocity({left:"-="+(boardState.iWidth *.07)},{
                             duration:1000,
+                            complete: function(){
+                                $(getHand('p1')).children(0).mouseover(function(){$(getHand('p1')).children(0).velocity({scale:2.5},{duration:200}).css("z-index","2")}).mouseleave(function(){
+                                    $(getHand('p1')).children(0).velocity("reverse").css("z-index","1");
+                                });
+                            },
                             queue:false
                         });
                     },
@@ -786,7 +784,7 @@ var cardEffect={
         }
         else
             $("#outcome").append("<div class='outcomeMessage'><p>Hack attempt failed</p></div>");
-
+        //Todo put current player in for argument
         discardCard("p1",gameState.playerChoice.cardPlayedDom);
         $('#cardModal').modal('hide');
     },
@@ -806,7 +804,6 @@ var cardEffect={
         //fix this for current turn
         if(player=="p1")
         {
-            var tplayer = player;
             delayedDraw();
             discardCard(player,$(getHand(player)).children(0));
             discardCard(player,$(getHand(player)).children(1));
