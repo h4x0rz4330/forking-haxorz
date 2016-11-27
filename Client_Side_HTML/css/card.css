@@ -55,7 +55,9 @@
 .trojanHorse{
     background: url("../images/Trojan_Horse_Card.png");
 }
-
+.cybersecurity{
+   background: url("../images/Cybersecurity_Officer_Card.png");
+}
 .cybersecurityImg{
     content: url("../images/Cybersecurity_Officer_Card.png");
 }

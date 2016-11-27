@@ -415,7 +415,7 @@ function setCardValues(card,number)
     //console.log($(card).children(0)[0].children()[1]);
   switch(number){
       case 1:
-          $(card).children(0).addClass("hack");
+          $(card).addClass("hack");
           //.addClass("hack");
           break;
       case 2:
