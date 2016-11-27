@@ -1,3 +1,10 @@
+<!--
+* Name: Hardika Patel
+* File: FXMLLogin.fxml
+* Description: This file is user interface that is displayed when the application start. 
+*              - Includes, GridPane which contains Labels, TextField and Buttons. 
+-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
