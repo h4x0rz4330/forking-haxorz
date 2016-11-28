@@ -418,46 +418,45 @@ function generateCard(val){
     var card =$("<div class='card effect__click'></div>");
     var cardFront = $("<div class='front'></div>");
     var cardBack = $("<div class='back'></div>");
-    setCardValues(card,val)
     $(card).append(cardBack);
     $(card).append(cardFront);
+    setCardValues(card,val)
     return card;
 }
 
 function setCardValues(card,number)
 {
-    //console.log($(card).children(0)[0].children()[1]);
   switch(number){
       case 1:
           $(card).addClass("hack");
-          //.addClass("hack");
+          $('.front',card).addClass("hack");
           break;
       case 2:
          $(card).addClass("rat");
-         // $($(card).children(0)[0]).children()[1].addClass("rat");
+          $('.front',card).addClass("rat");
           break;
       case 3:
-         // $($(card).children(0)[0]).children()[1].addClass("cybersecurity");
+          $('.front',card).addClass("cybersecurity");
           $(card).addClass("cybersecurity");
           break;
       case 4:
-          //$($(card).children(0)[0]).children()[1].addClass("firewall");
+          $('.front',card).addClass("firewall");
           $(card).addClass("firewall");
           break;
       case 5:
-          //$($(card).children(0)[0]).children()[1].addClass("hardReset");
+          $('.front',card).addClass("hardReset");
           $(card).addClass("hardReset");
           break;
       case 6:
-          //$($(card).children(0)[0]).children()[1].addClass("hijack");
+          $('.front',card).addClass("hijack");
           $(card).addClass("hijack");
           break;
       case 7:
-          //$($(card).children(0)[0]).children()[1].addClass("trojanHorse");
+          $('.front',card).addClass("trojanHorse");
           $(card).addClass("trojanHorse");
           break;
       case 8:
-         // $($(card).children(0)[0]).children()[1].addClass("bitcoinBillionair");
+          $('.front',card).addClass("bitCoinBillionair");
           $(card).addClass("bitCoinBillionair");
           break;
       default:

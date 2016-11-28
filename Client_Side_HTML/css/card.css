@@ -33,31 +33,31 @@
 }
 
 
-.rat{
+.front.rat{
     background: url("../images/RAT_Card.png");
 }
-.firewall{
+.front.firewall{
     background: url("../images/Firewall_Card.png");
 }
 
-.hardReset{
+.front.hardReset{
  background: url("../images/Hard_Reset_Card.png");
 }
 
-.hijack{
+.front.hijack{
     background: url("../images/Hijack_Card.png");
 }
 
-.hack{
+.front.hack{
     background: url("../images/Hack_Card.png");
 }
-.bitCoinBillionair{
+.front.bitCoinBillionair{
 
 }
-.trojanHorse{
+.front.trojanHorse{
     background: url("../images/Trojan_Horse_Card.png");
 }
-.cybersecurity{
+.front.cybersecurity{
    background: url("../images/Cybersecurity_Officer_Card.png");
 }
 .cybersecurityImg{
@@ -87,24 +87,13 @@
 .trojanHorseImg{
     content: url("../images/Trojan_Horse_Card.png");
 }
-.cybersecurity,.rat,.firewall,.hardReset,.hack,.hijack,.trojanHorse,.bitCoinBillionair{
+
+.front.cybersecurity,.front.rat,.front.firewall,.front.hardReset,.front.hack,.front.hijack,.front.trojanHorse,.front.bitCoinBillionair{
     background-size:contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#p1Disc.card{
-
-}
-
-#p2Disc.card{
-
-}
-
-#p3Disc.card{
-
-}
-
-#p4Disc.card{
-
+#p1Hand,#p2Hand,#p3Hand,#p4Hand{
+    z-index:10;
 }
