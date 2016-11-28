@@ -54,14 +54,14 @@ function cpPlayCard(){
 						discardCard('p2',$('#p2Hand').find('.trojanHorse'));
 						setTimeout(function(){
 							$('#p2Hand').find('.trojanHorse').remove();
-						},2000);
+						},925);
 					}
 					break;
 			}
 			setTimeout(function(){
 				drawCard("p1");
 			},1500);
-		}, 2000);
+		}, 3000);
 	}else{
 		alert('You Won');
 	}

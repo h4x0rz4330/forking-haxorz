@@ -33,31 +33,31 @@
 }
 
 
-.front.rat{
+.front.rat,.rat.cardButton{
     background: url("../images/RAT_Card.png");
 }
-.front.firewall{
+.front.firewall,.firewall.cardButton{
     background: url("../images/Firewall_Card.png");
 }
 
-.front.hardReset{
+.front.hardReset,.hardReset.cardButton{
  background: url("../images/Hard_Reset_Card.png");
 }
 
-.front.hijack{
+.front.hijack,.hijack.cardButton{
     background: url("../images/Hijack_Card.png");
 }
 
-.front.hack{
+.front.hack,.hack.cardButton{
     background: url("../images/Hack_Card.png");
 }
-.front.bitCoinBillionair{
-
+.front.bitCoinBillionair,.bitCoinBillionair.cardButton{
+    background:url("../images/Bitcoin_Billions_Card.png");
 }
-.front.trojanHorse{
+.front.trojanHorse,.trojanHorse.cardButton{
     background: url("../images/Trojan_Horse_Card.png");
 }
-.front.cybersecurity{
+.front.cybersecurity,.cybersecurity.cardButton{
    background: url("../images/Cybersecurity_Officer_Card.png");
 }
 .cybersecurityImg{
@@ -88,6 +88,15 @@
     content: url("../images/Trojan_Horse_Card.png");
 }
 
+.bitCoinBillionairImg{
+    content:url("../images/Bitcoin_Billions_Card.png");
+}
+
+.rat.cardButton,.cybersecurity.cardButton,.firewall.cardButton,.hardReset.cardButton,.hack.cardButton,.hijack.cardButton,.trojanHorse.cardButton,.bitCoinBillionair.cardButton{
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .front.cybersecurity,.front.rat,.front.firewall,.front.hardReset,.front.hack,.front.hijack,.front.trojanHorse,.front.bitCoinBillionair{
     background-size:contain;
     background-repeat: no-repeat;

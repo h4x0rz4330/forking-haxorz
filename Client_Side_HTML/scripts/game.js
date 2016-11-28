@@ -295,8 +295,8 @@ function getCardName(card)
     else if(card.hasClass("trojanHorse")){
         return "trojanHorse";
     }
-    else if(card.hasClass("bitcoinBillionair")){
-        return "bitcoinBillionair";
+    else if(card.hasClass("bitCoinBillionair")){
+        return "bitCoinBillionair";
     }
 }
 
@@ -844,6 +844,7 @@ var cardEffect={
     seeHand:function(player){
         var img = $('<img class="opponentHand">');
         img.addClass(getCardName($(getHand(player)).children(0))+'Img');
+        console.log($(img));
         $("#outcome").append(img);
 
         $("#outcomeModalLabel").html("Opponent's Current Hand");
@@ -852,10 +853,11 @@ var cardEffect={
         discardCard("p1",gameState.playerChoice.cardPlayedDom);
     },
     checkGuess:function(card){
-
+        $("#outcomeModalLabel").html("Attempting to Hack Opponents System");
         var opponentHand = getHand(gameState.playerChoice.playerChosen);
         if($(".card",opponentHand).hasClass(getCardName($(card))))
         {
+
             $("#outcome").append("<div class='outcomeMessage'><p>Hack attempt succeeded</p></div>");
             discardCard(gameState.playerChoice.playerChosen,$(opponentHand).children(0));
 				userWin = true;
