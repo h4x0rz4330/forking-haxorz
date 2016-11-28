@@ -52,7 +52,7 @@ We are using agile methodology due to time constraints and, as per request of th
 
 [Software Testing Document](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_STD.md)
 
-[Game Manual](https://github.com/h4x0rz4330/forking-haxorz/blob/master/UserManual.docx)
+[Game Manual]()
 
 [Our Google Drive](https://drive.google.com/open?id=0B7AngVuyOYDRQ1NnNTd5OG5GSW8)
 
@@ -61,8 +61,7 @@ We are using agile methodology due to time constraints and, as per request of th
 5. Potential Risks
 ---------------
 
-There is always human risk with a game. Human error can be introduced in the code by programmers. We could be facing resource risk because we will be using an EC2 instance. There is the possiblitly that we will be charged more than we are making off of the game due to high amount of users. 
-
+Human error is a possible risk that can be introduced into the code via the programmers that build and maintain the application. We can potentially face a resource-limitation risk (processing load and data storage) as the server used for this application is an Amazon EC2 instance. Because the main application is free-to-play, there is a possibility that overhead costs can exceed revenue.
 
 
 6. Team Members/Tasks
@@ -75,7 +74,7 @@ There is always human risk with a game. Human error can be introduced in the cod
 - Hardika Patel - UI Design, Webpage Integration
 - Madeline May - Testing, Documentation
 
-Our team is unique in the fact that it does not fit one specific team organization. It is a mix between a chief programmer team and an egoless team. We have a project manager to help keep the team organized and on task. All team members are responsible for a certain area of the project based on expertise, making it similar to an egoless organization as well. 
+Our team does not fit one specific team organization. It is a hybrid between the chief programmer and the egoless styles. We have a project manager to generally help keep the team organized as a whole, but each team member leads and is responsible for a specific area of the project, based on their expertise.
 
 
 7. Project Schedule : Gantt Chart
