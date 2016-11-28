@@ -52,7 +52,7 @@ We are using agile methodology due to time constraints and, as per request of th
 
 [Software Testing Document](https://github.com/h4x0rz4330/forking-haxorz/blob/master/haxorz_STD.md)
 
-[Game Manual]()
+[Game Manual](https://github.com/h4x0rz4330/forking-haxorz/blob/master/UserManual.docx)
 
 [Our Google Drive](https://drive.google.com/open?id=0B7AngVuyOYDRQ1NnNTd5OG5GSW8)
 
@@ -182,3 +182,19 @@ Our team does not fit one specific team organization. It is a hybrid between the
 | **Members Present** | Madeline May, William Raziano, Chris Schayer |
 | **Objective** | Work on Software Testing Document and Further Coding |
 | **Summary** | Completion of test cases and checks to ensure that they correctly correspond with the current implementation. Further webpage coding is also done.  |
+
+| **Date** | November 26, 2016 |
+:--------------- | :----------------------
+| **Time** | 1:00 PM - 7:00 PM |
+| **Location** | 724 Tanya’s Trail, Baton Rouge, LA |
+| **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Work on Presentation and Demo |
+| **Summary** | Further work on refining code, particularly on core functions that are necessary for the full demo. Work on presentation slides begins. Other work with documentation, such as user manual and project management document, proceeds into final editing/additions. |
+
+| **Date** | November 27, 2016 |
+:--------------- | :----------------------
+| **Time** | 2:00 PM - 7:00 PM |
+| **Location** | 724 Tanya’s Trail, Baton Rouge, LA |
+| **Members Present** | Madeline May, Ryan Ngo, Jonathan Nguyen, Hardika Patel, William Raziano, Chris Schayer |
+| **Objective** | Final Work on Presentation and Demo |
+| **Summary** | Further work on refining code, particularly on core functions that are necessary for the full demo. Completion of presentation slides and rehearsal of presentation. Final editing/additions to documentation continues. |
