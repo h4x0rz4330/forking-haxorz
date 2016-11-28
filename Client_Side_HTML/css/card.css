@@ -51,7 +51,9 @@
 .hack{
     background: url("../images/Hack_Card.png");
 }
+.bitCoinBillionair{
 
+}
 .trojanHorse{
     background: url("../images/Trojan_Horse_Card.png");
 }
@@ -85,7 +87,7 @@
 .trojanHorseImg{
     content: url("../images/Trojan_Horse_Card.png");
 }
-.cybersecurity,.rat,.firewall,.hardReset,.hack,.hijack,.trojanHorse{
+.cybersecurity,.rat,.firewall,.hardReset,.hack,.hijack,.trojanHorse,.bitCoinBillionair{
     background-size:contain;
     background-repeat: no-repeat;
     background-position: center;

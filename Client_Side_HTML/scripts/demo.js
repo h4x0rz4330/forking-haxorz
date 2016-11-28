@@ -1,4 +1,5 @@
 var deck = [3,5,2,6,1,5,7,1];
+
 var cphand = [5];
 var playerTurn = true;
 var cpTurn = false;

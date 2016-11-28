@@ -246,6 +246,10 @@ function applyModalAnimation(){
         clearOutcome();
 
     });
+
+    $("#discardModal").on("hidden.bs.modal",function(){
+        clearDiscard();
+    });
 }
 
 function activateCard(card){
@@ -335,6 +339,16 @@ function clearPlayerChoice(){
     for (choice in $("#choosePlayer")){
         $(choice,"#choosePlayer").remove();
     }
+}
+
+function clearDiscard(){
+    var length = $("#discard").find('img').length;
+    for(i=0;i<length;i++)
+    {
+        $("#discard").find('img')[0].remove();
+
+    }
+
 }
 
 function clearOutcome(){
@@ -444,7 +458,7 @@ function setCardValues(card,number)
           break;
       case 8:
          // $($(card).children(0)[0]).children()[1].addClass("bitcoinBillionair");
-          $(card).addClass("bitcoinBillionair");
+          $(card).addClass("bitCoinBillionair");
           break;
       default:
           break;
@@ -680,6 +694,7 @@ var animationStates={
     rotation:[720,900,810,990],
 	 delay:[0,1500,750,2250],
     playerDiscard:{
+
         p1Discard:function(card,dPile,hand){
             if(card.index()==1)
             {
@@ -688,8 +703,11 @@ var animationStates={
                 },{
                     duration:1000,
                     complete: function(){
-
-                        $(dPile).append($(generateCard(1).clone()));
+                        var dcard = $(generateCard(convertNameToNumber(getCardName($(card))))).clone();
+                        $(dcard).on('click',function(e){
+                            populateDiscardModal($(e.target).parent());
+                        });
+                        $(dPile).append(dcard);
                         $(card).remove();
                     },
                     queue:false
@@ -700,7 +718,11 @@ var animationStates={
                 $(card).velocity({left:"-="+(boardState.iWidth *.15)},{
                     duration:1000,
                     complete: function(){
-                        $(dPile).append($(generateCard(1).clone()));
+                        var dcard =$(generateCard(convertNameToNumber(getCardName($(card))))).clone();
+                        $(dcard).on('click',function(e){
+                            populateDiscardModal($(e.target).parent());
+                        });
+                        $(dPile).append(dcard);
                         $(card).remove();
                         $(getHand('p1')).children(0).velocity({left:"-="+(boardState.iWidth *.07)},{
                             duration:1000,
@@ -724,7 +746,13 @@ var animationStates={
                 },{
                     duration:1000,
                     complete: function() {
-                        $(dPile).append($(generateCard(1).clone()));
+                        var dcard =$(generateCard(convertNameToNumber(getCardName($(card))))).clone();
+                        console.log(dcard);
+                        $(dcard).on('click',function(e){
+
+                            populateDiscardModal($(e.target).parent());
+                        });
+                        $(dPile).append($(dcard));
                         $(card).children(0)[1].remove();
                     },
                     queue:false
@@ -737,7 +765,13 @@ var animationStates={
                     duration:1000,
                     complete: function(){
                         //todo get card number
-                        $(dPile).append($(generateCard(1).clone()));
+                        var dcard =$(generateCard(convertNameToNumber(getCardName($(card))))).clone();
+                        $(dcard).on('click',function(e){
+                            console.log('ran');
+                            populateDiscardModal($(e.target).parent());
+                        });
+
+                        $(dPile).append($(dcard));
 
                         $(card)[0].remove();
                         console.log($(getHand('p2')).children(0)[0]);
@@ -775,6 +809,37 @@ var animationStates={
         }
     }
 }
+function convertNameToNumber(item){
+   var value;
+    switch(item)
+    {
+        case 'hack':
+            value=1;
+            break;
+        case 'rat':
+            value=2;
+            break;
+        case 'cybersecurity':
+            value=3;
+            break;
+        case 'firewall':
+            value=4;
+            break;
+        case 'hardReset':
+            value=5;
+            break;
+        case 'hijack':
+            value=6;
+            break;
+        case 'trojanHorse':
+            value=7;
+            break;
+        case 'bitCoinBillionair':
+            value=8;
+            break;
+    }
+    return value;
+}
 
 var cardEffect={
     seeHand:function(player){
@@ -785,7 +850,7 @@ var cardEffect={
         $("#outcomeModalLabel").html("Opponent's Current Hand");
         $("#outcomeModal").modal('show');
         //Todo put current player in for argument
-        discardCard("p1",$(gameState.playerChoice.cardPlayedDom));
+        discardCard("p1",gameState.playerChoice.cardPlayedDom);
     },
     checkGuess:function(card){
 
@@ -818,9 +883,16 @@ var cardEffect={
         //fix this for current turn
         if(player=="p1")
         {
-            delayedDraw();
-            discardCard(player,$(getHand(player)).children(0));
-            discardCard(player,$(getHand(player)).children(1));
+            if($(getHand(player)).length==2) {
+                delayedDraw();
+                discardCard(player, $(getHand(player)).children(0));
+                discardCard(player, $(getHand(player)).children(1));
+            }
+            else
+            {
+                delayedDraw();
+                discardCard(player,$(getHand(player)).children(0));
+            }
             $("#outcomeModalLabel").html("Performing Hard Reset On User's System");
         }
         else{
@@ -835,7 +907,25 @@ var cardEffect={
     }
 }
 
+function populateDiscardModal(e){
 
+
+    $("#outcome").append(img);
+
+
+
+
+    var discard = $($(e).parent()).children(0);
+    for(i=0;i<$(discard).length;i++)
+    {
+        var dcard = $(discard)[i];
+        var img = $('<img class="discardedCard">');
+        img.addClass(getCardName($(dcard))+'Img');
+        $("#discard").append(img);
+    }
+    $("#discardModal").modal('show');
+
+}
 function modalSwitch(){
     $('#playerModal').modal('hide');
     $('#cardModal').modal('show');

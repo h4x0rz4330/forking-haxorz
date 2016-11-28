@@ -77,10 +77,25 @@ body{
     left:30%;
     top:10%;
 }
+.discardedCard{
+    height: 30vh;
+    width:auto;
+    position:relative;
+    border:0;
+    float:right;
+    display:block;
+    right:5%;
+    top:10%;
+}
 .outcomeMessage{
     color: #67b168;
     text-align:center;
     font-size:5vh
+}
+#discard{
+    border:none;
+    height:55vh;
+    background-color:transparent;
 }
 #outcome{
     border:none;
