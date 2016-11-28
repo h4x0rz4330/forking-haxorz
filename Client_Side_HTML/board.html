@@ -86,7 +86,6 @@
                 </div>
             </div>
         </div>
-            <button id="draw">Draw card</button>
             <div  id="deck"></div>
             <div id="p1Hand" class="hand"></div>
             <div id="p1Disc" class="disc"></div>
@@ -97,6 +96,22 @@
             <div id="p4Hand" class="hand"></div>
             <div id="p4Disc" class="disc"></div>
     </div>
+	 <div class="modal fade" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="playerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="outcomeModalLabel">You Win!!</h4>
+                    </div>
+                    <div id="game">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/bootstrap.js"></script>
@@ -111,6 +126,9 @@
 	 <script>
 		$('#outcomeModal').on('hidden.bs.modal', function(){
 			cpPlayCard();
+		});
+		$('#gameModal').on('hidden.bs.modal', function(){
+			window.location.replace("/MainMenu.html");
 		});
 	 </script>
 <link rel="stylesheet" href="css/bootstrap.css">

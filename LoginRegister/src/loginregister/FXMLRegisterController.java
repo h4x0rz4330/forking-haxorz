@@ -1,11 +1,7 @@
 /*
  * Author: Hardika
  * File: LoginRegisterController.java
- * Description: - Controller for register screen. 
- *              - Disply Register Screen when user click "New Account" Button.
- *              - After Screen Apear user will able to register for New Account bu adding Email, password, and screen name. 
- *              - Also controller for Back Button, after user resgister for new account, 
- *                  user will able to go back to login page by clicking "Back" button 
+ * Description: Controller for register screen. 
  */
 package loginregister;
 

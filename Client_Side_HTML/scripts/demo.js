@@ -54,7 +54,7 @@ function cpPlayCard(){
 						discardCard('p2',$('#p2Hand').find('.trojanHorse'));
 						setTimeout(function(){
 							$('#p2Hand').find('.trojanHorse').remove();
-						},925);
+						},999);
 					}
 					break;
 			}
@@ -63,6 +63,6 @@ function cpPlayCard(){
 			},1500);
 		}, 3000);
 	}else{
-		alert('You Won');
+		$('#gameModal').modal('show');
 	}
 }
