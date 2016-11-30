@@ -8,9 +8,15 @@ var userWin = false;
 $(document).ready(function(){
     //gets the users initial window dimensions.
 	boardState.initializeGameDimensions();
+
+	//initialed the game to be 2 players
 	playerStates.initPlayerState(2);
+	//added the modal animations values to the modals utilized in the game
 	applyModalAnimation();
+	//applies a ripple effect to allow the user to perform an action to lessen sense of boredom if player takes time before making move.
 	//ripples();
+
+	
 	populateDeck();
 	$('#playerModal').on('hidden.bs.modal', function () {
 
@@ -40,11 +46,13 @@ $(document).ready(function(){
 	},3000);
 });
 
+//This function is used to simulate a computer player to perform the demo
 function cpPlayCard(){
 	if (!userWin){
 		cphand.push(deck[0]);
 		drawCard("p2");
 		var cardnum = cphand.shift();
+		//adds a delay to card action to simulate time spent contemplating time to play card
 		setTimeout(function(){
 			switch(cardnum){
 				case 5:

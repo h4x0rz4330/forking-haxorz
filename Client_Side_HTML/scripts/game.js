@@ -20,39 +20,6 @@
  *  removed p2-p4 card css files because velocity rendered such files unecessary: 11/24/16 Chris Schayer
  */
 
-/*$(document).ready(function(){
-    //gets the users initial window dimensions.
-    boardState.initializeGameDimensions();
-    playerStates.initPlayerState(2);
-    //ripples();
-    populateDeck();
-    $('#playerModal').on('hidden.bs.modal', function () {
-
-    })
-    //this will be where the outter most loop will occur that will trigger each round
-
-        setupBoard();
-        //deal Phase
-        dealCards(2);
-
-        //updates the dimensions of board and performs correct corrections to maintain card position relative to gameboard.
-        $(window).resize(function(){
-            boardState.updateBoardDimensions();
-            playerStates.correctCards();
-        });
-
-        //This will be where main loop in each round that will trigger the start of a new turn
-
-            //Draw Phase
-            $("#draw").click(function(){
-                drawCard(1);
-            });
-
-            //Play Phase
-
-            //End of turn phase
-});*/
-
 
 /*------------------------------Value Obtaining Functions-----------------------*/
 //gets the id value of the players hand. When called must surround with $()
@@ -68,7 +35,7 @@ function getDiscard(player)
     return hand;
 }
 
-
+//sets the initial animations that will be performed during initial loading of the gameboard
 function setupBoard(){
     $("#p1Disc").velocity({top:'+='+(boardState.iHeight*.24),left:'-='+(boardState.iWidth *.15)},{duration:1000,queue:false});
     $("#p2Disc").velocity({top:'-='+(boardState.iHeight*.24),left:'+='+(boardState.iWidth) *.15},{duration:1000, queue:false});
@@ -87,13 +54,12 @@ function dealCards(players){
             //adds a card to hand
             var hand = updateHand("p"+i);
 
-            //applies the necessary rotation and delay to animation to apply to the card
 
             //removes a card from the deck during each deal and updates count of remaining cards in deck
             gameState.updateDeckLength();
        $(".card:eq(0)",hand).flip({trigger:'manual'});
 
-        //Performs deal for each player will be changed to user names when testing against begins
+        //Performs deal for each player, player name will be changed to user names when testing multiplayer functionality begins
         switch(i)
         {
             case 1:
@@ -153,7 +119,7 @@ function dealCards(players){
 //If it is the users turn will also add a card flip animation on the card so user can see the card.
 function applyDrawAnimation(player){
     var hand = $(getHand(player));
-   // if()
+   
     $(".card:eq(1)",hand).flip({trigger:'manual'});
 
     //apply draw animation based on the player which will include an offset to be placed by the other card.
@@ -172,9 +138,10 @@ function applyDrawAnimation(player){
             $(".effect__click:eq(1)",hand).velocity({top:'-='+(boardState.iHeight *.10),left:'+='+(boardState.iWidth*.36)},{duration:1000, queue:false});
             break;
     }
-
+    /*applies animation to enlarge player card and flips player card 
+     NOTE:this will only be the user as the user has no need to enlarge opponents card and should not be able to see opponents hand*/
     if(player=='p1')
-    {
+    {   //tempHand used to overcome change in hand value due to asynchronouse call of complete.
         var tempHand = hand;
         $(".effect__click:eq(1)", hand).velocity({rotateZ: animationStates.rotation[player[1]-1]},
             {duration: 1000,
@@ -198,10 +165,13 @@ function applyDrawAnimation(player){
     }
 
 }
+//sets the necessary modal events to occur based on the card played.
 function applyModalAnimation(){
+    //Removes all children nodes in the playerModal when it is hidden to allow for accurate displaying of remaining players
     $("#playerModal").on("hidden.bs.modal",function(){
         clearPlayerChoice();
     });
+    //Applies the proper modal transitions based on the card played
     $("#playerModal").on("show.bs.modal",function(){
         populatePlayerChoice();
         $(".playerButton").on("click",function(e){
@@ -226,11 +196,14 @@ function applyModalAnimation(){
             }
         });
     })
+    //Launches the outcome modal for the hack card as it is the only card that uses this modal
     $("#cardModal").on("hidden.bs.modal",function(){
         setTimeout(function(){
             $('#outcomeModal').modal('show');
         },0);
     })
+
+    //Performs an auto hide on outcome modal after a set amount time for the cards listed below
     $("#outcomeModal").on("show.bs.modal",function(){
         switch(gameState.playerChoice.cardPlayed)
         {
@@ -242,18 +215,23 @@ function applyModalAnimation(){
                 },2000);
         }
     });
+    //clear outcome content to allow for new content to be added
     $("#outcomeModal").on("hidden.bs.modal",function(){
         clearOutcome();
 
     });
 
+    //clear discard to allow for individual player discards to be properly loaded
     $("#discardModal").on("hidden.bs.modal",function(){
         clearDiscard();
     });
 }
 
+//Toggles the modal that allows the player to use their card
 function activateCard(card){
+    //determines the index of the card to apply the proper discard animation and necessary correction, such as the first card in the hand is plaeyd
     gameState.cardChosenIndex = $(card).index();
+    //gets the dom value of the card played to copy it to the discard div before deleting it from the players hand
     gameState.playerChoice.cardPlayedDom=card;
     gameState.playerChoice.cardPlayed = getCardName(card);
     switch(gameState.playerChoice.cardPlayed)
@@ -271,7 +249,7 @@ function activateCard(card){
 
 }
 
-
+//returns the class name of the card to use as a mean to determine which card was played, as well as to add a background to the cardModal
 function getCardName(card)
 {
     if(card.hasClass("hack")){
@@ -307,7 +285,7 @@ function drawCard(player){
     gameState.updateDeckLength();
 
 }
-
+//populates the players available to choose in player modal by checking isEliminated boolean for each player
 function populatePlayerChoice(){
 
     switch(gameState.players){
@@ -334,13 +312,13 @@ function populatePlayerChoice(){
             break;
     }
 }
-
+//removes the players appended to the player modal during the players turn 
 function clearPlayerChoice(){
     for (choice in $("#choosePlayer")){
         $(choice,"#choosePlayer").remove();
     }
 }
-
+//clears the content in the discard modal to allow another players discard to be loaded in
 function clearDiscard(){
     var length = $("#discard").find('img').length;
     for(i=0;i<length;i++)
@@ -350,12 +328,13 @@ function clearDiscard(){
     }
 
 }
-
+//celars the outcome modal's content in order to print the result 
 function clearOutcome(){
     for (i=0;i<$("#outcome").children().length;i++){
         $("#outcome").children(i).remove();
     }
 }
+//populates the deck based on the number of cards that will be in the deck 
 function populateDeck()
 {
     var size;
@@ -371,14 +350,14 @@ function populateDeck()
        $("#deck").append(card);
     }
 }
-
+//updates the hand of the player passed to the method.
 function updateHand(player){
     var hand =  $(getHand(player));
     hand.append(generateCard(deck.shift()).clone());
     return hand;
 }
 
-
+//calls the proper discard animation by determine which player is called by the username and which card to discard based on the card played
 function discardCard(player,card){
     switch(player)
     {
@@ -413,7 +392,7 @@ function applyDiscardAnimation(player,card){
 
 
 /*---------------------------- Component Builder---------------------------------------------*/
-//creates a card with basic parameters
+//creates a card dom by appending a card front and a card back to the card container.
 function generateCard(val){
     var card =$("<div class='card effect__click'></div>");
     var cardFront = $("<div class='front'></div>");
@@ -423,7 +402,8 @@ function generateCard(val){
     setCardValues(card,val)
     return card;
 }
-
+//Set the image for the card that was drawn based on the number provided and adds it to the card passed to the function
+//the addition of the class to the front of card is so the background appears on the front div instead of container to allow flip animation to function properly.
 function setCardValues(card,number)
 {
   switch(number){
@@ -473,6 +453,7 @@ function buildCard(card){
 
 
 //TODO ISWINNER()
+//holds values of the player such as, their username the position of their hand to update its position, if they are eliminated, the modal button that represents them.
 var playerStates = {
     p1State: {
         userName:"p1",
@@ -503,6 +484,7 @@ var playerStates = {
         isEliminated: true,
         modalButton:""
     },
+    //Sets the initial hand for the player based on the players status: p1, p2, p3, p4 from the users view point.
     setHandPositions: function (players) {
         for (i = 1; i <= players; i++) {
             switch (i) {
@@ -521,6 +503,7 @@ var playerStates = {
             }
         }
     },
+    //corrects the position of the cards in the players hand in the event that the user decides to resize the window. 
     correctCards: function () {
         //update hand position
         this.p1State.hand.position.top = boardState.iHeight * .25;
@@ -554,6 +537,7 @@ var playerStates = {
             $(".effect__click:eq(1)", "#p4Hand").css("top", -boardState.iHeight * .12 + "px");
         }
     },
+    //sets the initial values for the players as the game state such as number of players if they are eliminated and a button to select them.
     initPlayerState: function(players){
         gameState.players=players;
         switch(players)
@@ -575,7 +559,7 @@ var playerStates = {
         }
     }
 }
-
+//holds the current values of the game such as number of players, their names, choices made such as player, card user played, card user guess
 var gameState ={
     players:0,
     playerNames:["p1","p2","p3","p4"],
@@ -587,17 +571,18 @@ var gameState ={
     },
     cardChosenIndex:0,
     cardsRemaining:0,
+    //removes a card div from the deck id and updates the number of cards remaining by getting the number of childrens 
     updateDeckLength:function(){
         $(".card:last-child","#deck").remove();
         this.cardsRemaining = $("#deck").children().length;
-    },
+    },//needs to be expanded to implement ajax calls
     initGameState:function(){
         //TODO ajax call
         this.players = 0;
 
     }
 }
-
+//keeps track of the current size of the window and the theoretical height and width of the game board
 var boardState = {
     //height and width of window
     height: 0,
@@ -623,11 +608,14 @@ var boardState = {
             this.iHeight = this.width / this.ratio;
         }
     },
+    /*determines if window width or window height changed and if an increase or decrease occurs. 
+    This is used to calculate the change in width in height of the gameboard as it uses the contain class and will maintain aspect ratio*/
     updateBoardDimensions: function () {
         var newBoardState = {height: $(window).height(), width: $(window).width(),iHeight:0,iWidth:0};
         //if window height increased
         if(this.height<newBoardState.height)
-        {
+        {   /*determines if ratio is broken as the value that is smaller than the necessary aspect ratio 
+            will be what the contain value will use to maintain proper aspect ratio*/
             if(newBoardState.height*this.ratio<newBoardState.width){
                 //calculating new board dimensions
                 newBoardState.iHeight = newBoardState.height;
@@ -689,11 +677,15 @@ var boardState = {
     }
 }
 
+//Holds various parameters and functions necessary to apply animations used throughout the script
+/*NOTE: Function calls made in the complete statement are used to initialize the card in the discard pile which 
+copies the content of the card discarded before it is removed from the players hand*/
 var animationStates={
+    //rotation and delay store the necessary card rotation value for draw and deal animation and delay exclusively for the deal animation
     rotation:[720,900,810,990],
 	 delay:[0,1500,750,2250],
     playerDiscard:{
-
+        //applies the discard animation necessary for player one based on if the card was the first or second card in their hand
         p1Discard:function(card,dPile,hand){
             if(card.index()==1)
             {
@@ -737,7 +729,9 @@ var animationStates={
                 });
             }
         },
+        //performs the necessary discard action for p2 based on card played in hand
         p2Discard:function(card,dPile,hand){
+            //if the second card in hand was played
             if(card.index()==1)
             {
                 $(card,hand).velocity({
@@ -783,7 +777,7 @@ var animationStates={
                 });
             }
 
-        },
+        },//Need to implement to allow 3player gameplay
         p3Discard:function(card){
             if(card.index()==1)
             {
@@ -794,7 +788,7 @@ var animationStates={
 
             }
 
-        },
+        },//Need to implement to allow 4player gameplay.
         p4Discard:function(card){
             if(card.index()==1)
             {
@@ -808,6 +802,7 @@ var animationStates={
         }
     }
 }
+//Converts the name of teh card to a number value to implement in the compareValue method for 
 function convertNameToNumber(item){
    var value;
     switch(item)
@@ -840,7 +835,9 @@ function convertNameToNumber(item){
     return value;
 }
 
+//Stores the various effects each card will have. 
 var cardEffect={
+    //Allows the player to see the content of the opponents hand by populating a modal with the children elements of the discard Div
     seeHand:function(player){
         var img = $('<img class="opponentHand">');
         img.addClass(getCardName($(getHand(player)).children(0))+'Img');
@@ -852,12 +849,13 @@ var cardEffect={
         //Todo put current player in for argument
         discardCard("p1",gameState.playerChoice.cardPlayedDom);
     },
+    //Checks the card the user guesses after playing the hack card against the card that exists in the hand of the player chosen.
     checkGuess:function(card){
         $("#outcomeModalLabel").html("Attempting to Hack Opponents System");
         var opponentHand = getHand(gameState.playerChoice.playerChosen);
         if($(".card",opponentHand).hasClass(getCardName($(card))))
         {
-
+            //appends success message to the outcomeMessage modal and discards the players card
             $("#outcome").append("<div class='outcomeMessage'><p>Hack attempt succeeded</p></div>");
             discardCard(gameState.playerChoice.playerChosen,$(opponentHand).children(0));
 				userWin = true;
@@ -868,6 +866,7 @@ var cardEffect={
         discardCard("p1",gameState.playerChoice.cardPlayedDom);
         $('#cardModal').modal('hide');
     },
+    //Gets the value of the card not played in player1's hand and the card in player2's hand and copies the value to 
     swapHands:function(player1,player2){
         var card1 = $(getHand(player1)).children(1-gameState.cardChosenIndex);
         var card2 = $(getHand(player2)).children(0);
@@ -879,9 +878,10 @@ var cardEffect={
         $("#outcome").append("<div class='outComeMessage'><p>Data Aquisition Successful</p></div>");
         $("#outcomeModal").modal('show');
     },
+    //Discards the players hand and have the player to draw one new card after discarding the card.
     resetHand:function(player)
     {
-        //fix this for current turn
+        //TODO Implement user's name when server is implemented
         if(player=="p1")
         {
             if($(getHand(player)).length==2) {
@@ -908,14 +908,10 @@ var cardEffect={
     }
 }
 
+//Populates the discard modal by obtaining the content of the users discard pile and appending images using t
 function populateDiscardModal(e){
 
-
-    $("#outcome").append(img);
-
-
-
-
+   
     var discard = $($(e).parent()).children(0);
     for(i=0;i<$(discard).length;i++)
     {
@@ -927,16 +923,14 @@ function populateDiscardModal(e){
     $("#discardModal").modal('show');
 
 }
+//Switches from the playerModal to the cardModal after choosing a player after playing the hack card
 function modalSwitch(){
     $('#playerModal').modal('hide');
     $('#cardModal').modal('show');
 }
 
-/*function modalSwitch2(){
-    $('#cardModal').modal('hide');
-}*/
 
-
+//Performs a delayed deal for player 1 in order to avoid issue 
 function delayedDraw(){
     setTimeout(function(){
         dealCards(1);
@@ -967,11 +961,11 @@ function ripples() {
 
 
 
-/*--------In progress-------------
+/*--------In progress-------------*/
 
-*/
 
-/*
+
+/* This method is designed to fix the scaling and reset queueing issue in velocity by implementing a 'frame reset'.
 
  path.hover(function() { // mouse enter
 
