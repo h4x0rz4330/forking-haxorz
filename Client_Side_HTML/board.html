@@ -8,6 +8,7 @@
 
 </head>
 <body>
+    <!--Main container for the game-->
     <div id="game" class="board" class="pulse-single">
 
         <!--Choose player Modal -->
@@ -20,6 +21,7 @@
                         </button>
                         <h4 class="modal-title" id="playerModalLabel">Choose an Opponent</h4>
                     </div>
+                    <!--Container for the buttons to choose player for card effect-->
                     <div id="choosePlayer">
                     </div>
                     <div class="modal-footer">
@@ -28,7 +30,7 @@
             </div>
         </div>
 
-        <!--Choose card Modal -->
+        <!--Modal to allow the allow the player to choose card-->
         <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -38,6 +40,7 @@
                         </button>
                         <h4 class="modal-title" id="cardModalLabel">Choose A Card To Hack</h4>
                     </div>
+                    <!--Buttons to allow the player to pick a card during the choose card phase-->
                     <div id="chooseCard">
                         <button type = 'button'  class="rat cardButton" onclick="cardEffect.checkGuess(this)"></button>
                         <button type = 'button'  class="cybersecurity cardButton" onclick="cardEffect.checkGuess(this)"></button>
@@ -53,7 +56,7 @@
             </div>
         </div>
 
-        <!--outcome modal--->
+        <!--outcome modal which displays content pertaining to the outcome of the card effect the player used-->
         <div class="modal fade" id="outcomeModal" tabindex="-1" role="dialog" aria-labelledby="playerModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -86,7 +89,10 @@
                 </div>
             </div>
         </div>
+            <!--acts as a container for the numbers of remaining cards-->
             <div  id="deck"></div>
+
+            <!--Holds the content of the players hand and discard-->
             <div id="p1Hand" class="hand"></div>
             <div id="p1Disc" class="disc"></div>
             <div id="p3Hand" class="hand"></div>
@@ -96,6 +102,7 @@
             <div id="p4Hand" class="hand"></div>
             <div id="p4Disc" class="disc"></div>
     </div>
+    <!--modal that tells players you win-->
 	 <div class="modal fade" id="gameModal" tabindex="-1" role="dialog" aria-labelledby="playerModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -124,9 +131,11 @@
     <script src="scripts/jquery.cycle2.min.js"></script>
     <script src="scripts/demo.js"></script>
 	 <script>
+        //On outcome modal close cpu plays card
 		$('#outcomeModal').on('hidden.bs.modal', function(){
 			cpPlayCard();
 		});
+        //Pulls up the main menu on game ending. 
 		$('#gameModal').on('hidden.bs.modal', function(){
 			window.location.href = "http://54.70.3.103/h4x0rz/MainMenu.html";
 		});
