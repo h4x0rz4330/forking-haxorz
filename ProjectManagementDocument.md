@@ -68,7 +68,7 @@ Human error is a possible risk that can be introduced into the code via the prog
 ------------------
 
 - Will Raziano - Project Management, Documentation
-- Jonathan Nguyen - Server/Client Communication, Documentation/Technical Editing
+- Jonathan Nguyen - I worked in small amounts on client-side sockets for communication (most of my coding in this was done in CSC 3380; during this semester, I helped transition this to Ryan for him to integrate into the system). My primary contribution is in writing documentation and doing technical editing and formatting. This includes the Software Requirement Specification, Software Design Document, Software Testing Document, User Manual, and Project Management Document. I was unable to attend the team meeting on November 19th because I was needed to meet and work on another course's term project. I did, however, remain in contact with my team through GroupMe and Google Drive, allowing me to intermittently assist them as needed.
 - Ryan Ngo - Server Design/Implementation, Database
 - Chris Schayer - Webpage Design/Implementation
 - Hardika Patel - UI Design, Webpage Integration
