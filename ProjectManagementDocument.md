@@ -72,7 +72,7 @@ Human error is a possible risk that can be introduced into the code via the prog
 - Ryan Ngo - Server Design/Implementation, Database
 - Chris Schayer - Webpage Design/Implementation
 - Hardika Patel - UI Design, Webpage Integration
-- Madeline May - Testing, Documentation
+- Madeline May - I focused primarily on documentation and testing for this project. I did not do any of the coding, but I was in charge of converting all of our final documentation into Markdown for GitHub and making sure they looked presentable and organized. I also helped out with writing documentation, specifically the Project Management Document as well as writing the test cases for the Software Testing Document. I organized the testing process and made sure it corresponded to our testing document. I was not able to attend the meeting on October 29 because my cousin's wedding was that same day.
 
 Our team does not fit one specific team organization. It is a hybrid between the chief programmer and the egoless styles. We have a project manager to generally help keep the team organized as a whole, but each team member leads and is responsible for a specific area of the project, based on their expertise.
 
